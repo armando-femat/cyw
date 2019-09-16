@@ -1,0 +1,41 @@
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ l.nom }}</title>
+</head>
+<body>
+<h1>Liste de {{ l.nom }}</h1>
+<p>{{l.presentation}}</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Critère</th>
+      <th scope="col">Propositions</th>
+      <th scope="col">Description</th>
+      <th scope="col">Est un engagement</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for pro in p%}
+    <tr>
+      <td>{{pro.critere.titre}}</td>
+      <td>{{pro.titre}}</td>
+      <td>{{pro.description}}</td>
+      <td>{{pro.estUnEngagement}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>
