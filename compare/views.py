@@ -13,6 +13,7 @@ def liste(request, id):
 def ville(request, nom):
     v = get_object_or_404(Ville, nom=nom)
     ls = Liste.objects.filter(ville=v)
+
     return render(request, 'compare/ville.html', locals())
 
 
