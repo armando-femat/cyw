@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31185d5f-5a93-486a-864b-4c985e92e69b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/Static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/compare/Static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/Static/css/ville.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/templates/compare/accueil.html" beforeDir="false" afterPath="$PROJECT_DIR$/compare/templates/compare/accueil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/templates/compare/ville.html" beforeDir="false" afterPath="$PROJECT_DIR$/compare/templates/compare/ville.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyw/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/cyw/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyw/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cyw/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,13 +24,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/cyw" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Q4OoNrbOLGrLxVg5GbKmKhM5xr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
