@@ -1,13 +1,14 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from compare.models import Liste, Promesse, Ville
+from compare.models import Liste, Promesse, Ville, Categorie
 from compare.form import RechercheVille
 
 
 def liste(request, id):
     l = get_object_or_404(Liste, id=id)
-    p = Promesse.objects.filter(liste_id=id)
-    return render(request, 'compare/liste.html', {'l': l, 'p': p})
+    ps = Promesse.objects.filter(liste_id=id)
+    cs = Categorie.objects.all()
+    return render(request, 'compare/liste.html', locals())
 
 
 def ville(request, nom):
