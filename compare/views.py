@@ -7,9 +7,14 @@ from compare.form import RechercheVille
 def liste(request, id):
     l = get_object_or_404(Liste, id=id)
     ps = Promesse.objects.filter(liste_id=id)
-    cs = Categorie.objects.all()
+    cats = Categorie.objects.all()
     return render(request, 'compare/liste.html', locals())
 
+def liste(request, id):
+    l = get_object_or_404(Liste, id=id)
+    ps = Promesse.objects.filter(liste_id=id)
+    cats = Categorie.objects.all()
+    return render(request, 'compare/liste.html', locals())
 
 def ville(request, nom):
     v = get_object_or_404(Ville, nom=nom)

@@ -46,7 +46,27 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
+<nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
 
+
+    <!-- Start Header Navigation -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+            <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="http://localhost:8000/accueil">
+            <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
+            <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
+        </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
+            <li><a href="http://localhost:8000/accueil">Recherche ta ville !</a></li>
+            <li><a href="http://localhost:8000/{{l.ville}}">{{l.ville}}</a></li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+    <!-- End Header Navigation -->
+</nav>
 
 <!-- Preloader -->
 <div id="loading">
@@ -77,29 +97,33 @@
                     <div class="col-md-8">
                         <div class="about_accordion wow fadeIn">
                             <div id="faq_main_content" class="faq_main_content">
-                                {% for c in cs%}
-                                <h6><i class="fa fa-angle-right"></i>{{c.nom}}</h6>
+                                {% for cat in cats%}
+                                <h6><i class="fa fa-angle-right"></i>{{cat.nom}}</h6>
                                 <div>
                                     <div class="content">
                                         <table class="table">
                                             <thead>
                                             <tr>
-                                                <th scope="col">#</th>
                                                 <th scope="col">Critère</th>
+                                                <th scope="col">Engagement</th>
                                                 <th scope="col">Promesse</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for p in ps%}
-                                            {% if p.critere.categorie.nom == c.nom%}
+                                            {% for c in l.ville.criteres.all%}
+                                            {% if cat.nom == c.categorie.nom%}
                                             <tr>
+                                                <td>{{c.titre}}</td>
+                                                {% for p in ps%}
+                                                {% if p.critere.titre == c.titre%}
                                                 <td>{% if p.estUnEngagement %} <i
                                                         class="fa fa-check-circle text-primary"></i> {%else%} <i
                                                         class="fa fa-times-circle"></i> {%endif%}
                                                 </td>
-                                                <td>{{p.critere}}</td>
                                                 <td>{{p.titre}}</td>
                                             </tr>
+                                            {%endif%}
+                                            {% endfor %}
                                             {%endif%}
                                             {% endfor %}
                                             </tbody>
@@ -146,6 +170,9 @@
                                 $('.mapheight').css('height', '350');
                                 $('.maps_text h3').hide();
                             }
+
+
+
 
 
 
