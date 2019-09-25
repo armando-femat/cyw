@@ -1,7 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from compare.models import Liste, Promesse, Ville, Categorie
-from compare.form import RechercheVille
+from compare.form import RechercheVille, FormCompare
 from compare.viewObject import vCategorie
 
 
@@ -13,9 +13,12 @@ def liste(request, id):
 
 
 def ville(request, nom):
+    form = FormCompare(request.POST or None)
+    print("blabl")
+    if form.is_valid():
+        print("ok")
     v = get_object_or_404(Ville, nom=nom)
     ls = Liste.objects.filter(ville=v)
-
     return render(request, 'compare/ville.html', locals())
 
 

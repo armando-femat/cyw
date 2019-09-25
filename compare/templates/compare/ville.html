@@ -81,40 +81,40 @@
     <section id="pricing" class="pricing lightbg">
         <div class="container">
             <div class="row">
-                <div class="main_pricing roomy-100">
-                    <div class="col-md-8 col-md-offset-2 col-sm-12">
-                        <div class="head_title text-center">
-                            <h1>{{v.nom}}</h1>
-
-                            <div class="separator_auto"></div>
-                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
-                                {%endfor %}...</p>
-                            <a type="submit" href="http://localhost:8000/compare/{{v.nom}}" class="btn btn-primary">Comparer les programmes</a>
+                <form class="main_pricing roomy-100" action="{% url "compare" v.nom %}" method="post">
+                {% csrf_token %}
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class="head_title text-center">
+                        <h1>{{v.nom}}</h1>
+                        <div class="separator_auto"></div>
+                        <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
+                            {%endfor %}...</p>
+                        <button type="submit" class="btn btn-primary">Comparer les programmes</button>
+                    </div>
+                </div>
+                {% for l in ls%}
+                <div class="col-md-4 col-sm-12 m-top-30">
+                    <div class="pricing_item">
+                        <div class="pricing_head text-center p-top-20 p-bottom-15">
+                            <h4 class="text-uppercase">{{l.nom}}</h4>
+                        </div>
+                        <div class="pricing_body bg-white p-top-20 p-bottom-20">
+                            <div class="text-center">
+                                <p>{{l.presentation}}</p>
+                            </div>
+                            <div class="pricing_btn text-center p-top-10">
+                                <a href="http://localhost:8000/liste/{{l.id}}"
+                                   class="btn btn-primary">Voir !</a>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Comparer
+                                </label>
+                                <input class="form-check-input" type="checkbox" id="{{l.nom}}">
+                            </div>
                         </div>
                     </div>
-                    {% for l in ls%}
-                    <div class="col-md-4 col-sm-12 m-top-30">
-                        <div class="pricing_item">
-                            <div class="pricing_head text-center p-top-20 p-bottom-15">
-                                <h4 class="text-uppercase">{{l.nom}}</h4>
-                            </div>
-                            <div class="pricing_body bg-white p-top-20 p-bottom-20">
-                                <div class="text-center">
-                                    <p>{{l.presentation}}</p>
-                                </div>
-                                <div class="pricing_btn text-center p-top-10">
-                                    <a type="submit" href="http://localhost:8000/liste/{{l.id}}"
-                                       class="btn btn-primary">Voir !</a>
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Comparer
-                                    </label>
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End off col-md-4 -->
-                    {% endfor %}
-                </div>
+                </div><!-- End off col-md-4 -->
+                {% endfor %}
+                </form>
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off Pricing section -->
@@ -149,6 +149,7 @@
                                 $('.mapheight').css('height', '350');
                                 $('.maps_text h3').hide();
                             }
+
 
 
 
