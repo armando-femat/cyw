@@ -1,16 +1,22 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from compare.models import Liste, Promesse, Ville
-from compare.form import RechercheVille
+from compare.models import Liste, Promesse, Ville, Categorie
+from compare.form import RechercheVille, FormCompare
+from compare.viewObject import vCategorie
 
 
 def liste(request, id):
     l = get_object_or_404(Liste, id=id)
-    p = Promesse.objects.filter(liste_id=id)
-    return render(request, 'compare/liste.html', {'l': l, 'p': p})
+    ps = Promesse.objects.filter(liste_id=id)
+    cats = Categorie.objects.all()
+    return render(request, 'compare/liste.html', locals())
 
 
 def ville(request, nom):
+    form = FormCompare(request.POST or None)
+    print("blabl")
+    if form.is_valid():
+        print("ok")
     v = get_object_or_404(Ville, nom=nom)
     ls = Liste.objects.filter(ville=v)
     return render(request, 'compare/ville.html', locals())
@@ -21,20 +27,14 @@ def accueil(request):
     if form.is_valid():
         nom = form.cleaned_data['ville']
         return redirect(ville, nom=nom)
-
     return render(request, 'compare/accueil.html', locals())
 
 
-def autocompleteModel(request):
-    if request.is_ajax():
-        q = request.GET.get('term', '').capitalize()
-        search_qs = MODEL.objects.filter(name__startswith=q)
-        results = []
-        print(q)
-        for r in search_qs:
-            results.append(r.FIELD)
-        data = json.dumps(results)
-    else:
-        data = 'fail'
-    mimetype = 'application/json'
-    return HttpResponse(data, mimetype)
+def compare(request, nom):
+    vcats = []
+    cs = Categorie.objects.all()
+    v = get_object_or_404(Ville, nom=nom)
+    ls = Liste.objects.filter(ville=v)
+    for cat in cs:
+        vcats.append(vCategorie(cat, v, ls))
+    return render(request, 'compare/compare.html', locals())

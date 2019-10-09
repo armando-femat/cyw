@@ -11,7 +11,7 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>{{ l.nom }}</title>
+    <title>{{ v.nom }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--        <link rel="icon" type="image/png" href="favicon.ico">-->
@@ -67,7 +67,6 @@
     </div><!-- /.navbar-collapse -->
     <!-- End Header Navigation -->
 </nav>
-
 <!-- Preloader -->
 <div id="loading">
     <div id="loading-center">
@@ -80,66 +79,85 @@
     </div>
 </div><!--End off Preloader -->
 
-
 <div class="culmn">
-    <section id="about" class="about roomy-100">
+    <section class="about roomy-100">
         <div class="container">
             <div class="row">
-                <div class="main_about">
-                    <div class="col-md-4">
-                        <div class="about_content">
-                            <h2>{{l.nom}}</h2>
-                            <div class="separator_left"></div>
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class="head_title text-center">
+                        <h1>{{v.nom}}</h1>
 
-                            <p>{{l.presentation}}</p>
-                        </div>
+                        <div class="separator_auto"></div>
+                        <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
+                            {%endfor %}...</p>
                     </div>
-                    <div class="col-md-8">
-                        <div class="about_accordion wow fadeIn">
-                            <div id="faq_main_content" class="faq_main_content">
-                                {% for cat in cats%}
-                                <h6><i class="fa fa-angle-right"></i>{{cat.titre}}</h6>
-                                <div>
-                                    <div class="content">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">Critère</th>
-                                                <th scope="col">Promesse</th>
-                                                <th scope="col">Engagement</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for c in l.ville.criteres.all%}
-                                            {% if cat.titre == c.categorie.titre%}
-                                            <tr>
-                                                <td>{{c.titre}}</td>
-                                                {% for p in ps%}
-                                                {% if p.critere.titre == c.titre%}
-                                                <td>{{p.titre}}</td>
-                                                <td>{% if p.estUnEngagement %} <i
-                                                        class="fa fa-check-circle text-primary"></i> {%else%} <i
-                                                        class="fa fa-times-circle"></i> {%endif%}
-                                                </td>
-                                            </tr>
-                                            {%endif%}
+                </div>
+                <div class="main_about">
+                    <div class="about_accordion wow fadeIn">
+                        <div id="faq_main_content" class="faq_main_content">
+                            {% for vcat in vcats%}
+                            <h6><i class="fa fa-angle-right"></i>{{vcat.titre}}</h6>
+                            <div>
+                                <div class="content">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Critère</th>
+                                            {% for l in ls.all%}
+                                            <th scope="col">{{l.nom}}</th>
                                             {% endfor %}
-                                            {%endif%}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for vc in vcat.criteres%}
+                                        <tr>
+                                            <th>{{vc.titre}}</th>
+                                            {% for vp in vc.promesses%}
+                                            <td>{{vp.promesse.titre}}</td>
                                             {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div> <!-- End off accordion item-1 -->
-                                {% endfor %}
-                            </div>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> <!-- End off accordion item-1 -->
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off About section -->
-</div>
+    <!--<section >
+        <div class="container">
+            {% for vcat in vcats%}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Catégories</th>
+                    <th scope="col">Critère</th>
+                    {% for l in ls.all%}
+                    <th scope="col">{{l.nom}}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for vc in vcat.criteres%}
+                <tr>
+                    <th>{{vcat.titre}}</th>
+                    <td>{{vc.titre}}</td>
+                    {% for vp in vc.promesses%}
+                    <td>{{vp.promesse.titre}}</td>
+                    {% endfor %}
 
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+    </section>-->
+</div>
 <!-- JS includes -->
 
 <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
@@ -181,13 +199,7 @@
 
 
 
-
-
-
-
 </script>
-
-
 <script src="{% static '/js/plugins.js' %}"></script>
 <script src="{% static '/js/main.js' %}"></script>
 

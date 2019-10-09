@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 
 
 class Categorie(models.Model):
-    nom = models.CharField(max_length=100)
+    titre = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nom
+        return self.titre
 
 class Critere(models.Model):
     titre = models.CharField(max_length=100)
@@ -25,7 +25,7 @@ class Ville(models.Model):
 
 class Liste(models.Model):
     nom = models.CharField(max_length=100)
-    auteur = models.ManyToManyField(User, null=True)
+    auteur = models.ManyToManyField(User)
     presentation = models.TextField(null=True)
     ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True)
 
