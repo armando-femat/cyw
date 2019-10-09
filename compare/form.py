@@ -10,3 +10,6 @@ class RechercheVille(forms.Form):
 class FormCompare(forms.Form):
     test = forms.BooleanField()
 
+class FormContact(forms.Form):
+    email = forms.EmailField()
+    ville = forms.Textarea()

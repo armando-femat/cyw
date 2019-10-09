@@ -16,7 +16,11 @@ def ville(request, nom):
     form = FormCompare(request.POST or None)
     print("blabl")
     if form.is_valid():
-        print("ok")
+        a = form.cleaned_data['test']
+        if a:
+            print("ok")
+        else:
+            print("nok")
     v = get_object_or_404(Ville, nom=nom)
     ls = Liste.objects.filter(ville=v)
     return render(request, 'compare/ville.html', locals())

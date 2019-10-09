@@ -81,16 +81,17 @@
     <section id="pricing" class="pricing lightbg">
         <div class="container">
             <div class="row">
-                <form class="main_pricing roomy-100" action="{% url "compare" v.nom %}" method="post">
-                {% csrf_token %}
+                <div class="main_pricing roomy-100">
                 <div class="col-md-8 col-md-offset-2 col-sm-12">
-                    <div class="head_title text-center">
+                    <form class="head_title text-center" action="{% url "ville" v.nom %}" method="post">
+                    {% csrf_token %}
                         <h1>{{v.nom}}</h1>
                         <div class="separator_auto"></div>
                         <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
                             {%endfor %}...</p>
                         <button type="submit" class="btn btn-primary">Comparer les programmes</button>
-                    </div>
+                        <input class="form-check-input" Value="True" type="checkbox" name="test" id="test">
+                    </form>
                 </div>
                 {% for l in ls%}
                 <div class="col-md-4 col-sm-12 m-top-30">
@@ -114,9 +115,8 @@
                     </div>
                 </div><!-- End off col-md-4 -->
                 {% endfor %}
-                </form>
-            </div><!--End off row-->
-        </div><!--End off container -->
+            </div>
+        </div><!--End off row-->
     </section> <!--End off Pricing section -->
 
     <!-- JS includes -->
@@ -149,6 +149,8 @@
                                 $('.mapheight').css('height', '350');
                                 $('.maps_text h3').hide();
                             }
+
+
 
 
 

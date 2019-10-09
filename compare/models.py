@@ -8,6 +8,7 @@ class Categorie(models.Model):
     def __str__(self):
         return self.titre
 
+
 class Critere(models.Model):
     titre = models.CharField(max_length=100)
     description = models.TextField(null=True)
@@ -16,12 +17,14 @@ class Critere(models.Model):
     def __str__(self):
         return self.titre
 
+
 class Ville(models.Model):
     nom = models.CharField(max_length=100)
     criteres = models.ManyToManyField(Critere, related_name='Ville')
 
     def __str__(self):
         return self.nom
+
 
 class Liste(models.Model):
     nom = models.CharField(max_length=100)
@@ -51,3 +54,11 @@ class Promesse(models.Model):
 
     def __str__(self):
         return self.titre
+
+
+class Contact(models.Model):
+    email = models.EmailField(null=True)
+    ville = models.ForeignKey(Ville, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.email
