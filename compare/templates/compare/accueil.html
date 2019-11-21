@@ -185,10 +185,8 @@
                         <h1 class="text-white">Change your world ! <br/></h1>
                     </div>
                     <div class="m-top-40">
-                        <form class="form-inline" action="{% url " accueil
-                        " %}" method="post">
+                        <form class="form-inline" action="{% url "accueil" %}" method="post">
                         {% csrf_token %}
-                        {{formV.test}}
                         <div class="form-group">
                             {{formV.ville}}
                             <!--                            <input class="form-control" name="ville" type="text" id="id_ville"-->
@@ -374,149 +372,148 @@
                 </div><!--End off row-->
             </div><!--End off container -->
 
-                <div class="container roomy-50">
-                    <div class="row">
-                        <div class="main_skill">
-                            <div class="col-md-6">
-                                <div class="skill_content wow fadeIn">
-                                    <h2>Sports</h2>
-                                    <div class="separator_left"></div>
-                                    <ul>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Subventions au
-                                            clubs et associations
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Sécurité des
-                                            installations sportives
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Création d’un
-                                            office municipal des sports
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Construction et
-                                            gestion des équipements sportifs de proximité (gymnase, piscine,
-                                            camping)
-                                        </li>
+            <div class="container roomy-50">
+                <div class="row">
+                    <div class="main_skill">
+                        <div class="col-md-6">
+                            <div class="skill_content wow fadeIn">
+                                <h2>Sports</h2>
+                                <div class="separator_left"></div>
+                                <ul>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Subventions au
+                                        clubs et associations
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Sécurité des
+                                        installations sportives
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Création d’un
+                                        office municipal des sports
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Construction et
+                                        gestion des équipements sportifs de proximité (gymnase, piscine,
+                                        camping)
+                                    </li>
 
 
-                                    </ul>
+                                </ul>
 
 
-                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="skill_content wow fadeIn">
-                                    <h2>Culture</h2>
-                                    <div class="separator_left"></div>
-
-                                    <ul>
-
-                                        <li><i class="fa fa-check-circle text-primary"></i> Inventaires
-                                            général du patrimoine culturel
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Gestion des
-                                            bibliothèques municipales
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Gestion des
-                                            musées municipaux
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Conservation et
-                                            mise en valeur des archives municipales
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Gestion des
-                                            diagnostics et des fouilles archéologiques préventives
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Aide aux salles
-                                            de spectacles cinématographiques
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Promotion du
-                                            tourisme et création d’offices de tourisme
-                                        </li>
-                                        <li><i class="fa fa-check-circle text-primary"></i> Enseignement
-                                            artistique (musique, danse, …) en partenariat avec les
-                                            établissements scolaires
-                                        </li>
-
-                                    </ul>
-
-
-                                </div>
-                            </div>
-                        </div><!--End off row-->
-                    </div><!--End off container -->
-                    <br/>
-                </div><!--End off container -->
-            </section> <!--End off Skill section -->
-
-
-            <!--Subscribe section-->
-            <section id="subscribe" class="subscribe roomy-100 fix">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="main_subscribe text-center">
-                            <div class="col-sm-8 col-sm-offset-2">
-                                <h2 class="text-white">Rester informé !</h2>
-                                <p class="m-top-30 text-white">Suivre les actualités des municipales et
-                                    découvrir les programmes.</p>
-                            </div>
-                            <div class="col-sm-10 col-sm-offset-1">
-                                <div class="subscribe_btns m-top-40">
-                                    <form class="form-inline" action="{% url " suscribe
-                                    " %}" method="post">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="inputEmail2" name="email"
-                                               placeholder="Email Address">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Je m'abonne !</button>
-                                    </form>
-                                </div>
-                            </div>
-
                         </div>
-                    </div><!--End off row -->
+                        <div class="col-md-6">
+                            <div class="skill_content wow fadeIn">
+                                <h2>Culture</h2>
+                                <div class="separator_left"></div>
+
+                                <ul>
+
+                                    <li><i class="fa fa-check-circle text-primary"></i> Inventaires
+                                        général du patrimoine culturel
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                        bibliothèques municipales
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                        musées municipaux
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Conservation et
+                                        mise en valeur des archives municipales
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                        diagnostics et des fouilles archéologiques préventives
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Aide aux salles
+                                        de spectacles cinématographiques
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Promotion du
+                                        tourisme et création d’offices de tourisme
+                                    </li>
+                                    <li><i class="fa fa-check-circle text-primary"></i> Enseignement
+                                        artistique (musique, danse, …) en partenariat avec les
+                                        établissements scolaires
+                                    </li>
+
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    </div><!--End off row-->
                 </div><!--End off container -->
-            </section><!-- End off Impress section-->
-
-            <!-- scroll up-->
-            <div class="scrollup">
-                <a href="#"><i class="fa fa-chevron-up"></i></a>
-            </div><!-- End off scroll up -->
+                <br/>
+            </div><!--End off container -->
+    </section> <!--End off Skill section -->
 
 
-            <!--                        <footer id="footer" class="footer bg-black">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="main_footer text-center p-top-40 p-bottom-30">
-                                                    <p class="wow fadeInRight" data-wow-duration="1s">
+    <!--Subscribe section-->
+    <section id="subscribe" class="subscribe roomy-100 fix">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="main_subscribe text-center">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <h2 class="text-white">Rester informé !</h2>
+                        <p class="m-top-30 text-white">Suivre les actualités des municipales et
+                            découvrir les programmes.</p>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <div class="subscribe_btns m-top-40">
+                            <form class="form-inline" action="{% url "suscribe" %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="inputEmail2" name="email"
+                                       placeholder="Email Address">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Je m'abonne !</button>
+                            </form>
+                        </div>
+                    </div>
 
-                                                    </p>
-                                                </div>
-                                            </div>
+                </div>
+            </div><!--End off row -->
+        </div><!--End off container -->
+    </section><!-- End off Impress section-->
+
+    <!-- scroll up-->
+    <div class="scrollup">
+        <a href="#"><i class="fa fa-chevron-up"></i></a>
+    </div><!-- End off scroll up -->
+
+
+    <!--                        <footer id="footer" class="footer bg-black">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="main_footer text-center p-top-40 p-bottom-30">
+                                            <p class="wow fadeInRight" data-wow-duration="1s">
+
+                                            </p>
                                         </div>
-                                    </footer>-->
+                                    </div>
+                                </div>
+                            </footer>-->
 
 
-        </div>
+</div>
 
-        <!-- JS includes -->
+<!-- JS includes -->
 
-        <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
-        <script src="{% static '/js/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
+<script src="{% static '/js/vendor/bootstrap.min.js' %}"></script>
 
-        <script src="{% static '/js/jquery.magnific-popup.js' %}"></script>
-        <script src="{% static '/js/jquery.easing.1.3.js' %}"></script>
-        <script src="{% static '/js/slick.min.js' %}"></script>
-        <script src="{% static '/js/jquery.collapse.js' %}"></script>
-        <script src="{% static '/js/bootsnav.js' %}"></script>
-
-
-        <!-- paradise slider js -->
+<script src="{% static '/js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static '/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static '/js/slick.min.js' %}"></script>
+<script src="{% static '/js/jquery.collapse.js' %}"></script>
+<script src="{% static '/js/bootsnav.js' %}"></script>
 
 
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyD_tAQD36pKp9v4at5AnpGbvBUsLCOSJx8"></script>
-        <script src="{% static '/js/gmaps.min.js' %}"></script>
+<!-- paradise slider js -->
 
-        <script>
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyD_tAQD36pKp9v4at5AnpGbvBUsLCOSJx8"></script>
+<script src="{% static '/js/gmaps.min.js' %}"></script>
+
+<script>
             function showmap() {
                 var mapOptions = {
                     zoom: 8,
@@ -530,11 +527,12 @@
             }
 
 
-        </script>
+
+</script>
 
 
-        <script src="{% static '/js/plugins.js' %}"></script>
-        <script src="{% static '/js/main.js' %}"></script>
+<script src="{% static '/js/plugins.js' %}"></script>
+<script src="{% static '/js/main.js' %}"></script>
 
 </body>
 </html>

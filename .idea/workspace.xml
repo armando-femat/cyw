@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31185d5f-5a93-486a-864b-4c985e92e69b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/compare/templates/compare/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compare/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compare/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compare/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compare/templates/compare/accueil.html" beforeDir="false" afterPath="$PROJECT_DIR$/compare/templates/compare/accueil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compare/templates/compare/accueil_old.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compare/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

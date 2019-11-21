@@ -29,6 +29,7 @@ def accueil(request):
     formV = RechercheVille(request.POST or None)
     formC = FormContact(request.POST or None)
     if formV.is_valid():
+        print("ok")
         nom = formV.cleaned_data['ville']
         return redirect(ville, nom=nom)
     if formC.is_valid():
