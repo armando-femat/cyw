@@ -11,7 +11,7 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Change your world !</title>
+    <title>Change your world!</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--        <link rel="icon" type="image/png" href="favicon.ico">-->
@@ -182,11 +182,12 @@
             <div class="row">
                 <div class="main_home">
                     <div class="home_text">
-                        <h1 class="text-white">Change your world ! <br/></h1>
+                        <h1 class="text-white">Qui sera mon Maire? <br/></h1>
                     </div>
                     <div class="m-top-40">
                         <form class="form-inline" action="{% url "accueil" %}" method="post">
                         {% csrf_token %}
+                        {{formV.test}}
                         <div class="form-group">
                             {{formV.ville}}
                             <!--                            <input class="form-control" name="ville" type="text" id="id_ville"-->
@@ -202,8 +203,8 @@
 
 
     <!--Skill Sections-->
-    <section id="DCV" class="skill roomy-50">
-        <div class="container">
+    <section id="DCV" class="skill">
+        <div class="container roomy-50">
             <div class="row">
                 <div class="main_skill">
                     <div class="col-md-6">
@@ -237,7 +238,6 @@
                 </div>
             </div><!--End off row-->
         </div><!--End off container -->
-
         <div class="container roomy-50">
             <div class="row">
                 <div class="main_skill">
@@ -371,77 +371,77 @@
                     </div>
                 </div><!--End off row-->
             </div><!--End off container -->
-
-            <div class="container roomy-50">
-                <div class="row">
-                    <div class="main_skill">
-                        <div class="col-md-6">
-                            <div class="skill_content wow fadeIn">
-                                <h2>Sports</h2>
-                                <div class="separator_left"></div>
-                                <ul>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Subventions au
-                                        clubs et associations
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Sécurité des
-                                        installations sportives
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Création d’un
-                                        office municipal des sports
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Construction et
-                                        gestion des équipements sportifs de proximité (gymnase, piscine,
-                                        camping)
-                                    </li>
-
-
-                                </ul>
+        </div>
+        <div class="container roomy-50">
+            <div class="row">
+                <div class="main_skill">
+                    <div class="col-md-6">
+                        <div class="skill_content wow fadeIn">
+                            <h2>Sports</h2>
+                            <div class="separator_left"></div>
+                            <ul>
+                                <li><i class="fa fa-check-circle text-primary"></i> Subventions au
+                                    clubs et associations
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Sécurité des
+                                    installations sportives
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Création d’un
+                                    office municipal des sports
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Construction et
+                                    gestion des équipements sportifs de proximité (gymnase, piscine,
+                                    camping)
+                                </li>
 
 
-                            </div>
+                            </ul>
+
+
                         </div>
-                        <div class="col-md-6">
-                            <div class="skill_content wow fadeIn">
-                                <h2>Culture</h2>
-                                <div class="separator_left"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="skill_content wow fadeIn">
+                            <h2>Culture</h2>
+                            <div class="separator_left"></div>
 
-                                <ul>
+                            <ul>
 
-                                    <li><i class="fa fa-check-circle text-primary"></i> Inventaires
-                                        général du patrimoine culturel
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Gestion des
-                                        bibliothèques municipales
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Gestion des
-                                        musées municipaux
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Conservation et
-                                        mise en valeur des archives municipales
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Gestion des
-                                        diagnostics et des fouilles archéologiques préventives
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Aide aux salles
-                                        de spectacles cinématographiques
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Promotion du
-                                        tourisme et création d’offices de tourisme
-                                    </li>
-                                    <li><i class="fa fa-check-circle text-primary"></i> Enseignement
-                                        artistique (musique, danse, …) en partenariat avec les
-                                        établissements scolaires
-                                    </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Inventaires
+                                    général du patrimoine culturel
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                    bibliothèques municipales
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                    musées municipaux
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Conservation et
+                                    mise en valeur des archives municipales
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                    diagnostics et des fouilles archéologiques préventives
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Aide aux salles
+                                    de spectacles cinématographiques
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Promotion du
+                                    tourisme et création d’offices de tourisme
+                                </li>
+                                <li><i class="fa fa-check-circle text-primary"></i> Enseignement
+                                    artistique (musique, danse, …) en partenariat avec les
+                                    établissements scolaires
+                                </li>
 
-                                </ul>
+                            </ul>
 
 
-                            </div>
                         </div>
-                    </div><!--End off row-->
-                </div><!--End off container -->
-                <br/>
+                    </div>
+                </div><!--End off row-->
             </div><!--End off container -->
+            <br/>
+        </div><!--End off container -->
     </section> <!--End off Skill section -->
 
 
