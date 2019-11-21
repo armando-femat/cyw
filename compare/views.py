@@ -1,7 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from compare.models import Liste, Promesse, Ville, Categorie
-from compare.form import RechercheVille, FormCompare
+from compare.models import Liste, Promesse, Ville, Categorie, Contact
+from compare.form import RechercheVille, FormCompare, FormContact
 from compare.viewObject import vCategorie
 
 
@@ -14,7 +14,6 @@ def liste(request, id):
 
 def ville(request, nom):
     form = FormCompare(request.POST or None)
-    print("blabl")
     if form.is_valid():
         a = form.cleaned_data['test']
         if a:
@@ -27,11 +26,34 @@ def ville(request, nom):
 
 
 def accueil(request):
+    formV = RechercheVille(request.POST or None)
+    formC = FormContact(request.POST or None)
+    if formV.is_valid():
+        nom = formV.cleaned_data['ville']
+        return redirect(ville, nom=nom)
+    if formC.is_valid():
+        email = formC.cleaned_data['email']
+        c = Contact(email=email)
+        c.save()
+        return redirect(accueil)
+    return render(request, 'compare/accueil.html', locals())
+
+
+def suscribe(request):
+
+    if form.is_valid():
+        email = form.cleaned_data['email']
+        c = Contact(email=email)
+        c.save()
+        return redirect(accueil)
+    return render(request, 'compare/accueil.html', locals())
+
+
+def test(request):
     form = RechercheVille(request.POST or None)
     if form.is_valid():
         nom = form.cleaned_data['ville']
-        return redirect(ville, nom=nom)
-    return render(request, 'compare/accueil.html', locals())
+    return render(request, 'compare/test.html', locals())
 
 
 def compare(request, nom):
