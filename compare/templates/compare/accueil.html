@@ -78,44 +78,6 @@
         </div>
         <!-- End Top Search -->
 
-        <!--<div class="container">
-            &lt;!&ndash; Start Atribute Navigation &ndash;&gt;
-            <div class="attr-nav">
-                <ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >:
-                            <i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
-                        </a>
-                        <ul class="dropdown-menu cart-list">
-                            <li>
-                                <a href="#" class="photo"><img src="{% static '/images/thumb01.jpg' %}" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p class="m-top-10">2x - <span class="price">$99.99</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="{% static '/images/thumb01.jpg' %}" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p class="m-top-10">2x - <span class="price">$99.99</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="{% static '/images/thumb01.jpg' %}" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p class="m-top-10">2x - <span class="price">$99.99</span></p>
-                            </li>
-                            &lt;!&ndash;More List &ndash;&gt;
-                            <li class="total">
-                                <span class="pull-right"><strong>Total</strong>: $0.00</span>
-                                <a href="#" class="btn btn-cart">Cart</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
-                </ul>
-            </div>
-            &lt;!&ndash; End Atribute Navigation &ndash;&gt;-->
-
         <!-- Start Header Navigation -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
@@ -134,12 +96,13 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                 <li><a href="#hello">Recherche ta ville !</a></li>
-                <li><a href="#">Tout sur les elections municipals</a></li>
+                <li><a href="#info">Tout sur les elections municipals</a></li>
+                <li><a href="#fun">Fun fact !</a></li>
                 <li><a href="#DCV">Domaine de compétence de la ville</a></li>
                 <li><a href="#portfolio">Vérifier mon inscription sur les listes</a></li>
                 <!--                            <li><a href="#pricing">Pricing</a></li>
                                             <li><a href="#blog">Blog</a></li>      -->
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#subscribe">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
         <!--</div> -->
@@ -187,31 +150,426 @@
                     <div class="m-top-40">
                         <form class="form-inline" action="{% url "accueil" %}" method="post">
                         {% csrf_token %}
-                        {{formV.test}}
-                        <div class="form-group">
-                            {{formV.ville}}
-                            <!--                            <input class="form-control" name="ville" type="text" id="id_ville"-->
-                            <!--                                   placeholder="Quelle est ta ville ? ">-->
-                        </div>
+                            <div class="form-group">
+                                {{formV.ville}}
+<!--                                <input class="form-control" name="ville" type="text" id="id_ville" placeholder="Quelle est ta ville ? ">-->
+                            </div>
                         <button type="submit" class="btn btn-default">Recherche</button>
                         </form>
+                        <br/>
+                        <br/>
+                        <h3 class="text-white">Programmes-Municipales.fr est un comparateur de programmes pour les élections municipales.</h3>
                     </div>
                 </div>
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off Home Sections-->
 
+    <!--Portfolio Section-->
+    <section id="info" class="portfolio lightbg">
+        <div class="container roomy-100">
+            <div class="row">
+                <div class="main_portfolio">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="head_title text-center">
+                            <h2>Quatre infos sur les élections municipales 2020</h2>
+                            <div class="separator_auto"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod nostrud exerci tation ullamcorper
+                                suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                    </div>
+
+                    <!--<div class="row">
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Une élection en deux tours :</h6>
+                                    <p class=" text-white">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Pour voter, </h6>
+                                    <p class=" text-white">il suffit d'avoir au moins 18 ans et être inscrit sur les listes électorales de sa ville</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Les listes qui ont plus de 10% des voix</h6>
+                                    <p class=" text-white">peuvent se maintenir pour le second tour</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/Portfolio/5.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Le maire est désigné par les conseillers municupaux</h6>
+                                    <p class=" text-white"></p>
+                                    <div class="portfolio_hover_icon">
+                                        <a href="{% static '/images/Portfolio/5.jpg' %}" class="popup-img"><i
+                                                class="fa fa-expand"></i></a>
+                                        <a href=""><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div><!--End off row -->
+            <div class="row">
+                <div class="about_bottom_content">
+                    <div class="col-md-3">
+                        <div class="about_bottom_item m-top-20">
+                            <div class="ab_head">
+                                <div class="ab_head_icon">
+                                    <i class="rondP fa fa-calendar-check-o"></i>
+                                </div>
+                                <h6 class="m-top-20">Une élection en deux tours</h6>
+                            </div>
+                            <p class="m-top-20">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="about_bottom_item m-top-20">
+                            <div class="ab_head">
+                                <div class="ab_head_icon">
+                                    <i class="fa fa-universal-access rondP"></i>
+                                </div>
+                                <h6 class="m-top-20">Pour voter,</h6>
+                            </div>
+                            <p class="m-top-20">il suffit d'avoir au moins 18 ans et être inscrit sur les listes
+                                électorales de sa ville</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="about_bottom_item m-top-20">
+                            <div class="ab_head">
+                                <div class="ab_head_icon">
+                                    <i class="fa fa-percent rondP"></i>
+                                </div>
+                                <h6 class="m-top-20">Les listes qui ont plus de 10% des voix</h6>
+                            </div>
+                            <p class="m-top-20">peuvent se maintenir pour le second tour</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="about_bottom_item m-top-20">
+                            <div class="ab_head">
+                                <div class="ab_head_icon">
+                                    <i class="fa fa-users rondP"></i>
+                                </div>
+                                <h6 class="m-top-20">On vote pour une liste !</h6>
+                            </div>
+                            <p class="m-top-20">Le maire est désigné par les conseillers municupaux</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--End off row-->
+        </div><!--End off container -->
+    </section><!-- End off Portfolio section-->
+
+    <!--Portfolio Section-->
+    <section id="fun" class="portfolio lightbg">
+        <div class="container">
+            <div class="row">
+                <div class="main_portfolio roomy-100">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="head_title text-center">
+                            <h2>Qui est mon maire aujourd'hui</h2>
+                            <div class="separator_auto"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                sed diam nonummy nibh euismod nostrud exerci tation ullamcorper
+                                suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio_content">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="portfolio_item portfolio_item2">
+                                        <img src="{% static '/images/Gender.png' %}" alt=""/>
+                                        <div class="portfolio_hover text-center">
+                                            <h6 class="text-uppercase text-white">Mon maire est un homme</h6>
+                                            <p class=" text-white">4 maires sur 5 est un homme</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="portfolio_item portfolio_item2">
+                                        <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                        <div class="portfolio_hover text-center">
+                                            <h6 class="text-uppercase text-white">Mon maire a la soixantaine</h6>
+                                            <p class=" text-white">La moyenne d'âge des maires est 62 ans</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="portfolio_item portfolio_item2">
+                                        <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                        <div class="portfolio_hover text-center">
+                                            <h6 class="text-uppercase text-white">Mon maire est retraité</h6>
+                                            <p class=" text-white">1 maire sur 3 est retraité</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="portfolio_item portfolio_item2">
+                                        <img src="{% static '/images/michel.png' %}" alt=""/>
+                                        <div class="portfolio_hover text-center">
+                                            <h6 class="text-uppercase text-white">Mon maire, c'est Michel</h6>
+                                            <p class=" text-white">Michel est le nom le plus commun chez les maires (1/25)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div><!--End off row -->
+        </div><!--End off container -->
+    </section><!-- End off Portfolio section-->
+
+    <!--About Sections-->
+    <section id="DCV" class="about roomy-100">
+        <div class="container">
+            <div class="row">
+                <div class="main_about">
+                    <div class="col-md-4">
+                        <div class="about_content">
+                            <h2>Les domaines de compétence de ma mairie</h2>
+                            <div class="separator_left"></div>
+
+                            <p>Action sociale et santé
+                                Emploi et insertion professionnelle
+                                Enseignement
+                                Enfance et jeunesse
+                                Sports
+                                Culture
+                                Economie et emploi
+                                Urbanisme et aménagement de la commune
+                                Logement
+                                Environnement et patrimoine
+                                Déchets
+                                Énergie et Télécommunication
+                                Ports et voies maritimes
+                                Transports</p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="about_accordion wow fadeIn">
+                            <div id="faq_main_content" class="faq_main_content">
+                                <h6><i class="fa fa-angle-right"></i>Action sociale et santé</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Prévention ou
+                                                développement
+                                                social, via le CCAS
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Attribution d’aides
+                                                sociale
+                                                facultatives pours des familles /jeunes en difficulté
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Création et gestion d’un
+                                                établissement pour enfants de moins de 6 ans ou foyer pour personnes
+                                                âgées
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Participation à
+                                                l’accueil des
+                                                personnes dites “gens du voyage”
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
+                                                construction ou subventions de logement sociaux
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
+                                                construction ou subventions de logement sociaux
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Aides au logement (Fonds
+                                                de
+                                                solidarité pour le logement (FSL)
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
+                                                construction ou subventions de logement sociaux
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Organisation de
+                                                campagnes de
+                                                vaccinations gratuite
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Organisation de
+                                                l’alimentation
+                                                en eau
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion de la propreté
+                                                de la
+                                                ville
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des déchets et
+                                                des eaux
+                                                usées
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> L’aide à l’installation
+                                                de
+                                                professionnels de santés dans les zones déficitaires
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-1 -->
+
+                                <h6><i class="fa fa-angle-right"></i>Emploi et insertion professionnelle</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Aide à la réception des
+                                                offres
+                                                d’emplois en partenariat avec Pole Emploi
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Création des maisons de
+                                                l’emploi
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des structures
+                                                d’accompagnement et d’insertion professionnelle des jeunes
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Création de plans pour
+                                                l’emploi
+                                                et l’insertion
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-2 -->
+
+                                <h6><i class="fa fa-angle-right"></i>Enseignement</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion de logement des
+                                                étudiants
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des écoles
+                                                maternelles et primaires (bâtiments et personnels)
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Recrutement des ATSEM
+                                                (assistants territoriaux spécialisés des écoles maternelles)
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Restauration scolaire
+                                                des écoles primaires
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Organisation des
+                                                activités périscolaires
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Financement des écoles
+                                                privées sous contrat
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Aide à la scolarisation
+                                                des élèves d’écoles primaires
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des transports
+                                                scolaires à l’intérieur du périmètre de la commune
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Contribution au
+                                                financement des établissements d’enseignement supérieur et de recherche
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-3 -->
+
+                                <h6><i class="fa fa-angle-right"></i>Enfance et jeunesse</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Création de relais
+                                                d’assistants maternels
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Financement et gestion
+                                                des structures d’accueil de la petite enfance (crèches, garderies…)
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-4 -->
+
+                                <h6><i class="fa fa-angle-right"></i>Sports</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Subventions au
+                                                clubs et associations
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Sécurité des
+                                                installations sportives
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Création d’un
+                                                office municipal des sports
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Construction et
+                                                gestion des équipements sportifs de proximité (gymnase, piscine,
+                                                camping)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-4 -->
+
+                                <h6><i class="fa fa-angle-right"></i>Culture</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+
+                                            <li><i class="fa fa-angle-right text-primary"></i> Inventaires
+                                                général du patrimoine culturel
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des
+                                                bibliothèques municipales
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des
+                                                musées municipaux
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Conservation et
+                                                mise en valeur des archives municipales
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des
+                                                diagnostics et des fouilles archéologiques préventives
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Aide aux salles
+                                                de spectacles cinématographiques
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Promotion du
+                                                tourisme et création d’offices de tourisme
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Enseignement
+                                                artistique (musique, danse, …) en partenariat avec les
+                                                établissements scolaires
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-4 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--End off row-->
+        </div><!--End off container -->
+    </section> <!--End off About section -->
 
     <!--Skill Sections-->
-    <section id="DCV" class="skill">
-        <div class="container roomy-50">
+    <section id="" class="skill roomy-100">
+        <div class="container">
             <div class="row">
                 <div class="main_skill">
                     <div class="col-md-6">
                         <div class="skill_content wow fadeIn">
                             <h2>Grands domaines de compétence</h2>
                             <div class="separator_left"></div>
-
                             <p>
                                 Action sociale et santé
                                 Emploi et insertion professionnelle
@@ -246,43 +604,43 @@
                             <h2>Action sociale et santé</h2>
                             <div class="separator_left"></div>
                             <ul>
-                                <li><i class="fa fa-check-circle text-primary"></i> Prévention ou développement
+                                <li><i class="fa fa-angle-right text-primary"></i> Prévention ou développement
                                     social, via le CCAS
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Attribution d’aides sociale
+                                <li><i class="fa fa-angle-right text-primary"></i> Attribution d’aides sociale
                                     facultatives pours des familles /jeunes en difficulté
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Création et gestion d’un
+                                <li><i class="fa fa-angle-right text-primary"></i> Création et gestion d’un
                                     établissement pour enfants de moins de 6 ans ou foyer pour personnes âgées
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Participation à l’accueil des
+                                <li><i class="fa fa-angle-right text-primary"></i> Participation à l’accueil des
                                     personnes dites “gens du voyage”
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Logement : autorisation,
+                                <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
                                     construction ou subventions de logement sociaux
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Logement : autorisation,
+                                <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
                                     construction ou subventions de logement sociaux
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Aides au logement (Fonds de
+                                <li><i class="fa fa-angle-right text-primary"></i> Aides au logement (Fonds de
                                     solidarité pour le logement (FSL)
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Logement : autorisation,
+                                <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
                                     construction ou subventions de logement sociaux
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Organisation de campagnes de
+                                <li><i class="fa fa-angle-right text-primary"></i> Organisation de campagnes de
                                     vaccinations gratuite
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Organisation de l’alimentation
+                                <li><i class="fa fa-angle-right text-primary"></i> Organisation de l’alimentation
                                     en eau
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion de la propreté de la
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion de la propreté de la
                                     ville
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des déchets et des eaux
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des déchets et des eaux
                                     usées
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> L’aide à l’installation de
+                                <li><i class="fa fa-angle-right text-primary"></i> L’aide à l’installation de
                                     professionnels de santés dans les zones déficitaires
                                 </li>
                             </ul>
@@ -293,15 +651,15 @@
                             <h2>Emploi et insertion professionnelle</h2>
                             <div class="separator_left"></div>
                             <ul>
-                                <li><i class="fa fa-check-circle text-primary"></i> Aide à la réception des offres
+                                <li><i class="fa fa-angle-right text-primary"></i> Aide à la réception des offres
                                     d’emplois en partenariat avec Pole Emploi
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Création des maisons de l’emploi
+                                <li><i class="fa fa-angle-right text-primary"></i> Création des maisons de l’emploi
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> GEstion des structures
+                                <li><i class="fa fa-angle-right text-primary"></i> GEstion des structures
                                     d’accompagnement et d’insertion professionnelle des jeunes
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Création de plans pour l’emploi
+                                <li><i class="fa fa-angle-right text-primary"></i> Création de plans pour l’emploi
                                     et l’insertion
                                 </li>
 
@@ -319,31 +677,31 @@
                             <h2>Enseignement</h2>
                             <div class="separator_left"></div>
                             <ul>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion de logement des
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion de logement des
                                     étudiants
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des écoles
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des écoles
                                     maternelles et primaires (bâtiments et personnels)
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Recrutement des ATSEM
+                                <li><i class="fa fa-angle-right text-primary"></i> Recrutement des ATSEM
                                     (assistants territoriaux spécialisés des écoles maternelles)
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Restauration scolaire
+                                <li><i class="fa fa-angle-right text-primary"></i> Restauration scolaire
                                     des écoles primaires
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Organisation des
+                                <li><i class="fa fa-angle-right text-primary"></i> Organisation des
                                     activités périscolaires
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Financement des écoles
+                                <li><i class="fa fa-angle-right text-primary"></i> Financement des écoles
                                     privées sous contrat
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Aide à la scolarisation
+                                <li><i class="fa fa-angle-right text-primary"></i> Aide à la scolarisation
                                     des élèves d’écoles primaires
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des transports
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des transports
                                     scolaires à l’intérieur du périmètre de la commune
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Contribution au
+                                <li><i class="fa fa-angle-right text-primary"></i> Contribution au
                                     financement des établissements d’enseignement supérieur et de recherche
                                 </li>
 
@@ -357,10 +715,10 @@
                             <h2>Enfance et jeunesse</h2>
                             <div class="separator_left"></div>
                             <ul>
-                                <li><i class="fa fa-check-circle text-primary"></i> Création de relais
+                                <li><i class="fa fa-angle-right text-primary"></i> Création de relais
                                     d’assistants maternels
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Financement et gestion
+                                <li><i class="fa fa-angle-right text-primary"></i> Financement et gestion
                                     des structures d’accueil de la petite enfance (crèches, garderies…)
                                 </li>
 
@@ -380,16 +738,16 @@
                             <h2>Sports</h2>
                             <div class="separator_left"></div>
                             <ul>
-                                <li><i class="fa fa-check-circle text-primary"></i> Subventions au
+                                <li><i class="fa fa-angle-right text-primary"></i> Subventions au
                                     clubs et associations
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Sécurité des
+                                <li><i class="fa fa-angle-right text-primary"></i> Sécurité des
                                     installations sportives
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Création d’un
+                                <li><i class="fa fa-angle-right text-primary"></i> Création d’un
                                     office municipal des sports
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Construction et
+                                <li><i class="fa fa-angle-right text-primary"></i> Construction et
                                     gestion des équipements sportifs de proximité (gymnase, piscine,
                                     camping)
                                 </li>
@@ -407,28 +765,28 @@
 
                             <ul>
 
-                                <li><i class="fa fa-check-circle text-primary"></i> Inventaires
+                                <li><i class="fa fa-angle-right text-primary"></i> Inventaires
                                     général du patrimoine culturel
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des
                                     bibliothèques municipales
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des
                                     musées municipaux
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Conservation et
+                                <li><i class="fa fa-angle-right text-primary"></i> Conservation et
                                     mise en valeur des archives municipales
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Gestion des
+                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des
                                     diagnostics et des fouilles archéologiques préventives
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Aide aux salles
+                                <li><i class="fa fa-angle-right text-primary"></i> Aide aux salles
                                     de spectacles cinématographiques
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Promotion du
+                                <li><i class="fa fa-angle-right text-primary"></i> Promotion du
                                     tourisme et création d’offices de tourisme
                                 </li>
-                                <li><i class="fa fa-check-circle text-primary"></i> Enseignement
+                                <li><i class="fa fa-angle-right text-primary"></i> Enseignement
                                     artistique (musique, danse, …) en partenariat avec les
                                     établissements scolaires
                                 </li>
@@ -444,7 +802,6 @@
         </div><!--End off container -->
     </section> <!--End off Skill section -->
 
-
     <!--Subscribe section-->
     <section id="subscribe" class="subscribe roomy-100 fix">
         <div class="overlay"></div>
@@ -458,13 +815,12 @@
                     </div>
                     <div class="col-sm-10 col-sm-offset-1">
                         <div class="subscribe_btns m-top-40">
-                            <form class="form-inline" action="{% url "suscribe" %}" method="post">
+                            <form class="form-inline" action="{% url "accueil" %}" method="post">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="email" class="form-control" id="inputEmail2" name="email"
-                                       placeholder="Email Address">
+                                {{formC.email}}
                             </div>
-                            <button type="submit" class="btn btn-primary">Je m'abonne !</button>
+                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Je m'abonne !</button>
                             </form>
                         </div>
                     </div>
@@ -479,22 +835,38 @@
         <a href="#"><i class="fa fa-chevron-up"></i></a>
     </div><!-- End off scroll up -->
 
+    <footer id="footer" class="footer bg-black">
+        <div class="container">
+            <div class="row">
+                <div class="main_footer text-center p-top-40 p-bottom-30">
+                    <p class="wow fadeInRight" data-wow-duration="1s">
 
-    <!--                        <footer id="footer" class="footer bg-black">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="main_footer text-center p-top-40 p-bottom-30">
-                                            <p class="wow fadeInRight" data-wow-duration="1s">
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </footer>-->
-
-
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Félicitation !</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Vous êtes des nôtres ! On va vous envoyer plein d'emails
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
 <!-- JS includes -->
 
 <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
@@ -526,11 +898,18 @@
                 $('.maps_text h3').hide();
             }
 
-
+{%if modal%}
+    $(document).ready(function(){
+    $('#exampleModalCenter').appendTo("body")
+    $("#exampleModalCenter").modal('show');
+    });
+{%endif%}
 
 </script>
 
-
+    <!--    {% if form_error %}
+        $(#offerModalForm).modal("show");
+    {% endif %}-->
 <script src="{% static '/js/plugins.js' %}"></script>
 <script src="{% static '/js/main.js' %}"></script>
 

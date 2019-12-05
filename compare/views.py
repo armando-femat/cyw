@@ -28,25 +28,15 @@ def ville(request, nom):
 def accueil(request):
     formV = RechercheVille(request.POST or None)
     formC = FormContact(request.POST or None)
+    modal = False
     if formV.is_valid():
-        print("ok")
         nom = formV.cleaned_data['ville']
         return redirect(ville, nom=nom)
     if formC.is_valid():
         email = formC.cleaned_data['email']
         c = Contact(email=email)
         c.save()
-        return redirect(accueil)
-    return render(request, 'compare/accueil.html', locals())
-
-
-def suscribe(request):
-
-    if form.is_valid():
-        email = form.cleaned_data['email']
-        c = Contact(email=email)
-        c.save()
-        return redirect(accueil)
+        modal = True
     return render(request, 'compare/accueil.html', locals())
 
 
