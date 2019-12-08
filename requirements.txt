@@ -1,7 +1,7 @@
 autocomplete==0.0.104
 beautifulsoup4==4.8.0
 bottle==0.12.17
-django==2.2.4
+django>=2.2.8
 django-autocomplete-light==3.4.1
 django-bootstrap3==11.1.0
 django-bootstrap4==1.0.1
