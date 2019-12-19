@@ -1,5 +1,6 @@
 from compare.models import Promesse
-
+from dal import autocomplete
+from .models import Ville
 
 class vPromesse:
     def __init__(self, l, p):
@@ -28,3 +29,16 @@ class vCategorie:
         for cri in v.criteres.all():
             if cri.categorie==cat:
                 self.criteres.append(vCritere(cri, ls))
+
+
+
+class VilleAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        # Don't forget to filter out results depending on the visitor !
+
+        qs = Ville.objects.all()
+
+        if self.q:
+            qs = qs.filter(nom__istartswith=self.q)
+
+        return qs

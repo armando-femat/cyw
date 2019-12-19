@@ -54,15 +54,15 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
             <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="http://localhost:8000/accueil">
+        <a class="navbar-brand" href="/">
             <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
             <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
         </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
-            <li><a href="http://localhost:8000/accueil">Recherche ta ville !</a></li>
-            <li><a href="http://localhost:8000/{{l.ville}}">{{l.ville}}</a></li>
+            <li><a href="/">Recherche ta ville !</a></li>
+            <li><a href="/{{l.ville}}">{{l.ville}}</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
     <!-- End Header Navigation -->
@@ -106,7 +106,7 @@
                                             <tr>
                                                 <th scope="col">Critère</th>
                                                 <th scope="col">Promesse</th>
-                                                <th scope="col">Engagement</th>
+                                                <th scope="col"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -117,9 +117,9 @@
                                                 {% for p in ps%}
                                                 {% if p.critere.titre == c.titre%}
                                                 <td>{{p.titre}}</td>
-                                                <td>{% if p.estUnEngagement %} <i
-                                                        class="fa fa-check-circle text-primary"></i> {%else%} <i
-                                                        class="fa fa-times-circle"></i> {%endif%}
+                                                <td>{% if p.estUnePriorite %} <i
+                                                        class="fa fa-star text-primary"></i>
+                                                    {%endif%}
                                                 </td>
                                             </tr>
                                             {%endif%}

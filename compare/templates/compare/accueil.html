@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -43,6 +42,8 @@
     <link rel="stylesheet" href="{% static '/css/responsive.css' %}"/>
 
     <script src="{% static '/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
@@ -99,7 +100,6 @@
                 <li><a href="#info">Tout sur les elections municipals</a></li>
                 <li><a href="#fun">Fun fact !</a></li>
                 <li><a href="#DCV">Domaine de compétence de la ville</a></li>
-                <li><a href="#portfolio">Vérifier mon inscription sur les listes</a></li>
                 <!--                            <li><a href="#pricing">Pricing</a></li>
                                             <li><a href="#blog">Blog</a></li>      -->
                 <li><a href="#subscribe">Contact</a></li>
@@ -145,16 +145,15 @@
             <div class="row">
                 <div class="main_home">
                     <div class="home_text">
-                        <h1 class="text-white">Qui sera mon Maire? <br/></h1>
+                        <h1 class="text-white">Qui sera mon Maire ? <br/></h1>
                     </div>
                     <div class="m-top-40">
-                        <form class="form-inline" action="{% url "accueil" %}" method="post">
-                        {% csrf_token %}
+                        <form class="form-inline" action="{%url "accueil"%}" method="post">
+                            {% csrf_token %}
                             <div class="form-group">
                                 {{formV.ville}}
-<!--                                <input class="form-control" name="ville" type="text" id="id_ville" placeholder="Quelle est ta ville ? ">-->
                             </div>
-                        <button type="submit" class="btn btn-default">Recherche</button>
+                            <button type="submit" class="btn btn-default">Recherche</button>
                         </form>
                         <br/>
                         <br/>
@@ -164,6 +163,7 @@
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off Home Sections-->
+
 
     <!--Portfolio Section-->
     <section id="info" class="portfolio lightbg">
@@ -326,7 +326,7 @@
                                         <img src="{% static '/images/michel.png' %}" alt=""/>
                                         <div class="portfolio_hover text-center">
                                             <h6 class="text-uppercase text-white">Mon maire, c'est Michel</h6>
-                                            <p class=" text-white">Michel est le nom le plus commun chez les maires (1/25)</p>
+                                            <p class="text-white">Michel est le nom le plus commun chez les maires (1/25)</p>
                                         </div>
                                     </div>
                                 </div>
@@ -370,54 +370,22 @@
                                 <div>
                                     <div class="content">
                                         <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Prévention ou
-                                                développement
-                                                social, via le CCAS
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie est en charge du développement d’une politique sociale, notamment via le Centre Communal d’Action Social (dont le maire est président). C’est aussi la mairie qui décide d’accorder des aides sociales facultatives pour des familles ou des jeunes en difficulté.
+
                                             </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Attribution d’aides
-                                                sociale
-                                                facultatives pours des familles /jeunes en difficulté
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie gère les établissements publics d'accueil des enfants de moins de 6 ans et des personnes âgées. La mairie peut choisir de créer et / ou de gérer ces établissements.
+
                                             </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Création et gestion d’un
-                                                établissement pour enfants de moins de 6 ans ou foyer pour personnes
-                                                âgées
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie organise l’accueil des personnes dites “gens du voyage”  via par exemple la création d’aire de stationnement.
+
                                             </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Participation à
-                                                l’accueil des
-                                                personnes dites “gens du voyage”
+                                            <li><i class="fa fa-angle-right text-primary"></i>La mairie est en charge des logements sociaux. Elle autorise, construit et subventionne les logements sociaux. Pour les foyer les plus modestes, la mairie peut attribuer des aides, grâce au Fonds de solidarité pour le logement (FSL).
+
                                             </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
-                                                construction ou subventions de logement sociaux
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie veille à faciliter l’accès aux soins. A ce titre, elle peut aider à l’installation de professionnels de santé dans les zones déficitaires ou organiser si besoin des campagnes de vaccinations gratuites.
                                             </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
-                                                construction ou subventions de logement sociaux
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Aides au logement (Fonds
-                                                de
-                                                solidarité pour le logement (FSL)
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
-                                                construction ou subventions de logement sociaux
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Organisation de
-                                                campagnes de
-                                                vaccinations gratuite
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Organisation de
-                                                l’alimentation
-                                                en eau
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion de la propreté
-                                                de la
-                                                ville
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des déchets et
-                                                des eaux
-                                                usées
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> L’aide à l’installation
-                                                de
-                                                professionnels de santés dans les zones déficitaires
+
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie veille à la propreté de la ville, notamment avec les équipes municipales chargée du nettoyage. C’est elle qui organise aussi la collecte des déchets, la gestion des eaux usées et l’alimentation en eau potable des habitations.
                                             </li>
                                         </ul>
                                     </div>
@@ -427,26 +395,18 @@
                                 <div>
                                     <div class="content">
                                         <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Aide à la réception des
-                                                offres
-                                                d’emplois en partenariat avec Pole Emploi
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Création des maisons de
-                                                l’emploi
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des structures
-                                                d’accompagnement et d’insertion professionnelle des jeunes
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Création de plans pour
-                                                l’emploi
-                                                et l’insertion
-                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie a la possibilité de créer des plans pour l’emploi et l’insertion dans le monde du travail.
 
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> Elle peut créer des maisons de l’emploi et ainsi aider, en partenariat avec Pole Emploi par exemple, à la diffusion d’offres d’emplois.
+                                            </li>
+                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie peut gérer des structures d’accompagnement et d’insertion professionnelle des jeunes
+                                            </li>
                                         </ul>
                                     </div>
                                 </div> <!-- End off accordion item-2 -->
 
-                                <h6><i class="fa fa-angle-right"></i>Enseignement</h6>
+                                <h6><i class="fa fa-angle-right"></i>Enseignement et éducation</h6>
                                 <div>
                                     <div class="content">
                                         <ul>
@@ -560,248 +520,7 @@
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off About section -->
-
-    <!--Skill Sections-->
-    <section id="" class="skill roomy-100">
-        <div class="container">
-            <div class="row">
-                <div class="main_skill">
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Grands domaines de compétence</h2>
-                            <div class="separator_left"></div>
-                            <p>
-                                Action sociale et santé
-                                Emploi et insertion professionnelle
-                                Enseignement
-                                Enfance et jeunesse
-                                Sports
-                                Culture
-                                Economie et emploi
-                                Urbanisme et aménagement de la commune
-                                Logement
-                                Environnement et patrimoine
-                                Déchets
-                                Énergie et Télécommunication
-                                Ports et voies maritimes
-                                Transports
-                            </p>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        {% load static %}
-                        <img src="{% static '/images/BAGUETTE.jpg' %}" alt="Baguette">
-                    </div>
-                </div>
-            </div><!--End off row-->
-        </div><!--End off container -->
-        <div class="container roomy-50">
-            <div class="row">
-                <div class="main_skill">
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Action sociale et santé</h2>
-                            <div class="separator_left"></div>
-                            <ul>
-                                <li><i class="fa fa-angle-right text-primary"></i> Prévention ou développement
-                                    social, via le CCAS
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Attribution d’aides sociale
-                                    facultatives pours des familles /jeunes en difficulté
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Création et gestion d’un
-                                    établissement pour enfants de moins de 6 ans ou foyer pour personnes âgées
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Participation à l’accueil des
-                                    personnes dites “gens du voyage”
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
-                                    construction ou subventions de logement sociaux
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
-                                    construction ou subventions de logement sociaux
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Aides au logement (Fonds de
-                                    solidarité pour le logement (FSL)
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Logement : autorisation,
-                                    construction ou subventions de logement sociaux
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Organisation de campagnes de
-                                    vaccinations gratuite
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Organisation de l’alimentation
-                                    en eau
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion de la propreté de la
-                                    ville
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des déchets et des eaux
-                                    usées
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> L’aide à l’installation de
-                                    professionnels de santés dans les zones déficitaires
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Emploi et insertion professionnelle</h2>
-                            <div class="separator_left"></div>
-                            <ul>
-                                <li><i class="fa fa-angle-right text-primary"></i> Aide à la réception des offres
-                                    d’emplois en partenariat avec Pole Emploi
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Création des maisons de l’emploi
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> GEstion des structures
-                                    d’accompagnement et d’insertion professionnelle des jeunes
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Création de plans pour l’emploi
-                                    et l’insertion
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div><!--End off row-->
-            </div><!--End off container -->
-        </div>
-        <div class="container roomy-50">
-            <div class="row">
-                <div class="main_skill">
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Enseignement</h2>
-                            <div class="separator_left"></div>
-                            <ul>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion de logement des
-                                    étudiants
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des écoles
-                                    maternelles et primaires (bâtiments et personnels)
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Recrutement des ATSEM
-                                    (assistants territoriaux spécialisés des écoles maternelles)
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Restauration scolaire
-                                    des écoles primaires
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Organisation des
-                                    activités périscolaires
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Financement des écoles
-                                    privées sous contrat
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Aide à la scolarisation
-                                    des élèves d’écoles primaires
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des transports
-                                    scolaires à l’intérieur du périmètre de la commune
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Contribution au
-                                    financement des établissements d’enseignement supérieur et de recherche
-                                </li>
-
-
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Enfance et jeunesse</h2>
-                            <div class="separator_left"></div>
-                            <ul>
-                                <li><i class="fa fa-angle-right text-primary"></i> Création de relais
-                                    d’assistants maternels
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Financement et gestion
-                                    des structures d’accueil de la petite enfance (crèches, garderies…)
-                                </li>
-
-
-                            </ul>
-
-                        </div>
-                    </div>
-                </div><!--End off row-->
-            </div><!--End off container -->
-        </div>
-        <div class="container roomy-50">
-            <div class="row">
-                <div class="main_skill">
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Sports</h2>
-                            <div class="separator_left"></div>
-                            <ul>
-                                <li><i class="fa fa-angle-right text-primary"></i> Subventions au
-                                    clubs et associations
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Sécurité des
-                                    installations sportives
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Création d’un
-                                    office municipal des sports
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Construction et
-                                    gestion des équipements sportifs de proximité (gymnase, piscine,
-                                    camping)
-                                </li>
-
-
-                            </ul>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="skill_content wow fadeIn">
-                            <h2>Culture</h2>
-                            <div class="separator_left"></div>
-
-                            <ul>
-
-                                <li><i class="fa fa-angle-right text-primary"></i> Inventaires
-                                    général du patrimoine culturel
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des
-                                    bibliothèques municipales
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des
-                                    musées municipaux
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Conservation et
-                                    mise en valeur des archives municipales
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Gestion des
-                                    diagnostics et des fouilles archéologiques préventives
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Aide aux salles
-                                    de spectacles cinématographiques
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Promotion du
-                                    tourisme et création d’offices de tourisme
-                                </li>
-                                <li><i class="fa fa-angle-right text-primary"></i> Enseignement
-                                    artistique (musique, danse, …) en partenariat avec les
-                                    établissements scolaires
-                                </li>
-
-                            </ul>
-
-
-                        </div>
-                    </div>
-                </div><!--End off row-->
-            </div><!--End off container -->
-            <br/>
-        </div><!--End off container -->
-    </section> <!--End off Skill section -->
-
+    z
     <!--Subscribe section-->
     <section id="subscribe" class="subscribe roomy-100 fix">
         <div class="overlay"></div>
@@ -849,7 +568,7 @@
 </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -877,26 +596,12 @@
 <script src="{% static '/js/slick.min.js' %}"></script>
 <script src="{% static '/js/jquery.collapse.js' %}"></script>
 <script src="{% static '/js/bootsnav.js' %}"></script>
-
+{{formV.media}}
 
 <!-- paradise slider js -->
 
 
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyD_tAQD36pKp9v4at5AnpGbvBUsLCOSJx8"></script>
-<script src="{% static '/js/gmaps.min.js' %}"></script>
-
 <script>
-            function showmap() {
-                var mapOptions = {
-                    zoom: 8,
-                    scrollwheel: false,
-                    center: new google.maps.LatLng(-34.397, 150.644),
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-                $('.mapheight').css('height', '350');
-                $('.maps_text h3').hide();
-            }
 
 {%if modal%}
     $(document).ready(function(){
@@ -912,6 +617,7 @@
     {% endif %}-->
 <script src="{% static '/js/plugins.js' %}"></script>
 <script src="{% static '/js/main.js' %}"></script>
+
 
 </body>
 </html>

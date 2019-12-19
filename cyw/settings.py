@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'compare',
     'bootstrap4',
+    'dal',
+    'dal_select2',
+    # 'grappelli',
 ]
 
 MIDDLEWARE = [

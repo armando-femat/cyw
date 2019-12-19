@@ -50,7 +50,7 @@ class Promesse(models.Model):
     titre = models.TextField()
     description = models.TextField(null=True)
     liste = models.ForeignKey(Liste, on_delete=models.PROTECT, null=True)
-    estUnEngagement = models.BooleanField(default=False)
+    estUnePriorite = models.BooleanField(default=False)
 
     def __str__(self):
         return self.titre
