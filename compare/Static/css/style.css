@@ -224,7 +224,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 
 .form-group{
-    width:40%;
+    width:100%;
     display: inline-block;
 }
 
