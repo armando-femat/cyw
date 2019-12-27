@@ -10,6 +10,7 @@ def liste(request, id):
     l = get_object_or_404(Liste, id=id)
     ps = Promesse.objects.filter(liste_id=id)
     cats = Categorie.objects.all()
+    prio = Promesse.objects.filter(liste_id=id, estUnePriorite=True)
     return render(request, 'compare/liste.html', locals())
 
 
@@ -22,6 +23,7 @@ def ville(request, nom):
         else:
             print("nok")
     v = get_object_or_404(Ville, nom=nom)
+    #form.fields['Listes'].queryset = [l.pk for l in Liste.objects.filter(ville=v)]
     ls = Liste.objects.filter(ville=v)
     return render(request, 'compare/ville.html', locals())
 
