@@ -17,6 +17,7 @@ def liste(request, id):
 def ville(request, nom):
     form = FormCompare(request.POST or None)
     v = get_object_or_404(Ville, nom=nom)
+    #form.fields['Listes'].queryset = [l.pk for l in Liste.objects.filter(ville=v)]
     ls = Liste.objects.filter(ville=v)
     if form.is_valid():
         print("ok")
