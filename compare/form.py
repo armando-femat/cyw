@@ -12,14 +12,9 @@ class RechercheVille(forms.Form):
 
 class FormCompare(forms.Form):
     Listes = forms.ModelMultipleChoiceField(
-<<<<<<< HEAD
         queryset=Liste.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
-=======
-         queryset=Liste.objects.all(),
-         widget=forms.CheckboxSelectMultiple,
->>>>>>> 328280343895a2eafe40b852c63b1f3aaf732900
          )
 
 class FormContact(forms.Form):

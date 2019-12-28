@@ -95,11 +95,6 @@
                 <li><a href="/#info">Tout sur les elections municipals</a></li>
                 <li><a href="/#fun">Fun fact !</a></li>
                 <li><a href="/#DCV">Domaine de compétence de la ville</a></li>
-<<<<<<< HEAD
-=======
-                <!--                            <li><a href="#pricing">Pricing</a></li>
-                                            <li><a href="#blog">Blog</a></li>      -->
->>>>>>> 328280343895a2eafe40b852c63b1f3aaf732900
                 <li><a href="#subscribe">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -108,32 +103,17 @@
 
     <!--Home page style-->
     <section id="pricing" class="pricing lightbg">
-        <form>
-            {% csrf_token %}
-            {{form}}
-        </form>
         <div class="container">
             <div class="row">
-<<<<<<< HEAD
                 <form class="main_pricing roomy-100" action="{% url "ville" v.nom %}" method="post">
                     <div class="col-md-8 col-md-offset-2 col-sm-12">
                         <div class=" text-center">
-=======
-                <div class="main_pricing roomy-100">
-                    <div class="col-md-8 col-md-offset-2 col-sm-12">
-                        <!--                    <form class="head_title text-center" action="{% url "ville" v.nom %}" method="post">-->
-                        <div class="head_title text-center">
->>>>>>> 328280343895a2eafe40b852c63b1f3aaf732900
                             {% csrf_token %}
                             <h1>{{v.nom}}</h1>
                             <div class="separator_auto"></div>
                             <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
                                 {%endfor %}...</p>
-<<<<<<< HEAD
                             <button type="submit" class="btn btn-primary">Comparer les programmes</button>
-=======
-                            <a href="/compare/{{v.nom}}" class="btn btn-primary">Comparer les programmes</a>
->>>>>>> 328280343895a2eafe40b852c63b1f3aaf732900
                         </div>
                     </div>
                     {% for l in ls%}
@@ -149,30 +129,17 @@
                                     {% endif %}
                                 </div>
                                 <div class="pricing_btn text-center p-top-10">
-<<<<<<< HEAD
                                     <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
                                     <label class="form-check-label" for="{{l.id}}">
                                         Comparer
                                     </label>
                                     <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
-=======
-                                    <a href="/liste/{{l.id}}"
-                                       class="btn btn-primary">Voir !</a>
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Comparer
-                                    </label>
-                                    <input class="form-check-input" type="checkbox" id="{{l.nom}}">
->>>>>>> 328280343895a2eafe40b852c63b1f3aaf732900
                                 </div>
                             </div>
                         </div>
                     </div><!-- End off col-md-4 -->
                     {% endfor %}
-<<<<<<< HEAD
                 </form>
-=======
-                </div>
->>>>>>> 328280343895a2eafe40b852c63b1f3aaf732900
             </div><!--End off row-->
         </div>
     </section> <!--End off Pricing section -->
