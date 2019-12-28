@@ -10,20 +10,34 @@ def liste(request, id):
     l = get_object_or_404(Liste, id=id)
     ps = Promesse.objects.filter(liste_id=id)
     cats = Categorie.objects.all()
+    prio = Promesse.objects.filter(liste_id=id, estUnePriorite=True)
     return render(request, 'compare/liste.html', locals())
 
 
 def ville(request, nom):
     form = FormCompare(request.POST or None)
-    if form.is_valid():
-        a = form.cleaned_data['test']
-        if a:
-            print("ok")
-        else:
-            print("nok")
     v = get_object_or_404(Ville, nom=nom)
     ls = Liste.objects.filter(ville=v)
+    if form.is_valid():
+        print("ok")
+        listes=request.POST.getlist('Listes',default=None)
+        return compare(request, nom, listes=listes)
     return render(request, 'compare/ville.html', locals())
+
+
+def compare(request, nom, **kwargs):
+    vcats = []
+    cs = Categorie.objects.all()
+    v = get_object_or_404(Ville, nom=nom)
+    ids = kwargs.get('listes', None)
+    if len(ids)>0 :
+        ls = Liste.objects.filter(id__in = ids)
+    else:
+        ls = Liste.objects.filter(ville=v)
+
+    for cat in cs:
+        vcats.append(vCategorie(cat, v, ls))
+    return render(request, 'compare/compare.html', locals())
 
 
 def accueil(request):
@@ -45,21 +59,21 @@ def accueil(request):
 
 
 def test(request):
-    form = RechercheVille(request.POST or None)
+    nom='Villeurbanne'
+    form = FormCompare(request.POST or None)
+    v = get_object_or_404(Ville, nom=nom)
+    ls = Liste.objects.filter(ville=v)
     if form.is_valid():
         print("ok")
-        nom = form.cleaned_data['ville']
-        return redirect(ville, id=nom)
+        a=request.POST.getlist('Listes',default=None)
+        print(a)
+        vs=[]
+        for b in a:
+            vs.append(b)
+            print(vs)
+        return compare(request, nom, listes=vs)
     return render(request, 'compare/test.html', locals())
 
 
-def compare(request, nom):
-    vcats = []
-    cs = Categorie.objects.all()
-    v = get_object_or_404(Ville, nom=nom)
-    ls = Liste.objects.filter(ville=v)
-    for cat in cs:
-        vcats.append(vCategorie(cat, v, ls))
-    return render(request, 'compare/compare.html', locals())
 
 

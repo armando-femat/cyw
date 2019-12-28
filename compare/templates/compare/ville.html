@@ -61,8 +61,18 @@
 
 <div class="culmn">
 
-    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
-
+    <nav class="navbar navbar-default navbar-fixed white bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
 
         <!-- Start Header Navigation -->
         <div class="navbar-header">
@@ -70,53 +80,68 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="/">
+
                 <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
                 <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
+
             </a>
         </div>
         <!-- End Header Navigation -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li><a href="/#hello">Recherche ta ville !</a></li>
+                <li><a href="/#info">Tout sur les elections municipals</a></li>
+                <li><a href="/#fun">Fun fact !</a></li>
+                <li><a href="/#DCV">Domaine de compétence de la ville</a></li>
+                <li><a href="#subscribe">Contact</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        <!--</div> -->
     </nav>
 
     <!--Home page style-->
     <section id="pricing" class="pricing lightbg">
         <div class="container">
             <div class="row">
-                <div class="main_pricing roomy-100">
-                <div class="col-md-8 col-md-offset-2 col-sm-12">
-<!--                    <form class="head_title text-center" action="{% url "ville" v.nom %}" method="post">-->
-                    <div class="head_title text-center">
-                    {% csrf_token %}
-                        <h1>{{v.nom}}</h1>
-                        <div class="separator_auto"></div>
-                        <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
-                            {%endfor %}...</p>
-                        <a href="/compare/{{v.nom}}" class="btn btn-primary">Comparer les programmes</a>
-                    </div>
-                </div>
-                {% for l in ls%}
-                <div class="col-md-4 col-sm-12 m-top-30">
-                    <div class="pricing_item">
-                        <div class="pricing_head text-center p-top-20 p-bottom-15">
-                            <h4 class="text-uppercase">{{l.nom}}</h4>
-                        </div>
-                        <div class="pricing_body bg-white p-top-20 p-bottom-20">
-                            <div class="text-center">
-                                <p>{{l.presentation}}</p>
-                            </div>
-                            <div class="pricing_btn text-center p-top-10">
-                                <a href="/liste/{{l.id}}"
-                                   class="btn btn-primary">Voir !</a>
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Comparer
-                                </label>
-                                <input class="form-check-input" type="checkbox" id="{{l.nom}}">
-                            </div>
+                <form class="main_pricing roomy-100" action="{% url "ville" v.nom %}" method="post">
+                    <div class="col-md-8 col-md-offset-2 col-sm-12">
+                        <div class=" text-center">
+                            {% csrf_token %}
+                            <h1>{{v.nom}}</h1>
+                            <div class="separator_auto"></div>
+                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
+                                {%endfor %}...</p>
+                            <button type="submit" class="btn btn-primary">Comparer les programmes</button>
                         </div>
                     </div>
-                </div><!-- End off col-md-4 -->
-                {% endfor %}
-            </div>
-        </div><!--End off row-->
+                    {% for l in ls%}
+                    <div class="col-md-4 col-sm-12 m-top-30">
+                        <div class="pricing_item">
+                            <div class="pricing_head text-center p-top-20 p-bottom-15">
+                                <h4 class="text-uppercase">{{l.nom}}</h4>
+                            </div>
+                            <div class="pricing_body bg-white p-top-20 p-bottom-20">
+                                <div class="text-center">
+                                    {%if l.slogan is not None%}
+                                    <p>{{l.slogan}}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="pricing_btn text-center p-top-10">
+                                    <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
+                                    <label class="form-check-label" for="{{l.id}}">
+                                        Comparer
+                                    </label>
+                                    <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End off col-md-4 -->
+                    {% endfor %}
+                </form>
+            </div><!--End off row-->
+        </div>
     </section> <!--End off Pricing section -->
 
     <!-- JS includes -->
@@ -149,6 +174,7 @@
                                 $('.mapheight').css('height', '350');
                                 $('.maps_text h3').hide();
                             }
+
     </script>
 
 

@@ -46,7 +46,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
-<nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
+<nav class="navbar navbar-default navbar-fixed white bootsnav">
 
 
     <!-- Start Header Navigation -->
@@ -59,10 +59,11 @@
             <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
         </a>
     </div>
+
     <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
+        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
             <li><a href="/">Recherche ta ville !</a></li>
-            <li><a href="/{{l.ville}}">{{l.ville}}</a></li>
+            <li><a href="/{{v.nom}}">{{v.nom}}</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
     <!-- End Header Navigation -->
@@ -85,8 +86,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-12">
                     <div class="head_title text-center">
-                        <h1>{{v.nom}}</h1>
-
+                        <h1> <a href="/{{v.nom}}">{{v.nom}} </a></h1>
                         <div class="separator_auto"></div>
                         <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
                             {%endfor %}...</p>

@@ -28,6 +28,7 @@ class Ville(models.Model):
 
 class Liste(models.Model):
     nom = models.CharField(max_length=100)
+    slogan = models.CharField(max_length=250, null=True)
     auteur = models.ManyToManyField(User)
     presentation = models.TextField(null=True)
     ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True)
@@ -54,6 +55,11 @@ class Promesse(models.Model):
 
     def __str__(self):
         return self.titre
+
+# class Priorite(models.Model):
+#     liste = models.ForeignKey(Liste, on_delete=models.PROTECT)
+#     Promesse = models.ForeignKey(Promesse, on_delete=models.PROTECT)
+#     Index = models.IntegerField(null=True)
 
 
 class Contact(models.Model):

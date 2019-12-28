@@ -46,27 +46,50 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
-<nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
 
 
-    <!-- Start Header Navigation -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-            <i class="fa fa-bars"></i>
-        </button>
-        <a class="navbar-brand" href="/">
-            <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
-            <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
-        </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
-            <li><a href="/">Recherche ta ville !</a></li>
-            <li><a href="/{{l.ville}}">{{l.ville}}</a></li>
-        </ul>
-    </div><!-- /.navbar-collapse -->
-    <!-- End Header Navigation -->
-</nav>
+    <nav class="navbar navbar-default navbar-fixed white bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <!-- Start Header Navigation -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="/">
+
+                <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
+                <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
+
+            </a>
+        </div>
+        <!-- End Header Navigation -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li><a href="/#hello">Recherche ta ville !</a></li>
+                <li><a href="/#info">Tout sur les elections municipals</a></li>
+                <li><a href="/#fun">Fun fact !</a></li>
+                <li><a href="/#DCV">Domaine de compétence de la ville</a></li>
+                <!--                            <li><a href="#pricing">Pricing</a></li>
+                                            <li><a href="#blog">Blog</a></li>      -->
+                <li><a href="#subscribe">Contact</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        <!--</div> -->
+    </nav>
+
 
 <!-- Preloader -->
 <div id="loading">
@@ -90,13 +113,35 @@
                         <div class="about_content">
                             <h2>{{l.nom}}</h2>
                             <div class="separator_left"></div>
-
                             <p>{{l.presentation}}</p>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="about_accordion wow fadeIn">
                             <div id="faq_main_content" class="faq_main_content">
+                                <h6><i class="fa fa-star text-primary"></i>Les priorités de la liste</i></h6>
+                                <div>
+                                    <div class="content">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Catégorie</th>
+                                                <th scope="col">Critère</th>
+                                                <th scope="col">Promesse</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for p in prio%}
+                                            <tr>
+                                                <td>{{p.critere.categorie.titre}}</td>
+                                                <td>{{p.critere.titre}}</td>
+                                                <td>{{p.titre}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> <!-- End off accordion item-1 -->
                                 {% for cat in cats%}
                                 <h6><i class="fa fa-angle-right"></i>{{cat.titre}}</h6>
                                 <div>
@@ -117,8 +162,8 @@
                                                 {% for p in ps%}
                                                 {% if p.critere.titre == c.titre%}
                                                 <td>{{p.titre}}</td>
-                                                <td>{% if p.estUnePriorite %} <i
-                                                        class="fa fa-star text-primary"></i>
+                                                <td>{% if p.estUnePriorite %}
+                                                        <i class="fa fa-star text-primary"></i>
                                                     {%endif%}
                                                 </td>
                                             </tr>
