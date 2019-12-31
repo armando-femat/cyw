@@ -45,6 +45,24 @@ def accueil(request):
     formV = RechercheVille(request.POST or None)
     formC = FormContact(request.POST or None)
     modal = False
+    if formV.is_valid():
+        nom = formV.cleaned_data['ville']
+        print(nom.id)
+        return redirect(ville, nom)
+    if formC.is_valid():
+        email = formC.cleaned_data['email']
+        villeContact = formC.cleaned_data['villeContact']
+        comment = formC.cleaned_data['comment']
+        c = Contact(email=email, ville=villeContact, comment=comment)
+        c.save()
+        modal = True
+    return render(request, 'compare/accueil.html', locals())
+
+
+def test(request):
+    formV = RechercheVille(request.POST or None)
+    formC = FormContact(request.POST or None)
+    modal = False
     print("ok1")
     if formV.is_valid():
         print("ok")
@@ -53,26 +71,11 @@ def accueil(request):
         return redirect(ville, nom)
     if formC.is_valid():
         email = formC.cleaned_data['email']
-        c = Contact(email=email)
+        ville = formC.cleaned_data['villeContact']
+        comment = formC.cleaned_data['comment']
+        c = Contact(email=email, ville=ville, comment=comment)
         c.save()
         modal = True
-    return render(request, 'compare/accueil.html', locals())
-
-
-def test(request):
-    nom='Villeurbanne'
-    form = FormCompare(request.POST or None)
-    v = get_object_or_404(Ville, nom=nom)
-    ls = Liste.objects.filter(ville=v)
-    if form.is_valid():
-        print("ok")
-        a=request.POST.getlist('Listes',default=None)
-        print(a)
-        vs=[]
-        for b in a:
-            vs.append(b)
-            print(vs)
-        return compare(request, nom, listes=vs)
     return render(request, 'compare/test.html', locals())
 
 

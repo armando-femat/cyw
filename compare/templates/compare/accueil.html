@@ -98,10 +98,7 @@
             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                 <li><a href="#hello">Recherche ta ville !</a></li>
                 <li><a href="#info">Tout sur les elections municipals</a></li>
-                <li><a href="#fun">Fun fact !</a></li>
                 <li><a href="#DCV">Domaine de compétence de la ville</a></li>
-                <!--                            <li><a href="#pricing">Pricing</a></li>
-                                            <li><a href="#blog">Blog</a></li>      -->
                 <li><a href="#subscribe">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -151,6 +148,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 {{formV.ville}}
+                                {{formV.media}}
                             </div>
                             <button type="submit" class="pull-right btn btn-primary">Recherche</button>
                         </form>
@@ -163,21 +161,20 @@
 
     <!--Portfolio Section-->
     <section id="info" class="portfolio lightbg">
-        <div class="container roomy-100">
+        <div class="container roomy-50">
             <div class="row">
                 <div class="main_portfolio">
                     <div class="col-md-8 col-md-offset-2">
-                        <div class="head_title text-center">
-                            <h2>Les élections municipales 2020 : Quand et comment ?!</h2>
+                        <div class="text-center ">
+                            <h3>Quelques infos sur les élections municipales 2020</h3>
                             <div class="separator_auto"></div>
                             <p></p>
                         </div>
                     </div>
-
-                    <!--<div class="row">
+                    <div class="row">
                         <div class="col-md-3">
                             <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                <img src="{% static '/images/home/Calendar.jpg' %}" alt=""/>
                                 <div class="portfolio_hover text-center">
                                     <h6 class="text-uppercase text-white">Une élection en deux tours :</h6>
                                     <p class=" text-white">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
@@ -186,7 +183,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                <img src="{% static '/images/home/Vote.jpg' %}" alt=""/>
                                 <div class="portfolio_hover text-center">
                                     <h6 class="text-uppercase text-white">Pour voter, </h6>
                                     <p class=" text-white">il suffit d'avoir au moins 18 ans et être inscrit sur les listes électorales de sa ville</p>
@@ -195,31 +192,64 @@
                         </div>
                         <div class="col-md-3">
                             <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
+                                <img src="{% static '/images/home/Second.jpg' %}" alt=""/>
                                 <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">Les listes qui ont plus de 10% des voix</h6>
+                                    <h6 class="text-uppercase text-white">Les listes qui ont plus de 10% des voix au premier tour</h6>
                                     <p class=" text-white">peuvent se maintenir pour le second tour</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/Portfolio/5.jpg' %}" alt=""/>
+                                <img src="{% static '/images/home/Liste.jpg' %}" alt=""/>
                                 <div class="portfolio_hover text-center">
                                     <h6 class="text-uppercase text-white">Le maire est désigné par les conseillers municupaux</h6>
                                     <p class=" text-white"></p>
-                                    <div class="portfolio_hover_icon">
-                                        <a href="{% static '/images/Portfolio/5.jpg' %}" class="popup-img"><i
-                                                class="fa fa-expand"></i></a>
-                                        <a href=""><i class="fa fa-search"></i></a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
+                    <div class="row m-top-30">
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/home/Gender.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Mon maire est un homme</h6>
+                                    <p class=" text-white">4 maires sur 5 est un homme</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/home/Cake.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Mon maire a la soixantaine</h6>
+                                    <p class=" text-white">La moyenne d'âge des maires est 62 ans</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/home/Chair.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Mon maire est retraité</h6>
+                                    <p class=" text-white">1 maire sur 3 est retraité</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="portfolio_item portfolio_item2">
+                                <img src="{% static '/images/home/Michel.jpg' %}" alt=""/>
+                                <div class="portfolio_hover text-center">
+                                    <h6 class="text-uppercase text-white">Mon maire, c'est Michel</h6>
+                                    <p class="text-white">Michel est le nom le plus commun chez les maires (1/25)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div><!--End off row -->
-            <div class="row">
+            <!--<div class="row">
                 <div class="about_bottom_content">
                     <div class="col-md-3">
                         <div class="about_bottom_item m-top-20">
@@ -267,65 +297,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--End off row-->
-        </div><!--End off container -->
-    </section><!-- End off Portfolio section-->
-
-    <!--Portfolio Section-->
-    <section id="fun" class="portfolio lightbg">
-        <div class="container">
-            <div class="row">
-                <div class="main_portfolio roomy-100">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="head_title text-center">
-                            <h2>Mon maire aujourd'hui :</h2>
-                            <div class="separator_auto"></div>
-                            <p></p>
-                        </div>
-                    </div>
-
-                    <div class="portfolio_content">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="portfolio_item portfolio_item2">
-                                        <img src="{% static '/images/Gender.png' %}" alt=""/>
-                                        <div class="portfolio_hover text-center">
-                                            <h6 class="text-uppercase text-white">Mon maire est un homme</h6>
-                                            <p class=" text-white">4 maires sur 5 est un homme</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="portfolio_item portfolio_item2">
-                                        <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
-                                        <div class="portfolio_hover text-center">
-                                            <h6 class="text-uppercase text-white">Mon maire a la soixantaine</h6>
-                                            <p class=" text-white">La moyenne d'âge des maires est 62 ans</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="portfolio_item portfolio_item2">
-                                        <img src="{% static '/images/Portfolio/3.jpg' %}" alt=""/>
-                                        <div class="portfolio_hover text-center">
-                                            <h6 class="text-uppercase text-white">Mon maire est retraité</h6>
-                                            <p class=" text-white">1 maire sur 3 est retraité</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="portfolio_item portfolio_item2">
-                                        <img src="{% static '/images/michel.png' %}" alt=""/>
-                                        <div class="portfolio_hover text-center">
-                                            <h6 class="text-uppercase text-white">Mon maire, c'est Michel</h6>
-                                            <p class="text-white">Michel est le nom le plus commun chez les maires (1/25)</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div><!--End off row -->
+            </div>&lt;!&ndash;End off row&ndash;&gt;-->
         </div><!--End off container -->
     </section><!-- End off Portfolio section-->
 
@@ -512,33 +484,59 @@
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off About section -->
-    <!--Subscribe section-->
-    <section id="subscribe" class="subscribe roomy-100 fix">
-        <div class="overlay"></div>
+
+    <!--Subscribe Us Section-->
+    <section id="subscribe" class="contact bg-mega fix"><!-- class subscribe avec photo -->
         <div class="container">
             <div class="row">
-                <div class="main_subscribe text-center">
-                    <div class="col-sm-8 col-sm-offset-2">
-                        <h2 class="text-white">Rester informé !</h2>
-                        <p class="m-top-30 text-white">Suivre les actualités des municipales et
-                            découvrir les programmes.</p>
-                    </div>
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div class="subscribe_btns m-top-40">
-                            <form class="form-inline" action="{% url "accueil" %}" method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {{formC.email}}
+                <div class="main_contact roomy-100 text-white">
+                    <div class="col-md-4">
+                        <div class="rage_widget">
+                            <div class="widget_head">
+                                <h3 class="text-white">Reste informé !</h3>
+                                <div class="separator_small"></div>
                             </div>
-                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Je m'abonne !</button>
-                            </form>
+                            <p>Aucune information n'est encore disponible sur ta ville et tu souhaites être informé le moment venu ?
+                                <br/>Envie de nous faire part d'une idée ou d'une attente quant aux élection à venir ?
+                                <br/>Laisse nous un petit mot par ici !
+                            </p>
                         </div>
                     </div>
+                    <div class="col-md-8 sm-m-top-30">
+                        <form class="" action="{% url "accueil" %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{formC.email}}
+                                    </div>
+                                </div>
 
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{formC.villeContact}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        {{formC.comment}}
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#exampleModalCenter">Je m'abonne !
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div><!--End off row -->
         </div><!--End off container -->
-    </section><!-- End off Impress section-->
+    </section><!--End off Subscribe Section-->
 
     <!-- scroll up-->
     <div class="scrollup">
@@ -587,7 +585,6 @@
 <script src="{% static '/js/slick.min.js' %}"></script>
 <script src="{% static '/js/jquery.collapse.js' %}"></script>
 <script src="{% static '/js/bootsnav.js' %}"></script>
-{{formV.media}}
 
 <!-- paradise slider js -->
 
