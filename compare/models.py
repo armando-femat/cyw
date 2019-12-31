@@ -64,7 +64,18 @@ class Promesse(models.Model):
 
 class Contact(models.Model):
     email = models.EmailField(null=True)
-    ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True, blank=True)
+    #ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True, blank=True)
+    ville = models.CharField(max_length=200 ,null=True, blank=True)
+    comment = models.TextField(null=True)
 
     def __str__(self):
         return self.email
+
+class Candidat(models.Model):
+    Nom = models.CharField(max_length=100)
+    Prenom = models.CharField(max_length=100)
+    Liste = models.ForeignKey(Liste, on_delete=models.PROTECT)
+    EstTeteDeListe = models.BooleanField()
+
+    def __str__(self):
+        return self.Prenom + ' ' + self.Nom

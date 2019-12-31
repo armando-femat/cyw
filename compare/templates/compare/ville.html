@@ -11,7 +11,7 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>{{v.nom}}</title>
+    <title>Programmes Municipales - {{v.nom}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--        <link rel="icon" type="image/png" href="favicon.ico">-->
@@ -93,11 +93,8 @@
             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                 <li><a href="/#hello">Recherche ta ville !</a></li>
                 <li><a href="/#info">Tout sur les elections municipals</a></li>
-                <li><a href="/#fun">Fun fact !</a></li>
                 <li><a href="/#DCV">Domaine de compétence de la ville</a></li>
-                <!--                            <li><a href="#pricing">Pricing</a></li>
-                                            <li><a href="#blog">Blog</a></li>      -->
-                <li><a href="#subscribe">Contact</a></li>
+                <li><a href="/#subscribe">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
         <!--</div> -->
@@ -105,22 +102,17 @@
 
     <!--Home page style-->
     <section id="pricing" class="pricing lightbg">
-        <form>
-            {% csrf_token %}
-            {{form}}
-        </form>
         <div class="container">
             <div class="row">
-                <div class="main_pricing roomy-100">
+                <form class="main_pricing roomy-100" action="{% url "ville" v.nom %}" method="post">
                     <div class="col-md-8 col-md-offset-2 col-sm-12">
-                        <!--                    <form class="head_title text-center" action="{% url "ville" v.nom %}" method="post">-->
-                        <div class="head_title text-center">
+                        <div class=" text-center">
                             {% csrf_token %}
                             <h1>{{v.nom}}</h1>
                             <div class="separator_auto"></div>
-                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
-                                {%endfor %}...</p>
-                            <a href="/compare/{{v.nom}}" class="btn btn-primary">Comparer les programmes</a>
+<!--                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
+                                {%endfor %}...</p>-->
+                            <button type="submit" class="btn btn-primary">Comparer les programmes</button>
                         </div>
                     </div>
                     {% for l in ls%}
@@ -136,18 +128,17 @@
                                     {% endif %}
                                 </div>
                                 <div class="pricing_btn text-center p-top-10">
-                                    <a href="/liste/{{l.id}}"
-                                       class="btn btn-primary">Voir !</a>
-                                    <label class="form-check-label" for="defaultCheck1">
+                                    <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
+                                    <label class="form-check-label" for="{{l.id}}">
                                         Comparer
                                     </label>
-                                    <input class="form-check-input" type="checkbox" id="{{l.nom}}">
+                                    <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
                                 </div>
                             </div>
                         </div>
                     </div><!-- End off col-md-4 -->
                     {% endfor %}
-                </div>
+                </form>
             </div><!--End off row-->
         </div>
     </section> <!--End off Pricing section -->

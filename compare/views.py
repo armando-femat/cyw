@@ -16,19 +16,50 @@ def liste(request, id):
 
 def ville(request, nom):
     form = FormCompare(request.POST or None)
-    if form.is_valid():
-        a = form.cleaned_data['test']
-        if a:
-            print("ok")
-        else:
-            print("nok")
     v = get_object_or_404(Ville, nom=nom)
     #form.fields['Listes'].queryset = [l.pk for l in Liste.objects.filter(ville=v)]
     ls = Liste.objects.filter(ville=v)
+    if form.is_valid():
+        print("ok")
+        listes=request.POST.getlist('Listes',default=None)
+        return compare(request, nom, listes=listes)
     return render(request, 'compare/ville.html', locals())
 
 
+def compare(request, nom, **kwargs):
+    vcats = []
+    cs = Categorie.objects.all()
+    v = get_object_or_404(Ville, nom=nom)
+    ids = kwargs.get('listes', None)
+    if len(ids)>0 :
+        ls = Liste.objects.filter(id__in = ids)
+    else:
+        ls = Liste.objects.filter(ville=v)
+
+    for cat in cs:
+        vcats.append(vCategorie(cat, v, ls))
+    return render(request, 'compare/compare.html', locals())
+
+
 def accueil(request):
+    formV = RechercheVille(request.POST or None)
+    formC = FormContact(request.POST or None)
+    modal = False
+    if formV.is_valid():
+        nom = formV.cleaned_data['ville']
+        print(nom.id)
+        return redirect(ville, nom)
+    if formC.is_valid():
+        email = formC.cleaned_data['email']
+        villeContact = formC.cleaned_data['villeContact']
+        comment = formC.cleaned_data['comment']
+        c = Contact(email=email, ville=villeContact, comment=comment)
+        c.save()
+        modal = True
+    return render(request, 'compare/accueil.html', locals())
+
+
+def test(request):
     formV = RechercheVille(request.POST or None)
     formC = FormContact(request.POST or None)
     modal = False
@@ -40,28 +71,13 @@ def accueil(request):
         return redirect(ville, nom)
     if formC.is_valid():
         email = formC.cleaned_data['email']
-        c = Contact(email=email)
+        ville = formC.cleaned_data['villeContact']
+        comment = formC.cleaned_data['comment']
+        c = Contact(email=email, ville=ville, comment=comment)
         c.save()
         modal = True
-    return render(request, 'compare/accueil.html', locals())
-
-
-def test(request):
-    form = RechercheVille(request.POST or None)
-    if form.is_valid():
-        print("ok")
-        nom = form.cleaned_data['ville']
-        return redirect(ville, id=nom)
     return render(request, 'compare/test.html', locals())
 
 
-def compare(request, nom):
-    vcats = []
-    cs = Categorie.objects.all()
-    v = get_object_or_404(Ville, nom=nom)
-    ls = Liste.objects.filter(ville=v)
-    for cat in cs:
-        vcats.append(vCategorie(cat, v, ls))
-    return render(request, 'compare/compare.html', locals())
 
 
