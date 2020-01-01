@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31185d5f-5a93-486a-864b-4c985e92e69b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/templates/users/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cyw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cyw.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compare/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,13 +239,17 @@
       <screen x="0" y="27" width="1280" height="773" />
     </state>
     <state x="432" y="125" width="405" height="574" key="RollbackChangesDialog/0.27.1280.773@0.27.1280.773" timestamp="1577662439801" />
-    <state x="129" y="48" key="SettingsEditor" timestamp="1577643547255">
+    <state x="129" y="48" key="SettingsEditor" timestamp="1577910123871">
       <screen x="0" y="27" width="1280" height="773" />
     </state>
-    <state x="129" y="48" key="SettingsEditor/0.27.1280.773@0.27.1280.773" timestamp="1577643547255" />
-    <state x="408" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577661112241">
+    <state x="129" y="48" key="SettingsEditor/0.27.1280.773@0.27.1280.773" timestamp="1577910123871" />
+    <state x="296" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1577788186145">
       <screen x="0" y="27" width="1280" height="773" />
     </state>
-    <state x="408" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1280.773@0.27.1280.773" timestamp="1577661112241" />
+    <state x="296" y="240" key="com.intellij.ide.util.TipDialog/0.27.1280.773@0.27.1280.773" timestamp="1577788186145" />
+    <state x="408" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577919404359">
+      <screen x="0" y="27" width="1280" height="773" />
+    </state>
+    <state x="408" y="332" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1280.773@0.27.1280.773" timestamp="1577919404359" />
   </component>
 </project>

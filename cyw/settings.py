@@ -132,3 +132,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "compare/Static"),
 ]
 CRYSPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL='accueil'
