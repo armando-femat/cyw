@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from compare import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +27,9 @@ urlpatterns = [
     path('', include('compare.urls')),
 ]
 
+
 urlpatterns += staticfiles_urlpatterns()
+
+# Import settings and static (only in debug form)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

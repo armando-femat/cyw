@@ -131,7 +131,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "compare/Static"),
 ]
+# Python package for forms template (register)
 CRYSPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL='accueil'
+# Login options
+LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
+
+# Folder where all profile images and other media will be stored.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
