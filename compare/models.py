@@ -20,6 +20,7 @@ class Critere(models.Model):
 
 class Ville(models.Model):
     nom = models.CharField(max_length=100)
+    description = models.TextField(null=True)
     criteres = models.ManyToManyField(Critere, related_name='Ville')
 
     def __str__(self):

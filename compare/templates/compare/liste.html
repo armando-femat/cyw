@@ -108,7 +108,7 @@
                 <div class="main_about">
                     <div class="col-md-4">
                         <div class="about_content">
-                            <h6><i class="fa fa-angle-left"></i> <a href="/{{l.ville}}">{{l.ville}}</a></h6>
+                            <h5><i class="fa fa-angle-left"></i> <a href="/{{l.ville}}">{{l.ville}}</a></h5>
                             <h2>{{l.nom}}</h2>
                             <div class="separator_left"></div>
                             <p>{{l.presentation}}</p>
@@ -159,7 +159,7 @@
                                                 <td>{{c.titre}}</td>
                                                 {% for p in ps%}
                                                 {% if p.critere.titre == c.titre%}
-                                                <td>{{p.titre}}</td>
+                                                <td><a href="#" data-toggle="tooltip" title="{{p.description}}" content="{{p.description}}">{{p.titre}}</a></td>
                                                 <td>{% if p.estUnePriorite %}
                                                         <i class="fa fa-star text-primary"></i>
                                                     {%endif%}
