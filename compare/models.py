@@ -13,18 +13,30 @@ class Critere(models.Model):
     titre = models.CharField(max_length=100)
     description = models.TextField(null=True)
     categorie = models.ForeignKey(Categorie, null=True, on_delete=models.PROTECT)
+    estStandard = models.BooleanField(default=True)
 
     def __str__(self):
         return self.titre
 
 
 class Ville(models.Model):
-    nom = models.CharField(max_length=100)
-    description = models.TextField(null=True)
+    nom = models.CharField(max_length=100, unique=True)
     criteres = models.ManyToManyField(Critere, related_name='Ville')
+    description = models.TextField(null=True)
+    population = models.IntegerField(null=True)
+    departement = models.CharField(max_length=100, null=True)
+    prenomMaire = models.CharField(max_length=100, null=True)
+    nomMaire = models.CharField(max_length=100, null=True)
+    dateNaissanceMaire = models.DateField(null=True)
+    ageMaire = models.IntegerField(null=True)
+    sexMaire = models.CharField(max_length=1, null=True)
+    ProfessionMaire = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.nom
+
+    # def __init__(self, *args, **kwargs):
+    #     self.criteres.add(Critere.objects.filter(estStandard=True))
 
 
 class Liste(models.Model):
@@ -39,11 +51,6 @@ class Liste(models.Model):
         ordering = ['nom']
 
     def __str__(self):
-        """
-        Cette méthode que nous définirons dans tous les modèles
-        nous permettra de reconnaître facilement les différents objets que
-        nous traiterons plus tard dans l'administration
-        """
         return self.nom
 
 
@@ -55,7 +62,7 @@ class Promesse(models.Model):
     estUnePriorite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.titre
+        return self.liste + ' - ' + self.titre
 
 # class Priorite(models.Model):
 #     liste = models.ForeignKey(Liste, on_delete=models.PROTECT)

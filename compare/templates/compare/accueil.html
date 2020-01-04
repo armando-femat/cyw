@@ -97,7 +97,7 @@
             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                 <li><a href="#hello">Rechercher ma ville</a></li>
                 <li><a href="#info">Les élections municipales</a></li>
-                <li><a href="#DCV">Qui sommes-nous ?</a></li>
+                <li><a href="#nous">Qui sommes-nous ?</a></li>
                 <li><a href="#subscribe">Contact</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -140,7 +140,7 @@
                 <div class="main_home">
                     <div class="m-top-40">
                         <h4 class="col-md-5 m-top-40 text-white">Programmes-Municipales.fr permet de comparer les programmes des listes candidates aux élections municipales.</h4>
-                        <form class="col-md-7" action="{%url "accueil"%}" method="post">
+                        <form class="col-md-7" action="{%url 'accueil'%}" method="post">
                             <h1 class="text-white">Qui sera mon Maire ? <br/></h1>
                             {% csrf_token %}
                             <div class="form-group">
@@ -301,7 +301,7 @@
     </section><!-- End off Portfolio section-->
 
     <!--About Sections-->
-    <section id="DCV" class="about roomy-100">
+ <!--   <section id="DCV" class="about roomy-100">
         <div class="container">
             <div class="row">
                 <div class="main_about">
@@ -352,7 +352,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div> <!-- End off accordion item-1 -->
+                                </div> &lt;!&ndash; End off accordion item-1 &ndash;&gt;
 
                                 <h6><i class="fa fa-angle-right"></i>Emploi et insertion professionnelle</h6>
                                 <div>
@@ -367,7 +367,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div> <!-- End off accordion item-2 -->
+                                </div> &lt;!&ndash; End off accordion item-2 &ndash;&gt;
 
                                 <h6><i class="fa fa-angle-right"></i>Enseignement et éducation</h6>
                                 <div>
@@ -404,7 +404,7 @@
 
                                         </ul>
                                     </div>
-                                </div> <!-- End off accordion item-3 -->
+                                </div> &lt;!&ndash; End off accordion item-3 &ndash;&gt;
 
                                 <h6><i class="fa fa-angle-right"></i>Enfance et jeunesse</h6>
                                 <div>
@@ -420,7 +420,7 @@
 
                                         </ul>
                                     </div>
-                                </div> <!-- End off accordion item-4 -->
+                                </div> &lt;!&ndash; End off accordion item-4 &ndash;&gt;
 
                                 <h6><i class="fa fa-angle-right"></i>Sports</h6>
                                 <div>
@@ -441,7 +441,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div> <!-- End off accordion item-4 -->
+                                </div> &lt;!&ndash; End off accordion item-4 &ndash;&gt;
 
                                 <h6><i class="fa fa-angle-right"></i>Culture</h6>
                                 <div>
@@ -475,7 +475,68 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div> <!-- End off accordion item-4 -->
+                                </div> &lt;!&ndash; End off accordion item-4 &ndash;&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>&lt;!&ndash;End off row&ndash;&gt;
+        </div>&lt;!&ndash;End off container &ndash;&gt;
+    </section> --><!--End off About section -->
+
+    <!--About Sections-->
+    <section id="nous" class="about roomy-100">
+        <div class="container">
+            <div class="row">
+                <div class="main_about">
+                    <div class="col-md-6 separator_vertical">
+                        <div class="about_content">
+                            <h2>Qui sommes nous ?</h2>
+                            <div class="separator_left"></div>
+                            <h5><i class="fa fa-caret-right text-primary"></i> Un comparateur de programmes transparent
+                            </h5>
+                            <p>Programmes-Municipales.fr est un comparateur de programmes. Ici, pas de quizz avec un
+                                taux de compatibilité pour savoir quelle liste voter : les propositions des listes
+                                candidates sont organisées de façon claire et c’est à vous de choisir.
+                            </p>
+                            <h5><i class="fa fa-caret-right text-primary"></i> Un comparateur de programmes apartisan
+                            </h5>
+                            <p>Nous ne sommes liés à aucune organisation politique / aucun parti et les listes sont
+                                présentées dans un ordre aléatoire (+ Lire notre charte d’indépendance).
+                            </p>
+                            <h5><i class="fa fa-caret-right text-primary"></i> Connaître les programmes en avance</h5>
+                            <p>Les programmes des listes candidates arriveront quelques jours seulement avant les
+                                élections dans nos boîtes aux lettres. Programmes-Municipales.fr propose de diffuser ces
+                                programmes sans attendre.
+                            </p>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary text-center" data-toggle="modal" data-target="#charte">
+                                    Notre charte
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="about_accordion wow fadeIn">
+                            <h5>Comment fonctionne Programmes-Municipales.fr ?</h5>
+                            <p>
+                                Des propositions organisées en 5 catégories.<br/>
+                                Chaque catégorie comporte plusieurs sujets, propres ou non à la ville, sur lesquels les listes candidates indiquent leurs propositions
+                            </p>
+                            <div id="faq_main_content" class="faq_main_content">
+                                {% for c in cs%}
+                                <h6><i class="fa fa-angle-right"></i>{{c.titre}}</h6>
+                                <div>
+                                    <div class="content">
+                                        <ul>
+                                            {% for cri in c.criteres%}
+                                            <li><i class="fa fa-angle-right text-primary"></i> {{cri.titre}}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div> <!-- End off accordion item-1 -->
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -483,6 +544,67 @@
             </div><!--End off row-->
         </div><!--End off container -->
     </section> <!--End off About section -->
+
+    <div class="modal fade" id="charte" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title">Charte de transparence</h5>
+                </div>
+                <div class="modal-body">
+                    <h6>Financement</h6>
+                    <p>Notre budget de fonctionnement s’élève à la coquette sommes de 78 €, qui couvre uniquement les
+                        frais
+                        d’hébergement du site. Programmes-Municiaples.fr a été développé bénévolement. Nous n’avons reçu
+                        ni
+                        don, ni financement, ni subvention.<br/>
+                        L’intégralité du site est accessible gratuitement, sans publicité.</p>
+                    <h6>Transparence</h6>
+                    <p>Programmes-Municiaples.fr est apartisan : nous ne sommes liés à aucun parti politique.
+                        L’ordre de présentation des listes est aléatoire : en actualisant la page, vous pourrez
+                        constater
+                        que les listes sont présentées dans un ordre différent.
+                        Les listes candidates ne peuvent pas payer pour être mises en avant sur
+                        Programmes-Municipales.fr</p>
+                    <h6>Comment ont été déterminés les sujets ?</h6>
+                    <p>Les sujets communs ont été déterminés à partir du Code Général des Collectivités Territoriales
+                        :</p>
+                    <ul>
+                        <li><i class="fa fa-caret-right"></i>
+                            Chapitre Ier : Le conseil municipal / Section 5 : Attributions
+                        </li>
+                        <li><i class="fa fa-caret-right"></i>
+                            Ce texte présente les attributions du Conseil Municipal. Il est consultable <a
+                                target="_blank"
+                                href="https://www.legifrance.gouv.fr/affichCode.do;jsessionid=E3FAB301150F3C7024FAF0E152920ACB.tpdjo02v_3?idSectionTA=LEGISCTA000006180961&cidTexte=LEGITEXT000006070633&dateTexte=20140304">ici</a>.
+                        </li>
+                        <li><i class="fa fa-caret-right"></i>
+                            Chapitre II : Le maire et ses adjoints / Section 3 : Attributions / Sous-section 2 :
+                            Attributions
+                            exercées au nom de la commune
+                        </li>
+                        <li><i class="fa fa-caret-right"></i>
+                            Ce texte présente les attributions déléguées au maire par le Conseil Municipal. Il est
+                            consultable
+                            <a target="_blank"
+                               href=https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000028538439&cidTexte=LEGITEXT000006070633&dateTexte=20140212&oldAction=rechCodeArticle>ici</a>.
+                        </li>
+                    </ul><br/>
+                    <p>En complément des sujets communs, il est possible d’ajouter des sujets locaux, spécifiques à
+                        chaque
+                        ville. Les listes candidates peuvent ainsi prendre position sur des sujets locaux : transports,
+                        grands projets, commerces, …</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--Subscribe Us Section-->
     <section id="subscribe" class="contact bg-mega fix"><!-- class subscribe avec photo -->
@@ -587,14 +709,12 @@
 
 
 <script>
-
 {%if modal%}
     $(document).ready(function(){
     $('#exampleModalCenter').appendTo("body")
     $("#exampleModalCenter").modal('show');
     });
 {%endif%}
-
 </script>
 
     <!--    {% if form_error %}

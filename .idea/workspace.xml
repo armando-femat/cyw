@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31185d5f-5a93-486a-864b-4c985e92e69b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/compare/Static/images/freddie-marriage-muMn0QEeiiw-unsplash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compare/Static/images/patrick-hodskins-kPooTEadKhg-unsplash.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compare/templates/compare/accueil.html" beforeDir="false" afterPath="$PROJECT_DIR$/compare/templates/compare/accueil.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compare/templates/compare/ville.html" beforeDir="false" afterPath="$PROJECT_DIR$/compare/templates/compare/ville.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/viewObject.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/viewObject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/compare/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
