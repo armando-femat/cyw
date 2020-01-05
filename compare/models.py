@@ -45,6 +45,8 @@ class Liste(models.Model):
     auteur = models.ManyToManyField(User)
     presentation = models.TextField(null=True)
     ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True)
+    couleur = models.CharField(max_length=100, null=True)
+    photo = models.ImageField(null=True)
 
     class Meta:
         verbose_name = "liste"
@@ -83,7 +85,7 @@ class Candidat(models.Model):
     Nom = models.CharField(max_length=100)
     Prenom = models.CharField(max_length=100)
     Liste = models.ForeignKey(Liste, on_delete=models.PROTECT)
-    EstTeteDeListe = models.BooleanField()
+    EstTeteDeListe = models.BooleanField(default=False)
 
     def __str__(self):
         return self.Prenom + ' ' + self.Nom

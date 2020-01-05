@@ -68,8 +68,8 @@
             </button>
             <a class="navbar-brand" href="/">
 
-                <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
-                <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
+                <img src="{% static '/images/logo.png' %}" class="logo logo-display" style="height: 49px"  alt="">
+                <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled"  style="height: 49px"  alt="">
 
             </a>
         </div>
@@ -106,15 +106,29 @@
         <div class="container">
             <div class="row">
                 <div class="main_about">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="about_content">
                             <h5><i class="fa fa-angle-left"></i> <a href="/{{l.ville}}">{{l.ville}}</a></h5>
-                            <h2>{{l.nom}}</h2>
-                            <div class="separator_left"></div>
-                            <p>{{l.presentation}}</p>
+                            <div class="col-md-8">
+                                <h2>
+                                    {{l.nom}}
+                                </h2>
+                                <div class="separator_left"></div>
+                            </div>
+                            <div class="col-md-4">
+                                {%if l.photo.url is not None%}
+                                <img class="image_ville" src="{{l.photo.url}}" alt=""/>
+                                {% else %}
+                                <img class="image_ville" src="{% static '/images/teamwork.png' %}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-12">
+                                <div class="text-center"></div>
+                                <p>{{l.presentation}}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <div class="about_accordion wow fadeIn">
                             <div id="faq_main_content" class="faq_main_content">
                                 <h6><i class="fa fa-star text-primary"></i>Les priorités de la liste</i></h6>

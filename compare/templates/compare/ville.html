@@ -123,9 +123,14 @@
                                 <h4 class="text-uppercase">{{l.nom}}</h4>
                             </div>
                             <div class="pricing_body bg-white p-top-20 p-bottom-20">
-                                <div class="text-center">
-                                    {%if l.slogan is not None%}
-                                    <p>{{l.slogan}}</p>
+                                <div class="col-md-6">
+
+                                </div>
+                                <div class="col-md-6">
+                                    {%if l.photo.url is not None%}
+                                    <img class="image_ville" src="{{l.photo.url}}" alt=""/>
+                                    {% else %}
+                                    <img class="image_ville" src="{% static '/images/teamwork.png' %}" alt=""/>
                                     {% endif %}
                                 </div>
                                 <div class="pricing_btn text-center p-top-10">
