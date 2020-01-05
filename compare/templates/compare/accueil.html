@@ -1,712 +1,383 @@
+{% extends "users/base.html" %}
 {% load static %}
-<!doctype html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <title>Programmes Municipales</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--        <link rel="icon" type="image/png" href="favicon.ico">-->
-
-    <!--Google Font link-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="{% static '/css/slick.css' %}">
-    <link rel="stylesheet" href="{% static '/css/slick-theme.css' %}">
-    <link rel="stylesheet" href="{% static '/css/animate.css' %}">
-    <link rel="stylesheet" href="{% static '/css/fonticons.css' %}">
-    <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}">
-    <link rel="stylesheet" href="{% static '/css/bootsnav.css' %}">
-
-
-    <!--For Plugins external css-->
-    <!--<link rel="stylesheet" href="{% static '/css/plugins.css" />-->
-
-    <!--Theme custom css -->
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <!--<link rel="stylesheet" href="{% static '/css/colors/maron.css">-->
-
-    <!--Theme Responsive css-->
-    <link rel="stylesheet" href="{% static '/css/responsive.css' %}"/>
-
-    <script src="{% static '/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
-
-
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse">
-
-
-<!-- Preloader -->
-<div id="loading">
-    <div id="loading-center">
-        <div id="loading-center-absolute">
-            <div class="object" id="object_one"></div>
-            <div class="object" id="object_two"></div>
-            <div class="object" id="object_three"></div>
-            <div class="object" id="object_four"></div>
-        </div>
-    </div>
-</div><!--End off Preloader -->
-
-
-<div class="culmn">
-    <!--Home page style-->
-
-    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
-        <!-- Start Top Search -->
-        <div class="top-search">
-            <div class="container">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+{% block content %}
+<section id="hello" class="home bg-mega">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="main_home">
+                <div class="m-top-40">
+                    <h4 class="col-md-5 m-top-40 text-white">Programmes-Municipales.fr permet de comparer les programmes
+                        des listes candidates aux élections municipales.</h4>
+                    <form class="col-md-7" action="{%url 'accueil'%}" method="post">
+                        <h1 class="text-white">Qui sera mon Maire ? <br/></h1>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{formV.ville}}
+                            {{formV.media}}
+                        </div>
+                        <button type="submit" class="pull-right btn btn-primary">Recherche</button>
+                    </form>
                 </div>
             </div>
-        </div>
-        <!-- End Top Search -->
+        </div><!--End off row-->
+    </div><!--End off container -->
+</section> <!--End off Home Sections-->
 
-        <!-- Start Header Navigation -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="#brand">
-
-                <img src="{% static '/images/logo.png' %}" class="logo logo-display" style="height: 49px" alt="">
-                <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" style="height: 49px" alt="">
-
-            </a>
-        </div>
-        <!-- End Header Navigation -->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                <li><a href="#hello">Rechercher ma ville</a></li>
-                <li><a href="#info">Les élections municipales</a></li>
-                <li><a href="#nous">Qui sommes-nous ?</a></li>
-                <li><a href="#subscribe">Contact</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-        <!--</div> -->
-
-
-        <!-- Start Side Menu -->
-        <!--                <div class="side">
-                            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                            <div class="widget">
-                                <h6 class="title">Custom Pages</h6>
-                                <ul class="link">
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Portfolio</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget">
-                                <h6 class="title">Additional Links</h6>
-                                <ul class="link">
-                                    <li><a href="#">Retina Homepage</a></li>
-                                    <li><a href="#">New Page Examples</a></li>
-                                    <li><a href="#">Parallax Sections</a></li>
-                                    <li><a href="#">Shortcode Central</a></li>
-                                    <li><a href="#">Ultimate Font Collection</a></li>
-                                </ul>
-                            </div>
-                        </div>-->
-        <!-- End Side Menu -->
-
-    </nav>
-
-    <!--Home Sections-->
-    <section id="hello" class="home bg-mega">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="main_home">
-                    <div class="m-top-40">
-                        <h4 class="col-md-5 m-top-40 text-white">Programmes-Municipales.fr permet de comparer les programmes des listes candidates aux élections municipales.</h4>
-                        <form class="col-md-7" action="{%url 'accueil'%}" method="post">
-                            <h1 class="text-white">Qui sera mon Maire ? <br/></h1>
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {{formV.ville}}
-                                {{formV.media}}
-                            </div>
-                            <button type="submit" class="pull-right btn btn-primary">Recherche</button>
-                        </form>
+<!--Portfolio Section-->
+<section id="info" class="portfolio lightbg">
+    <div class="container roomy-50">
+        <div class="row">
+            <div class="main_portfolio">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="text-center ">
+                        <h3>Quelques infos sur les élections municipales 2020</h3>
+                        <div class="separator_auto"></div>
+                        <p></p>
                     </div>
                 </div>
-            </div><!--End off row-->
-        </div><!--End off container -->
-    </section> <!--End off Home Sections-->
-
-    <!--Portfolio Section-->
-    <section id="info" class="portfolio lightbg">
-        <div class="container roomy-50">
-            <div class="row">
-                <div class="main_portfolio">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="text-center ">
-                            <h3>Quelques infos sur les élections municipales 2020</h3>
-                            <div class="separator_auto"></div>
-                            <p></p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Calendar.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">Une élection en deux tours</h6>
+                                <p class=" text-white">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Calendar.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">Une élection en deux tours</h6>
-                                    <p class=" text-white">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
-                                </div>
+                    <div class="col-md-3">
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Vote.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">Voter en 30 secondes chrono</h6>
+                                <p class=" text-white">Il faut avoir 18 ans, être français (ou européen) et être inscrit
+                                    sur les listes électorales de sa ville </p>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Vote.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">Voter en 30 secondes chrono</h6>
-                                    <p class=" text-white">Il faut avoir 18 ans, être français (ou européen) et être inscrit sur les listes électorales de sa ville </p>
-                                </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Second.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">Un mode de vote spécifique</h6>
+                                <p class=" text-white">+1000 habitants : seules les listes qui dépassent 10 % au 1er
+                                    tour peuvent passer au 2nd tour. Les listes qui ont entre 5 et 10 % peuvent
+                                    fusionner.
+                                    <br/>- 1000 habitants : le compte se fait par candidat, à la majorité au 1er tour.
+                                    Au second tour, les places restantes sont distribuées à ceux qui ont le plus de
+                                    voix.</p>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Second.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">Un mode de vote spécifique</h6>
-                                    <p class=" text-white">+1000 habitants : seules les listes qui dépassent 10 % au 1er tour peuvent passer au 2nd tour. Les listes qui ont entre 5 et 10 % peuvent fusionner.
-                                    <br/>- 1000 habitants : le compte se fait par candidat, à la majorité au 1er tour. Au second tour, les places restantes sont distribuées à ceux qui ont le plus de voix.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Liste.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">On vote pour des conseillers municipaux</h6>
-                                    <p class=" text-white">Ce sont ensuite les conseillers municipaux élus qui votent pour le maire de la ville (et c'est souvent la tête de liste).
+                    </div>
+                    <div class="col-md-3">
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Liste.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">On vote pour des conseillers municipaux</h6>
+                                <p class=" text-white">Ce sont ensuite les conseillers municipaux élus qui votent pour
+                                    le maire de la ville (et c'est souvent la tête de liste).
                                     Les conseillers municipaux (et donc le maire) sont élus pour 6 ans.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row m-top-30">
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Gender.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">1 maire sur 6 est une femme</h6>
-                                    <p class=" text-white">16 % exactement. Et ce chiffre a pourtant triplé en 30 ans (5.5 % en 1989).</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Cake.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">Les maires ont en moyenne 62 ans</h6>
-                                    <p class=" text-white">Et le doyen des maires a fêté ses 97 ans cette année.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Chair.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">1 maire sur 3 est retraité</h6>
-                                    <p class=" text-white">Et les maires en activité sont principalement agriculteurs.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="portfolio_item portfolio_item2">
-                                <img src="{% static '/images/home/Michel.jpg' %}" alt=""/>
-                                <div class="portfolio_hover text-center">
-                                    <h6 class="text-uppercase text-white">Mon maire s'appelle Michel</h6>
-                                    <p class="text-white">C'est le prénom le plus courant chez les maires : 1 maire sur 25.</p>
-                                </div>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><!--End off row -->
-            <!--<div class="row">
-                <div class="about_bottom_content">
+                <div class="row m-top-30">
                     <div class="col-md-3">
-                        <div class="about_bottom_item m-top-20">
-                            <div class="ab_head">
-                                <div class="ab_head_icon">
-                                    <i class="rondP fa fa-calendar-check-o"></i>
-                                </div>
-                                <h6 class="m-top-20">Une élection en deux tours</h6>
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Gender.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">1 maire sur 6 est une femme</h6>
+                                <p class=" text-white">16 % exactement. Et ce chiffre a pourtant triplé en 30 ans (5.5 %
+                                    en 1989).</p>
                             </div>
-                            <p class="m-top-20">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="about_bottom_item m-top-20">
-                            <div class="ab_head">
-                                <div class="ab_head_icon">
-                                    <i class="fa fa-universal-access rondP"></i>
-                                </div>
-                                <h6 class="m-top-20">Pour voter,</h6>
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Cake.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">Les maires ont en moyenne 62 ans</h6>
+                                <p class=" text-white">Et le doyen des maires a fêté ses 97 ans cette année.</p>
                             </div>
-                            <p class="m-top-20">il suffit d'avoir au moins 18 ans et être inscrit sur les listes
-                                électorales de sa ville</p>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="about_bottom_item m-top-20">
-                            <div class="ab_head">
-                                <div class="ab_head_icon">
-                                    <i class="fa fa-percent rondP"></i>
-                                </div>
-                                <h6 class="m-top-20">Les listes qui ont plus de 10% des voix</h6>
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Chair.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">1 maire sur 3 est retraité</h6>
+                                <p class=" text-white">Et les maires en activité sont principalement agriculteurs.</p>
                             </div>
-                            <p class="m-top-20">peuvent se maintenir pour le second tour</p>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="about_bottom_item m-top-20">
-                            <div class="ab_head">
-                                <div class="ab_head_icon">
-                                    <i class="fa fa-users rondP"></i>
-                                </div>
-                                <h6 class="m-top-20">On vote pour une liste !</h6>
-                            </div>
-                            <p class="m-top-20">Le maire est désigné par les conseillers municupaux</p>
-                        </div>
-                    </div>
-                </div>
-            </div>&lt;!&ndash;End off row&ndash;&gt;-->
-        </div><!--End off container -->
-    </section><!-- End off Portfolio section-->
-
-    <!--About Sections-->
- <!--   <section id="DCV" class="about roomy-100">
-        <div class="container">
-            <div class="row">
-                <div class="main_about">
-                    <div class="col-md-4">
-                        <div class="about_content">
-                            <h2>Les domaines de compétence de ma mairie</h2>
-                            <div class="separator_left"></div>
-
-                            <p>Action sociale et santé
-                                Emploi et insertion professionnelle
-                                Enseignement
-                                Enfance et jeunesse
-                                Sports
-                                Culture
-                                Economie et emploi
-                                Urbanisme et aménagement de la commune
-                                Logement
-                                Environnement et patrimoine
-                                Déchets
-                                Énergie et Télécommunication
-                                Ports et voies maritimes
-                                Transports</p>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="about_accordion wow fadeIn">
-                            <div id="faq_main_content" class="faq_main_content">
-                                <h6><i class="fa fa-angle-right"></i>Action sociale et santé</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie est en charge du développement d’une politique sociale, notamment via le Centre Communal d’Action Social (dont le maire est président). C’est aussi la mairie qui décide d’accorder des aides sociales facultatives pour des familles ou des jeunes en difficulté.
-
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie gère les établissements publics d'accueil des enfants de moins de 6 ans et des personnes âgées. La mairie peut choisir de créer et / ou de gérer ces établissements.
-
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie organise l’accueil des personnes dites “gens du voyage”  via par exemple la création d’aire de stationnement.
-
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i>La mairie est en charge des logements sociaux. Elle autorise, construit et subventionne les logements sociaux. Pour les foyer les plus modestes, la mairie peut attribuer des aides, grâce au Fonds de solidarité pour le logement (FSL).
-
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie veille à faciliter l’accès aux soins. A ce titre, elle peut aider à l’installation de professionnels de santé dans les zones déficitaires ou organiser si besoin des campagnes de vaccinations gratuites.
-                                            </li>
-
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie veille à la propreté de la ville, notamment avec les équipes municipales chargée du nettoyage. C’est elle qui organise aussi la collecte des déchets, la gestion des eaux usées et l’alimentation en eau potable des habitations.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> &lt;!&ndash; End off accordion item-1 &ndash;&gt;
-
-                                <h6><i class="fa fa-angle-right"></i>Emploi et insertion professionnelle</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie a la possibilité de créer des plans pour l’emploi et l’insertion dans le monde du travail.
-
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Elle peut créer des maisons de l’emploi et ainsi aider, en partenariat avec Pole Emploi par exemple, à la diffusion d’offres d’emplois.
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> La mairie peut gérer des structures d’accompagnement et d’insertion professionnelle des jeunes
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> &lt;!&ndash; End off accordion item-2 &ndash;&gt;
-
-                                <h6><i class="fa fa-angle-right"></i>Enseignement et éducation</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion de logement des
-                                                étudiants
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des écoles
-                                                maternelles et primaires (bâtiments et personnels)
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Recrutement des ATSEM
-                                                (assistants territoriaux spécialisés des écoles maternelles)
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Restauration scolaire
-                                                des écoles primaires
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Organisation des
-                                                activités périscolaires
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Financement des écoles
-                                                privées sous contrat
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Aide à la scolarisation
-                                                des élèves d’écoles primaires
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des transports
-                                                scolaires à l’intérieur du périmètre de la commune
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Contribution au
-                                                financement des établissements d’enseignement supérieur et de recherche
-                                            </li>
-
-
-                                        </ul>
-                                    </div>
-                                </div> &lt;!&ndash; End off accordion item-3 &ndash;&gt;
-
-                                <h6><i class="fa fa-angle-right"></i>Enfance et jeunesse</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Création de relais
-                                                d’assistants maternels
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Financement et gestion
-                                                des structures d’accueil de la petite enfance (crèches, garderies…)
-                                            </li>
-
-
-                                        </ul>
-                                    </div>
-                                </div> &lt;!&ndash; End off accordion item-4 &ndash;&gt;
-
-                                <h6><i class="fa fa-angle-right"></i>Sports</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Subventions au
-                                                clubs et associations
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Sécurité des
-                                                installations sportives
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Création d’un
-                                                office municipal des sports
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Construction et
-                                                gestion des équipements sportifs de proximité (gymnase, piscine,
-                                                camping)
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> &lt;!&ndash; End off accordion item-4 &ndash;&gt;
-
-                                <h6><i class="fa fa-angle-right"></i>Culture</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-
-                                            <li><i class="fa fa-angle-right text-primary"></i> Inventaires
-                                                général du patrimoine culturel
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des
-                                                bibliothèques municipales
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des
-                                                musées municipaux
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Conservation et
-                                                mise en valeur des archives municipales
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Gestion des
-                                                diagnostics et des fouilles archéologiques préventives
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Aide aux salles
-                                                de spectacles cinématographiques
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Promotion du
-                                                tourisme et création d’offices de tourisme
-                                            </li>
-                                            <li><i class="fa fa-angle-right text-primary"></i> Enseignement
-                                                artistique (musique, danse, …) en partenariat avec les
-                                                établissements scolaires
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> &lt;!&ndash; End off accordion item-4 &ndash;&gt;
+                        <div class="portfolio_item portfolio_item2">
+                            <img src="{% static '/images/home/Michel.jpg' %}" alt=""/>
+                            <div class="portfolio_hover text-center">
+                                <h6 class="text-uppercase text-white">Mon maire s'appelle Michel</h6>
+                                <p class="text-white">C'est le prénom le plus courant chez les maires : 1 maire sur
+                                    25.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>&lt;!&ndash;End off row&ndash;&gt;
-        </div>&lt;!&ndash;End off container &ndash;&gt;
-    </section> --><!--End off About section -->
+            </div>
+        </div><!--End off row -->
+        <!--<div class="row">
+            <div class="about_bottom_content">
+                <div class="col-md-3">
+                    <div class="about_bottom_item m-top-20">
+                        <div class="ab_head">
+                            <div class="ab_head_icon">
+                                <i class="rondP fa fa-calendar-check-o"></i>
+                            </div>
+                            <h6 class="m-top-20">Une élection en deux tours</h6>
+                        </div>
+                        <p class="m-top-20">1er tour : 15 mars 2020 <br/> 2ème tour : 22 mars 2020</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="about_bottom_item m-top-20">
+                        <div class="ab_head">
+                            <div class="ab_head_icon">
+                                <i class="fa fa-universal-access rondP"></i>
+                            </div>
+                            <h6 class="m-top-20">Pour voter,</h6>
+                        </div>
+                        <p class="m-top-20">il suffit d'avoir au moins 18 ans et être inscrit sur les listes
+                            électorales de sa ville</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="about_bottom_item m-top-20">
+                        <div class="ab_head">
+                            <div class="ab_head_icon">
+                                <i class="fa fa-percent rondP"></i>
+                            </div>
+                            <h6 class="m-top-20">Les listes qui ont plus de 10% des voix</h6>
+                        </div>
+                        <p class="m-top-20">peuvent se maintenir pour le second tour</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="about_bottom_item m-top-20">
+                        <div class="ab_head">
+                            <div class="ab_head_icon">
+                                <i class="fa fa-users rondP"></i>
+                            </div>
+                            <h6 class="m-top-20">On vote pour une liste !</h6>
+                        </div>
+                        <p class="m-top-20">Le maire est désigné par les conseillers municupaux</p>
+                    </div>
+                </div>
+            </div>
+        </div>&lt;!&ndash;End off row&ndash;&gt;-->
+    </div><!--End off container -->
+</section><!-- End off Portfolio section-->
 
-    <!--About Sections-->
-    <section id="nous" class="about roomy-100">
-        <div class="container">
-            <div class="row">
-                <div class="main_about">
-                    <div class="col-md-6 separator_vertical">
-                        <div class="about_content">
-                            <h2>Qui sommes nous ?</h2>
-                            <div class="separator_left"></div>
-                            <h5><i class="fa fa-caret-right text-primary"></i> Un comparateur de programmes transparent
-                            </h5>
-                            <p>Programmes-Municipales.fr est un comparateur de programmes. Ici, pas de quizz avec un
-                                taux de compatibilité pour savoir quelle liste voter : les propositions des listes
-                                candidates sont organisées de façon claire et c’est à vous de choisir.
-                            </p>
-                            <h5><i class="fa fa-caret-right text-primary"></i> Un comparateur de programmes apartisan
-                            </h5>
-                            <p>Nous ne sommes liés à aucune organisation politique / aucun parti et les listes sont
-                                présentées dans un ordre aléatoire (+ Lire notre charte d’indépendance).
-                            </p>
-                            <h5><i class="fa fa-caret-right text-primary"></i> Connaître les programmes en avance</h5>
-                            <p>Les programmes des listes candidates arriveront quelques jours seulement avant les
-                                élections dans nos boîtes aux lettres. Programmes-Municipales.fr propose de diffuser ces
-                                programmes sans attendre.
-                            </p>
+<!--About Sections-->
+<section id="nous" class="about roomy-100">
+    <div class="container">
+        <div class="row">
+            <div class="main_about">
+                <div class="col-md-6 separator_vertical">
+                    <div class="about_content">
+                        <h2>Qui sommes nous ?</h2>
+                        <div class="separator_left"></div>
+                        <h5><i class="fa fa-caret-right text-primary"></i> Un comparateur de programmes transparent
+                        </h5>
+                        <p>Programmes-Municipales.fr est un comparateur de programmes. Ici, pas de quizz avec un
+                            taux de compatibilité pour savoir quelle liste voter : les propositions des listes
+                            candidates sont organisées de façon claire et c’est à vous de choisir.
+                        </p>
+                        <h5><i class="fa fa-caret-right text-primary"></i> Un comparateur de programmes apartisan
+                        </h5>
+                        <p>Nous ne sommes liés à aucune organisation politique / aucun parti et les listes sont
+                            présentées dans un ordre aléatoire (+ Lire notre charte d’indépendance).
+                        </p>
+                        <h5><i class="fa fa-caret-right text-primary"></i> Connaître les programmes en avance</h5>
+                        <p>Les programmes des listes candidates arriveront quelques jours seulement avant les
+                            élections dans nos boîtes aux lettres. Programmes-Municipales.fr propose de diffuser ces
+                            programmes sans attendre.
+                        </p>
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary text-center" data-toggle="modal" data-target="#charte">
+                                Notre charte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about_accordion wow fadeIn">
+                        <h5>Comment fonctionne Programmes-Municipales.fr ?</h5>
+                        <p>
+                            Des propositions organisées en 5 catégories.<br/>
+                            Chaque catégorie comporte plusieurs sujets, propres ou non à la ville, sur lesquels les
+                            listes candidates indiquent leurs propositions
+                        </p>
+                        <div id="faq_main_content" class="faq_main_content">
+                            {% for c in cs%}
+                            <h6><i class="fa fa-angle-right"></i>{{c.titre}}</h6>
+                            <div>
+                                <div class="content">
+                                    <ul>
+                                        {% for cri in c.criteres%}
+                                        <li><i class="fa fa-angle-right text-primary"></i> {{cri.titre}}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div> <!-- End off accordion item-1 -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--End off row-->
+    </div><!--End off container -->
+</section> <!--End off About section -->
+
+<div class="modal fade" id="charte" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Charte de transparence</h5>
+            </div>
+            <div class="modal-body">
+                <h6>Financement</h6>
+                <p>Notre budget de fonctionnement s’élève à la coquette sommes de 78 €, qui couvre uniquement les
+                    frais
+                    d’hébergement du site. Programmes-Municiaples.fr a été développé bénévolement. Nous n’avons reçu
+                    ni
+                    don, ni financement, ni subvention.<br/>
+                    L’intégralité du site est accessible gratuitement, sans publicité.</p>
+                <h6>Transparence</h6>
+                <p>Programmes-Municiaples.fr est apartisan : nous ne sommes liés à aucun parti politique.
+                    L’ordre de présentation des listes est aléatoire : en actualisant la page, vous pourrez
+                    constater
+                    que les listes sont présentées dans un ordre différent.
+                    Les listes candidates ne peuvent pas payer pour être mises en avant sur
+                    Programmes-Municipales.fr</p>
+                <h6>Comment ont été déterminés les sujets ?</h6>
+                <p>Les sujets communs ont été déterminés à partir du Code Général des Collectivités Territoriales
+                    :</p>
+                <ul>
+                    <li><i class="fa fa-caret-right"></i>
+                        Chapitre Ier : Le conseil municipal / Section 5 : Attributions
+                    </li>
+                    <li><i class="fa fa-caret-right"></i>
+                        Ce texte présente les attributions du Conseil Municipal. Il est consultable <a
+                                target="_blank"
+                                href="https://www.legifrance.gouv.fr/affichCode.do;jsessionid=E3FAB301150F3C7024FAF0E152920ACB.tpdjo02v_3?idSectionTA=LEGISCTA000006180961&cidTexte=LEGITEXT000006070633&dateTexte=20140304">ici</a>.
+                    </li>
+                    <li><i class="fa fa-caret-right"></i>
+                        Chapitre II : Le maire et ses adjoints / Section 3 : Attributions / Sous-section 2 :
+                        Attributions
+                        exercées au nom de la commune
+                    </li>
+                    <li><i class="fa fa-caret-right"></i>
+                        Ce texte présente les attributions déléguées au maire par le Conseil Municipal. Il est
+                        consultable
+                        <a target="_blank"
+                           href=https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000028538439&cidTexte=LEGITEXT000006070633&dateTexte=20140212&oldAction=rechCodeArticle>ici</a>.
+                    </li>
+                </ul>
+                <br/>
+                <p>En complément des sujets communs, il est possible d’ajouter des sujets locaux, spécifiques à
+                    chaque
+                    ville. Les listes candidates peuvent ainsi prendre position sur des sujets locaux : transports,
+                    grands projets, commerces, …</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Subscribe Us Section-->
+<section id="subscribe" class="contact bg-mega fix"><!-- class subscribe avec photo -->
+    <div class="container">
+        <div class="row">
+            <div class="main_contact roomy-100 text-white">
+                <div class="col-md-4">
+                    <div class="rage_widget">
+                        <div class="widget_head">
+                            <h3 class="text-white">Reste informé !</h3>
+                            <div class="separator_small"></div>
+                        </div>
+                        <p>Aucune information n'est encore disponible sur ta ville et tu souhaites être informé le
+                            moment venu ?
+                            <br/>Envie de nous faire part d'une idée ou d'une attente quant aux élection à venir ?
+                            <br/>Laisse nous un petit mot par ici !
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-8 sm-m-top-30">
+                    <form class="" action="{% url " accueil
+                    " %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{formC.email}}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{formC.villeContact}}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{formC.comment}}
+                            </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-primary text-center" data-toggle="modal" data-target="#charte">
-                                    Notre charte
+                                <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModalCenter">Je m'abonne !
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="about_accordion wow fadeIn">
-                            <h5>Comment fonctionne Programmes-Municipales.fr ?</h5>
-                            <p>
-                                Des propositions organisées en 5 catégories.<br/>
-                                Chaque catégorie comporte plusieurs sujets, propres ou non à la ville, sur lesquels les listes candidates indiquent leurs propositions
-                            </p>
-                            <div id="faq_main_content" class="faq_main_content">
-                                {% for c in cs%}
-                                <h6><i class="fa fa-angle-right"></i>{{c.titre}}</h6>
-                                <div>
-                                    <div class="content">
-                                        <ul>
-                                            {% for cri in c.criteres%}
-                                            <li><i class="fa fa-angle-right text-primary"></i> {{cri.titre}}
-                                            </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div> <!-- End off accordion item-1 -->
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--End off row-->
-        </div><!--End off container -->
-    </section> <!--End off About section -->
-
-    <div class="modal fade" id="charte" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5 class="modal-title">Charte de transparence</h5>
-                </div>
-                <div class="modal-body">
-                    <h6>Financement</h6>
-                    <p>Notre budget de fonctionnement s’élève à la coquette sommes de 78 €, qui couvre uniquement les
-                        frais
-                        d’hébergement du site. Programmes-Municiaples.fr a été développé bénévolement. Nous n’avons reçu
-                        ni
-                        don, ni financement, ni subvention.<br/>
-                        L’intégralité du site est accessible gratuitement, sans publicité.</p>
-                    <h6>Transparence</h6>
-                    <p>Programmes-Municiaples.fr est apartisan : nous ne sommes liés à aucun parti politique.
-                        L’ordre de présentation des listes est aléatoire : en actualisant la page, vous pourrez
-                        constater
-                        que les listes sont présentées dans un ordre différent.
-                        Les listes candidates ne peuvent pas payer pour être mises en avant sur
-                        Programmes-Municipales.fr</p>
-                    <h6>Comment ont été déterminés les sujets ?</h6>
-                    <p>Les sujets communs ont été déterminés à partir du Code Général des Collectivités Territoriales
-                        :</p>
-                    <ul>
-                        <li><i class="fa fa-caret-right"></i>
-                            Chapitre Ier : Le conseil municipal / Section 5 : Attributions
-                        </li>
-                        <li><i class="fa fa-caret-right"></i>
-                            Ce texte présente les attributions du Conseil Municipal. Il est consultable <a
-                                target="_blank"
-                                href="https://www.legifrance.gouv.fr/affichCode.do;jsessionid=E3FAB301150F3C7024FAF0E152920ACB.tpdjo02v_3?idSectionTA=LEGISCTA000006180961&cidTexte=LEGITEXT000006070633&dateTexte=20140304">ici</a>.
-                        </li>
-                        <li><i class="fa fa-caret-right"></i>
-                            Chapitre II : Le maire et ses adjoints / Section 3 : Attributions / Sous-section 2 :
-                            Attributions
-                            exercées au nom de la commune
-                        </li>
-                        <li><i class="fa fa-caret-right"></i>
-                            Ce texte présente les attributions déléguées au maire par le Conseil Municipal. Il est
-                            consultable
-                            <a target="_blank"
-                               href=https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000028538439&cidTexte=LEGITEXT000006070633&dateTexte=20140212&oldAction=rechCodeArticle>ici</a>.
-                        </li>
-                    </ul><br/>
-                    <p>En complément des sujets communs, il est possible d’ajouter des sujets locaux, spécifiques à
-                        chaque
-                        ville. Les listes candidates peuvent ainsi prendre position sur des sujets locaux : transports,
-                        grands projets, commerces, …</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </div>
+        </div><!--End off row -->
+    </div><!--End off container -->
+</section><!--End off Subscribe Section-->
 
-    <!--Subscribe Us Section-->
-    <section id="subscribe" class="contact bg-mega fix"><!-- class subscribe avec photo -->
-        <div class="container">
-            <div class="row">
-                <div class="main_contact roomy-100 text-white">
-                    <div class="col-md-4">
-                        <div class="rage_widget">
-                            <div class="widget_head">
-                                <h3 class="text-white">Reste informé !</h3>
-                                <div class="separator_small"></div>
-                            </div>
-                            <p>Aucune information n'est encore disponible sur ta ville et tu souhaites être informé le moment venu ?
-                                <br/>Envie de nous faire part d'une idée ou d'une attente quant aux élection à venir ?
-                                <br/>Laisse nous un petit mot par ici !
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-8 sm-m-top-30">
-                        <form class="" action="{% url "accueil" %}" method="post">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{formC.email}}
-                                    </div>
-                                </div>
+<!-- scroll up-->
+<div class="scrollup">
+    <a href="#"><i class="fa fa-chevron-up"></i></a>
+</div><!-- End off scroll up -->
 
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{formC.villeContact}}
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        {{formC.comment}}
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <button type="submit" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModalCenter">Je m'abonne !
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div><!--End off row -->
-        </div><!--End off container -->
-    </section><!--End off Subscribe Section-->
-
-    <!-- scroll up-->
-    <div class="scrollup">
-        <a href="#"><i class="fa fa-chevron-up"></i></a>
-    </div><!-- End off scroll up -->
-
-<!--    <footer id="footer" class="footer bg-black">
-        <div class="container">
-            <div class="row">
-                <div class="main_footer text-center p-top-40 p-bottom-30">
-                    <p class="wow fadeInRight" data-wow-duration="1s">
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>-->
-</div>
-
-    <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Félicitation !</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Vous êtes des nôtres ! On va vous envoyer plein d'emails
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-          </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Félicitation !</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vous êtes des nôtres ! On va vous envoyer plein d'emails
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
         </div>
-      </div>
     </div>
-<!-- JS includes -->
-
-<script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
-<script src="{% static '/js/vendor/bootstrap.min.js' %}"></script>
-
-<script src="{% static '/js/jquery.magnific-popup.js' %}"></script>
-<script src="{% static '/js/jquery.easing.1.3.js' %}"></script>
-<script src="{% static '/js/slick.min.js' %}"></script>
-<script src="{% static '/js/jquery.collapse.js' %}"></script>
-<script src="{% static '/js/bootsnav.js' %}"></script>
-
-<!-- paradise slider js -->
-
+</div>
 
 <script>
 {%if modal%}
@@ -715,14 +386,8 @@
     $("#exampleModalCenter").modal('show');
     });
 {%endif%}
+
+
 </script>
+{% endblock content %}
 
-    <!--    {% if form_error %}
-        $(#offerModalForm).modal("show");
-    {% endif %}-->
-<script src="{% static '/js/plugins.js' %}"></script>
-<script src="{% static '/js/main.js' %}"></script>
-
-
-</body>
-</html>
