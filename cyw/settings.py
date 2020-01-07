@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'dal',
     'dal_select2',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     # 'grappelli',
 ]
 
@@ -111,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'UTC'
 
@@ -122,10 +124,20 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "compare/static"),
 ]
+# Python package for forms template (register)
+CRYSPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Login options
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
+
+# Folder where all profile images and other media will be stored.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -1,185 +1,52 @@
+{% extends "users/base.html" %}
 {% load static %}
-
-<!doctype html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <title>Programmes - {{v.nom}}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--        <link rel="icon" type="image/png" href="favicon.ico">-->
-
-    <!--Google Font link-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="{% static '/css/slick.css' %}">
-    <link rel="stylesheet" href="{% static '/css/slick-theme.css' %}">
-    <link rel="stylesheet" href="{% static '/css/animate.css' %}">
-    <link rel="stylesheet" href="{% static '/css/fonticons.css' %}">
-    <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}">
-    <link rel="stylesheet" href="{% static '/css/bootsnav.css' %}">
-
-
-    <!--For Plugins external css-->
-    <!--<link rel="stylesheet" href="{% static '/css/plugins.css" />-->
-
-    <!--Theme custom css -->
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <!--<link rel="stylesheet" href="{% static '/css/colors/maron.css">-->
-
-    <!--Theme Responsive css-->
-    <link rel="stylesheet" href="{% static '/css/responsive.css' %}"/>
-
-    <script src="{% static '/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse">
-
-<!-- Preloader -->
-<div id="loading">
-    <div id="loading-center">
-        <div id="loading-center-absolute">
-            <div class="object" id="object_one"></div>
-            <div class="object" id="object_two"></div>
-            <div class="object" id="object_three"></div>
-            <div class="object" id="object_four"></div>
-        </div>
-    </div>
-</div><!--End off Preloader -->
-
-<div class="culmn">
-
-    <nav class="navbar navbar-default navbar-fixed white bootsnav">
-        <!-- Start Top Search -->
-        <div class="top-search">
-            <div class="container">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+{% block content %}
+<!--Home page style-->
+<section id="pricing" class="pricing lightbg">
+    <div class="container">
+        <div class="row">
+            <form class="main_pricing roomy-100" action="{% url 'ville' v.nom %}" method="post">
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class=" text-center">
+                        {% csrf_token %}
+                        <h1>{{v.nom}}</h1>
+                        <div class="separator_auto"></div>
+                        <!--                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
+                                                        {%endfor %}...</p>-->
+                        <p>{%if l.slogan is not None%}{{v.description}}{% endif %}</p>
+                        <button type="submit" class="btn btn-primary">Comparer les programmes</button>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- End Top Search -->
+                {% for l in ls%}
+                <div class="col-md-4 col-sm-12 m-top-30">
+                    <div class="pricing_item">
+                        <div class="pricing_head text-center p-top-20 p-bottom-15">
+                            <h4 class="text-uppercase">{{l.nom}}</h4>
+                        </div>
+                        <div class="pricing_body bg-white p-top-20 p-bottom-20">
+                            <div class="col-md-6">
 
-        <!-- Start Header Navigation -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="/">
-
-                <img src="{% static '/images/logo.png' %}" class="logo logo-display m-top-10" alt="">
-                <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" alt="">
-
-            </a>
-        </div>
-        <!-- End Header Navigation -->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                <li><a href="/#hello">Recherche ta ville !</a></li>
-                <li><a href="/#info">Tout sur les elections municipals</a></li>
-                <li><a href="/#DCV">Domaine de compétence de la ville</a></li>
-                <li><a href="/#subscribe">Contact</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-        <!--</div> -->
-    </nav>
-
-    <!--Home page style-->
-    <section id="pricing" class="pricing lightbg">
-        <div class="container">
-            <div class="row">
-                <form class="main_pricing roomy-100" action="{% url "ville" v.nom %}" method="post">
-                    <div class="col-md-8 col-md-offset-2 col-sm-12">
-                        <div class=" text-center">
-                            {% csrf_token %}
-                            <h1>{{v.nom}}</h1>
-                            <div class="separator_auto"></div>
-<!--                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
-                                {%endfor %}...</p>-->
-                                <p>{%if l.slogan is not None%}{{v.description}}{% endif %}</p>
-                            <button type="submit" class="btn btn-primary">Comparer les programmes</button>
+                            </div>
+                            <div class="col-md-6">
+                                {%if l.photo.url is not None%}
+                                <img class="image_ville" src="{{l.photo.url}}" alt=""/>
+                                {% else %}
+                                <img class="image_ville" src="{% static '/images/teamwork.png' %}" alt=""/>
+                                {% endif %}
+                            </div>
+                            <div class="pricing_btn text-center p-top-10">
+                                <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
+                                <label class="form-check-label" for="{{l.id}}">
+                                    Comparer
+                                </label>
+                                <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
+                            </div>
                         </div>
                     </div>
-                    {% for l in ls%}
-                    <div class="col-md-4 col-sm-12 m-top-30">
-                        <div class="pricing_item">
-                            <div class="pricing_head text-center p-top-20 p-bottom-15">
-                                <h4 class="text-uppercase">{{l.nom}}</h4>
-                            </div>
-                            <div class="pricing_body bg-white p-top-20 p-bottom-20">
-                                <div class="text-center">
-                                    {%if l.slogan is not None%}
-                                    <p>{{l.slogan}}</p>
-                                    {% endif %}
-                                </div>
-                                <div class="pricing_btn text-center p-top-10">
-                                    <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
-                                    <label class="form-check-label" for="{{l.id}}">
-                                        Comparer
-                                    </label>
-                                    <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End off col-md-4 -->
-                    {% endfor %}
-                </form>
-            </div><!--End off row-->
-        </div>
-    </section> <!--End off Pricing section -->
-
-    <!-- JS includes -->
-
-    <script src="{% static '/js/vendor/jquery-1.11.2.min.js' %}"></script>
-    <script src="{% static '/js/vendor/bootstrap.min.js' %}"></script>
-
-    <script src="{% static '/js/jquery.magnific-popup.js' %}"></script>
-    <script src="{% static '/js/jquery.easing.1.3.js' %}"></script>
-    <script src="{% static '/js/slick.min.js' %}"></script>
-    <script src="{% static '/js/jquery.collapse.js' %}"></script>
-    <script src="{% static '/js/bootsnav.js' %}"></script>
-
-
-    <!-- paradise slider js -->
-
-
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyD_tAQD36pKp9v4at5AnpGbvBUsLCOSJx8"></script>
-    <script src="{% static '/js/gmaps.min.js' %}"></script>
-
-    <script>
-                            function showmap() {
-                                var mapOptions = {
-                                    zoom: 8,
-                                    scrollwheel: false,
-                                    center: new google.maps.LatLng(-34.397, 150.644),
-                                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                                };
-                                var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-                                $('.mapheight').css('height', '350');
-                                $('.maps_text h3').hide();
-                            }
-
-    </script>
-
-
-    <script src="{% static '/js/plugins.js' %}"></script>
-    <script src="{% static '/js/main.js' %}"></script>
-</div>
-</body>
-</html>
+                </div><!-- End off col-md-4 -->
+                {% endfor %}
+            </form>
+        </div><!--End off row-->
+    </div>
+</section> <!--End off Pricing section -->
+{% endblock content %}
