@@ -13,7 +13,7 @@
                         <div class="separator_auto"></div>
                         <!--                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
                                                         {%endfor %}...</p>-->
-                        <p>{%if l.slogan is not None%}{{v.description}}{% endif %}</p>
+                        <p>{%if v.description is not None%}{{v.description}}{% endif %}</p>
                         <button type="submit" class="btn btn-primary">Comparer les programmes</button>
                     </div>
                 </div>
@@ -25,7 +25,9 @@
                         </div>
                         <div class="pricing_body bg-white p-top-20 p-bottom-20">
                             <div class="col-md-6">
-
+                                {%if l.couleur is not None%}
+                                <h6>{{l.couleur}}</h6>
+                                {% endif %}
                             </div>
                             <div class="col-md-6">
                                 {%if l.photo.url is not None%}
