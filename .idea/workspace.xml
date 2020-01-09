@@ -71,7 +71,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/users/templates/users" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -81,6 +81,7 @@
       <recent name="C:\Python\cyw\compare\templates\compare" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\cyw\users\templates\users" />
       <recent name="$PROJECT_DIR$/media/profile_pics" />
     </key>
   </component>

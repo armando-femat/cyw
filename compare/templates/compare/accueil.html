@@ -1,4 +1,4 @@
-{% extends "users/base.html" %}
+{% extends "users/baseAccueil.html" %}
 {% load static %}
 {% block content %}
 <section id="hello" class="home bg-mega">
@@ -50,7 +50,7 @@
                         <div class="portfolio_item portfolio_item2">
                             <img src="{% static '/images/home/Vote.jpg' %}" alt=""/>
                             <div class="portfolio_hover text-center">
-                                <h6 class="text-uppercase text-white">Voter en 30 secondes chrono</h6>
+                                <h6 class="text-uppercase text-white ">Voter en 30 secondes chrono</h6>
                                 <p class=" text-white">Il faut avoir 18 ans, être français (ou européen) et être inscrit
                                     sur les listes électorales de sa ville </p>
                             </div>
@@ -320,8 +320,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 sm-m-top-30">
-                    <form class="" action="{% url " accueil
-                    " %}" method="post">
+                    <form class="" action="{% url 'accueil' %}" method="post">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-sm-6">
