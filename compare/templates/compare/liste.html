@@ -23,7 +23,13 @@
                         </div>
                         <div class="col-md-12">
                             <div class="text-center"></div>
+                            {%if candidat is not None%}
+                            <h5>Liste portée par {{candidat}}</h5>
+                            {% endif %}
                             <p>{{l.presentation}}</p>
+                            {%if l.site is not None%}
+                            <a target="_blank" href="http://{{l.site}}">Le site web de la liste</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

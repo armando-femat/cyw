@@ -10,7 +10,7 @@
                     <h4 class="col-md-5 m-top-40 text-white">Programmes-Municipales.fr permet de comparer les programmes
                         des listes candidates aux élections municipales.</h4>
                     <form class="col-md-7" action="{%url 'accueil'%}" method="post">
-                        <h1 class="text-white">Qui sera mon Maire ? <br/></h1>
+                        <h1 class="text-white"><b>Qui sera mon Maire ? </b><br/></h1>
                         {% csrf_token %}
                         <div class="form-group">
                             {{formV.ville}}
@@ -323,17 +323,17 @@
                     <form class="" action="{% url 'accueil' %}" method="post">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 {{formC.email}}
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+<!--                        <div class="col-sm-6">
                             <div class="form-group">
                                 {{formC.villeContact}}
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="col-sm-12">
                             <div class="form-group">

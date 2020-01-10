@@ -24,24 +24,34 @@
                             <h4 class="text-uppercase">{{l.nom}}</h4>
                         </div>
                         <div class="pricing_body bg-white p-top-20 p-bottom-20">
-                            <div class="col-md-6">
+                            {%if l.candidat is not None%}
+                            <h5 class="text-center">Liste portée par {{l.candidat}}</h5>
+                            {% endif %}
+                            <div class="col-md-7">
                                 {%if l.couleur is not None%}
-                                <h6>{{l.couleur}}</h6>
+                                <h6><em>Couleur politique : {{l.couleur}}</em></h6>
                                 {% endif %}
+                                <small>
+                                    {% for p in l.prio%}
+                                    <li>{{p.critere.titre}} : {{p.titre}}</li>
+                                    {% endfor %}
+                                </small>
                             </div>
-                            <div class="col-md-6">
-                                {%if l.photo.url is not None%}
-                                <img class="image_ville" src="{{l.photo.url}}" alt=""/>
-                                {% else %}
-                                <img class="image_ville" src="{% static '/images/teamwork.png' %}" alt=""/>
-                                {% endif %}
-                            </div>
-                            <div class="pricing_btn text-center p-top-10">
-                                <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
-                                <label class="form-check-label" for="{{l.id}}">
-                                    Comparer
-                                </label>
-                                <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
+                            <div class="col-md-5">
+                                <div class="image_ville">
+                                    {%if l.photo.url is not None%}
+                                    <img class="image_ville_item" src="{{l.photo.url}}" alt=""/>
+                                    {% else %}
+                                    <img class="image_ville_item" src="{% static '/images/teamwork.png' %}" alt=""/>
+                                    {% endif %}
+                                </div>
+                                <div class="pricing_btn text-center p-top-10">
+                                    <label class="form-check-label" for="{{l.id}}">
+                                        Comparer
+                                    </label>
+                                    <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
+                                    <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -47,6 +47,7 @@ class Liste(models.Model):
     ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True)
     couleur = models.CharField(max_length=100, null=True)
     photo = models.ImageField(null=True)
+    site = models.CharField(max_length=200, null=True)
 
     class Meta:
         verbose_name = "liste"
@@ -64,7 +65,7 @@ class Promesse(models.Model):
     estUnePriorite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.liste + ' - ' + self.titre
+        return self.titre
 
 # class Priorite(models.Model):
 #     liste = models.ForeignKey(Liste, on_delete=models.PROTECT)

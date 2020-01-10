@@ -15,6 +15,31 @@
             <div class="main_about">
                 <div class="about_accordion wow fadeIn">
                     <div id="faq_main_content" class="faq_main_content">
+                        <h6><i class="fa fa-star text-primary"></i>Les priorités des liste</h6>
+                        <div>
+                            <div class="content">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        {% for l in ls%}
+                                        <th scope="col"><a href="/liste/{{l.id}}">{{l.nom}}</a></th>
+                                        {% endfor %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        {% for l in ls%}
+                                        <td>
+                                        {% for pr in l.prio%}
+                                            <li>{{pr.critere.titre}} : {{pr.titre}}</li>
+                                        {% endfor %}
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> <!-- End off accordion item-1 -->
                         {% for vcat in vcats%}
                         <h6><i class="fa fa-angle-right"></i>{{vcat.titre}}</h6>
                         <div>
