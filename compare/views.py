@@ -1,6 +1,6 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from compare.models import Liste, Promesse, Ville, Categorie, Contact, Critere
+from compare.models import Liste, Promesse, Ville, Categorie, Contact, Critere, Candidat
 from compare.form import RechercheVille, FormCompare, FormContact
 from compare.viewObject import vCategorie
 from datetime import datetime
@@ -12,6 +12,9 @@ def liste(request, id):
     ps = Promesse.objects.filter(liste_id=id)
     cats = Categorie.objects.all()
     prio = Promesse.objects.filter(liste_id=id, estUnePriorite=True)
+    candidats = Candidat.objects.filter(Liste=l, EstTeteDeListe=True)
+    if len(candidats)>0:
+        candidat=candidats[0]
     return render(request, 'compare/liste.html', locals())
 
 
@@ -20,8 +23,12 @@ def ville(request, nom):
     v = get_object_or_404(Ville, nom=nom)
     #form.fields['Listes'].queryset = [l.pk for l in Liste.objects.filter(ville=v)]
     ls = Liste.objects.filter(ville=v)
+    for l in ls:
+        candidats = Candidat.objects.filter(Liste=l, EstTeteDeListe=True)
+        if len(candidats)>0:
+            l.candidat = candidats[0]
+        l.prio = Promesse.objects.filter(liste=l, estUnePriorite=True)
     if form.is_valid():
-        print("ok")
         listes=request.POST.getlist('Listes',default=None)
         return compare(request, nom, listes=listes)
     return render(request, 'compare/ville.html', locals())
@@ -32,11 +39,14 @@ def compare(request, nom, **kwargs):
     cs = Categorie.objects.all()
     v = get_object_or_404(Ville, nom=nom)
     ids = kwargs.get('listes', None)
+    ls=[]
     if len(ids)>0 :
         ls = Liste.objects.filter(id__in = ids)
     else:
         ls = Liste.objects.filter(ville=v)
-
+    for l in ls:
+        l.prio=[]
+        l.prio.extend(Promesse.objects.filter(liste=l, estUnePriorite=True))
     for cat in cs:
         vcats.append(vCategorie(cat, v, ls))
     return render(request, 'compare/compare.html', locals())
@@ -49,11 +59,9 @@ def accueil(request):
     for c in cs:
         c.criteres = []
         c.criteres.extend(Critere.objects.filter(categorie=c, estStandard=True))
-        print(c.criteres)
     modal = False
     if formV.is_valid():
         nom = formV.cleaned_data['ville']
-        print(nom.id)
         return redirect(ville, nom)
     if formC.is_valid():
         email = formC.cleaned_data['email']

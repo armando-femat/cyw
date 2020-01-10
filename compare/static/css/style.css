@@ -57,6 +57,14 @@ body {
     height: 100%;
 }
 
+.image_ville_item{
+    width: 100%;
+    height: auto;
+    text-align : center;
+    overflow : hidden;
+    border-radius: 50%;
+}
+
 /*------------------------------------------------------------------*/
 /*   IE10 in Windows 8 and Windows Phone 8 Bug fix
 /*-----------------------------------------------------------------*/

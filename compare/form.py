@@ -20,7 +20,7 @@ class FormCompare(forms.Form):
 class FormContact(forms.Form):
     email = forms.EmailField()
     email.widget.attrs.update({'class': 'form-control'})
-    email.widget.attrs.update(placeholder="Ton addresse email !")
+    email.widget.attrs.update(placeholder="Ton adresse email !")
     villeContact = forms.CharField(max_length=200)
     villeContact.widget.attrs.update({'class': 'form-control'})
     villeContact.widget.attrs.update(placeholder="Quelle est ta ville ?")
