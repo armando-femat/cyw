@@ -40,6 +40,31 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+/*Custum*/
+.image_liste{
+    padding: 10px;
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+}
+
+.image_ville{
+    padding: 10px;
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+.image_ville_item{
+    width: 100%;
+    height: auto;
+    text-align : center;
+    overflow : hidden;
+    border-radius: 50%;
+}
+
 /*------------------------------------------------------------------*/
 /*   IE10 in Windows 8 and Windows Phone 8 Bug fix
 /*-----------------------------------------------------------------*/
@@ -469,7 +494,7 @@ Extra height css
     margin-right: 15px;
 }
 .m-l-15{
-    margin-left: 15px; 
+    margin-left: 15px;
 }
 .m-top-10 {
     margin-top: 10px;
@@ -742,9 +767,9 @@ textarea::-ms-input-placeholder{
 }*/
 
 
-.transform_scal_rotate:hover img{ 
-    -webkit-transform: scale(1.1) rotate(4deg); 
-    transform: scale(1.1) rotate(4deg); 
+.transform_scal_rotate:hover img{
+    -webkit-transform: scale(1.1) rotate(4deg);
+    transform: scale(1.1) rotate(4deg);
 }
 
 .culmn{
@@ -797,10 +822,10 @@ textarea::-ms-input-placeholder{
     height: 150px;
     width: 150px;
     margin-top: -75px;
-    margin-left: -75px;	
-    -ms-transform: rotate(45deg); 
+    margin-left: -75px;
+    -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    transform: rotate(45deg); 
+    transform: rotate(45deg);
 
 }
 .object{
@@ -821,50 +846,50 @@ textarea::-ms-input-placeholder{
 #object_one {
     -webkit-animation: object_one 2s infinite;
     animation: object_one 2s infinite;
-    -webkit-animation-delay: 0.2s; 
-    animation-delay: 0.2s; 
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
 }
 #object_two {
     -webkit-animation: object_two 2s infinite;
     animation: object_two 2s infinite;
-    -webkit-animation-delay: 0.3s; 
-    animation-delay: 0.3s; 
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
 }
 #object_three {
     -webkit-animation: object_three 2s infinite;
     animation: object_three 2s infinite;
-    -webkit-animation-delay: 0.4s; 
-    animation-delay: 0.4s; 
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
 }
 #object_four {
     -webkit-animation: object_four 2s infinite;
     animation: object_four 2s infinite;
-    -webkit-animation-delay: 0.5s; 
-    animation-delay: 0.5s; 
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
 }
 #object_five {
     -webkit-animation: object_five 2s infinite;
     animation: object_five 2s infinite;
-    -webkit-animation-delay: 0.6s; 
-    animation-delay: 0.6s; 
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
 }
 #object_six {
     -webkit-animation: object_six 2s infinite;
     animation: object_six 2s infinite;
-    -webkit-animation-delay: 0.7s; 
-    animation-delay: 0.7s; 
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
 }
 #object_seven {
     -webkit-animation: object_seven 2s infinite;
     animation: object_seven 2s infinite;
-    -webkit-animation-delay: 0.8s; 
-    animation-delay: 0.8s; 
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
 }
 #object_eight {
     -webkit-animation: object_eight 2s infinite;
     animation: object_eight 2s infinite;
-    -webkit-animation-delay: 0.9s; 
-    animation-delay: 0.9s; 
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
 }
 
 #object_big{
@@ -876,9 +901,9 @@ textarea::-ms-input-placeholder{
     top: 50px;
     -webkit-animation: object_big 2s infinite;
     animation: object_big 2s infinite;
-    -webkit-animation-delay: 0.5s; 
-    animation-delay: 0.5s; 
-}	
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
 
 
 @-webkit-keyframes object_big {
@@ -887,10 +912,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_big {
-    50% { 
+    50% {
         transform: scale(0.5);
         -webkit-transform: scale(0.5);
-    } 
+    }
 
 }
 
@@ -900,10 +925,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_one {
-    50% { 
+    50% {
         transform: translate(-65px,-65px) ;
         -webkit-transform: translate(-65px,-65px) ;
-    } 
+    }
 
 }
 
@@ -913,10 +938,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_two {
-    50% { 
-        transform: translate(0,-65px) ; 
-        -webkit-transform: translate(0,-65px) ; 
-    } 
+    50% {
+        transform: translate(0,-65px) ;
+        -webkit-transform: translate(0,-65px) ;
+    }
 
 }
 
@@ -925,10 +950,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_three {
-    50% { 
+    50% {
         transform: translate(65px,-65px) ;
         -webkit-transform: translate(65px,-65px) ;
-    } 
+    }
 }
 
 @-webkit-keyframes object_four {
@@ -938,10 +963,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_four {
-    50% { 
+    50% {
         transform: translate(65px,0) ;
         -webkit-transform: translate(65px,0) ;
-    } 
+    }
 
 }
 
@@ -952,10 +977,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_five {
-    50% { 
+    50% {
         transform: translate(65px,65px) ;
         -webkit-transform: translate(65px,65px) ;
-    } 
+    }
 
 }
 
@@ -966,10 +991,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_six {
-    50% { 
+    50% {
         transform:  translate(0,65px) ;
         -webkit-transform:  translate(0,65px) ;
-    } 
+    }
 
 }
 
@@ -980,10 +1005,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_seven {
-    50% { 
+    50% {
         transform: translate(-65px,65px) ;
         -webkit-transform: translate(-65px,65px) ;
-    } 
+    }
 
 }
 
@@ -994,10 +1019,10 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_eight {
-    50% { 
+    50% {
         transform: translate(-65px,0) ;
         -webkit-transform: translate(-65px,0) ;
-    } 
+    }
 
 }
 
@@ -1225,9 +1250,9 @@ Featured section style
     display: none;
 }
 .featured_slider{
-    width: 100%;  
+    width: 100%;
     height:250px;
-    margin: 20px auto;    
+    margin: 20px auto;
     text-align: center;
 }
 .featured_img img{
@@ -1326,7 +1351,7 @@ Portfolio section style
     top:0%;
     width:100%;
     height: 100%;
-    background-color:rgba(0, 0, 0, 0.30); 
+    background-color:rgba(0, 0, 0, 0.30);
     padding-top: 12%;
     opacity: 0;
     -webkit-transition: all 0.4s;
@@ -1338,10 +1363,10 @@ Portfolio section style
 .portfolio_item:hover .portfolio_hover{
     opacity: 1;
 }
-.portfolio_item2 .portfolio_hover{ 
+.portfolio_item2 .portfolio_hover{
     padding-top: 10%;
 }
-/*.portfolio_item3 .portfolio_hover{ 
+/*.portfolio_item3 .portfolio_hover{
     padding-top: 65%;
 }*/
 
@@ -1709,7 +1734,7 @@ Footer Section style
 }
 
 .mapheight{
-    height: 100px; 
+    height: 100px;
     width: 100%;
 }
 
