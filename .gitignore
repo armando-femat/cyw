@@ -11,6 +11,7 @@ db.sqlite3
 db.sqlite3-journal
 venv
 notes_armando
+env
 
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

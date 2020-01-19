@@ -1,11 +1,23 @@
 {% extends "users/base.html" %}
-
 {% block content %}
-<h2>Tu as été déconnecté.</h2>
-<div>
-    <small class="text-muted">
-        <a href="{% url 'login'%}"> Se connecter </a>
-    </small>
-</div>
+<section id="pricing" class="pricing lightbg">
+    <div class="container">
+        <div class="row">
+            <form class="main_pricing roomy-100" method="post">
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+
+                    <h2>Tu as été déconnecté.</h2>
+                    <div>
+                        <small class="text-muted">
+                            <a href="{% url 'login'%}"> Se connecter </a>
+                        </small>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
 
 {% endblock content %}
