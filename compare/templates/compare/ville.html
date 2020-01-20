@@ -4,61 +4,108 @@
 <!--Home page style-->
 <section id="pricing" class="pricing lightbg">
     <div class="container">
+
+        {% if ls|length == 0 %}
+        <div class="main_pricing roomy-100 text-center">
+            <div class="col-md-8 col-sm-12 text-center">
+                <h1>{{v.nom}}</h1>
+                <div class="separator_auto"></div>
+                <p>{%if v.description is not None%}{{v.description}}{% endif %}</p>
+                <h4>Nous n'avons pas encore référencé les listes candidates dans cette ville.</h4>
+                <h5>Pour recevoir un mail unique lorsque cette ville sera prête :</h5>
+                <form class="" action="{% url 'ville' v.url %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-4">{{formC.email}}</div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Je reste informé !
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <!--                    <h5>Pour nous aider à référencer les listes de cette ville : cliquer ici</h5>-->
+            </div>
+            <div class="col-md-4 col-sm-12 m-top-30 bg-white pricing_item">
+                <div class="p-top-20 p-bottom-15">
+                    <h5>{{v.departement}} - {{v.population}} habitants</h5>
+                    <h5>Maire sortant :</h5>
+                    <h6>{{v.prenomMaire}} {{v.nomMaire}}</h6>
+                    <h6>{{v.professionMaire}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <form class="main_pricing roomy-100" action="{% url 'ville' v.url %}" method="post">
         <div class="row">
-            <form class="main_pricing roomy-100" action="{% url 'ville' v.nom %}" method="post">
-                <div class="col-md-8 col-md-offset-2 col-sm-12">
-                    <div class=" text-center">
-                        {% csrf_token %}
-                        <h1>{{v.nom}}</h1>
-                        <div class="separator_auto"></div>
-                        <!--                            <p>Description de la ville, et de ses enjeux : {% for c in v.criteres.all%}{{c.titre}},
-                                                        {%endfor %}...</p>-->
-                        <p>{%if v.description is not None%}{{v.description}}{% endif %}</p>
-                        <button type="submit" class="btn btn-primary">Comparer les programmes</button>
+            <div class="col-md-8 col-sm-12">
+                <div class=" text-center">
+                    {% csrf_token %}
+                    <h1>{{v.nom}}</h1>
+                    <div class="separator_auto"></div>
+                    <p>{%if v.description is not None%}{{v.description}}{% endif %}</p>
+                    <button type="submit" class="btn btn-primary">Comparer les programmes</button>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 m-top-30 bg-white pricing_item">
+                <div class="p-top-20 p-bottom-15">
+                    <h5>{{v.departement}} - {{v.population}} habitants</h5>
+                    <h5>Maire sortant :</h5>
+                    <h6>{{v.prenomMaire}} {{v.nomMaire}}</h6>
+                    <h6>{{v.professionMaire}}</h6>
+                </div>
+            </div>
+        </div>
+        {% for l in ls%}
+        <div class="col-md-4 col-sm-12 m-top-30">
+            <div class="pricing_item">
+                <div class="pricing_head text-center p-top-20 p-bottom-15">
+                    <h4 class="text-uppercase">
+                        {%if l.nom is not None%}
+                        {{l.nom}}
+                        {% else %}
+                        Liste {{l.couleur}}
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="pricing_body bg-white p-top-20 p-bottom-20">
+                    {%if l.teteDeListe is not None%}
+                    <h5 class="text-center">Tête de liste : {{l.teteDeListe}}</h5>
+                    {% endif %}
+                    <div class="col-md-7">
+                        {%if l.couleur is not None%}
+                        <h6><em>Couleur politique : {{l.couleur}}</em></h6>
+                        {% endif %}
+                        <small>
+                            {% for p in l.prio%}
+                            <li>{{p.critere.titre}} : {{p.titre}}</li>
+                            {% endfor %}
+                        </small>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="image_ville">
+                            {%if l.photo.url is not None%}
+                            <img class="image_ville_item" src="{{l.photo.url}}" alt=""/>
+                            {% else %}
+                            <img class="image_ville_item" src="{% static '/images/teamwork.png' %}" alt=""/>
+                            {% endif %}
+                        </div>
+                        <div class="pricing_btn text-center p-top-10">
+                            <label class="form-check-label" for="{{l.id}}">
+                                Comparer
+                            </label>
+                            <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
+                            <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
+                        </div>
                     </div>
                 </div>
-                {% for l in ls%}
-                <div class="col-md-4 col-sm-12 m-top-30">
-                    <div class="pricing_item">
-                        <div class="pricing_head text-center p-top-20 p-bottom-15">
-                            <h4 class="text-uppercase">{{l.nom}}</h4>
-                        </div>
-                        <div class="pricing_body bg-white p-top-20 p-bottom-20">
-                            {%if l.candidat is not None%}
-                            <h5 class="text-center">Liste portée par {{l.candidat}}</h5>
-                            {% endif %}
-                            <div class="col-md-7">
-                                {%if l.couleur is not None%}
-                                <h6><em>Couleur politique : {{l.couleur}}</em></h6>
-                                {% endif %}
-                                <small>
-                                    {% for p in l.prio%}
-                                    <li>{{p.critere.titre}} : {{p.titre}}</li>
-                                    {% endfor %}
-                                </small>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="image_ville">
-                                    {%if l.photo.url is not None%}
-                                    <img class="image_ville_item" src="{{l.photo.url}}" alt=""/>
-                                    {% else %}
-                                    <img class="image_ville_item" src="{% static '/images/teamwork.png' %}" alt=""/>
-                                    {% endif %}
-                                </div>
-                                <div class="pricing_btn text-center p-top-10">
-                                    <label class="form-check-label" for="{{l.id}}">
-                                        Comparer
-                                    </label>
-                                    <input checked type="checkbox" name="Listes" value="{{l.id}}" id="{{l.id}}">
-                                    <a href="/liste/{{l.id}}" class="btn btn-primary">Voir !</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- End off col-md-4 -->
-                {% endfor %}
-            </form>
-        </div><!--End off row-->
-    </div>
+            </div>
+        </div><!-- End off col-md-4 -->
+        {% endfor %}
+        <h5 class="col-md-12 m-top-30">*L'ordre de présentation des listes est aléatoire</h5>
+    </form>
+    </div><!--End off row-->
+    {%endif%}
 </section> <!--End off Pricing section -->
 {% endblock content %}

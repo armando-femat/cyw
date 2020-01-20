@@ -236,6 +236,18 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     color:#fff;
 }
 
+.form-control-black{
+    border-radius: 0px;
+    border:1px solid #ccc;
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    height: 50px;
+    background-color: transparent;
+    font-color: black;
+}
+
+form-control-black::placeholder{
+  color: red;
+  }
 
 .form-control:focus {
     border-color: #bcefeb;
@@ -1059,11 +1071,20 @@ Home Section style
 }
 .main_home{
     overflow: hidden;
-    padding-top: 300px;
-    padding-bottom: 230px;
+    padding-top: 230px;
+    padding-bottom: 50px;
     position: relative;
     z-index: 1;
 }
+
+.main_home_values{
+    overflow: hidden;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 1;
+}
+
 .home_text h1{
     font-family: 'Raleway', sans-serif;
     font-size:4.286rem;
@@ -1290,13 +1311,15 @@ service section style
     width:100%;
     overflow: hidden;
 }
+
 .service_item i.icofont,
-.service_item i.fa,
-.service_item span.icon{
+.service_item i.fa{
     font-size:3rem;
 }
 .service_item h6{}
-.service_item p{}
+.service_item p{
+    font-size:1rem;
+}
 
 
 /*
@@ -1351,7 +1374,7 @@ Portfolio section style
     top:0%;
     width:100%;
     height: 100%;
-    background-color:rgba(0, 0, 0, 0.30);
+    background-color:rgba(0, 0, 0, 0.60);
     padding-top: 12%;
     opacity: 0;
     -webkit-transition: all 0.4s;
@@ -1363,8 +1386,17 @@ Portfolio section style
 .portfolio_item:hover .portfolio_hover{
     opacity: 1;
 }
+
 .portfolio_item2 .portfolio_hover{
-    padding-top: 10%;
+    padding-top: 0%;
+}
+
+.in-img-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: medium;
 }
 /*.portfolio_item3 .portfolio_hover{
     padding-top: 65%;
@@ -1490,6 +1522,7 @@ Pricing Section style
 .main_pricing{
     overflow: hidden;
     width:100%;
+    float: left;
 }
 .pricing_top_border{
     height: 4px;
@@ -1503,7 +1536,7 @@ Pricing Section style
 }
 .pricing_head{
     background-color: #f7f7f7;
-
+    min-height : 81px;
 }
 .pricing_price_border{
     background-color: #16a085;
@@ -1537,6 +1570,7 @@ Pricing Section style
 }
 .pricing_body{
     overflow: hidden;
+    min-height : 250px;
 }
 .pricing_body ul{
     width:55%;

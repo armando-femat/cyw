@@ -1,9 +1,10 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from compare.models import Liste, Promesse, Ville, Categorie, Contact, Critere, Candidat
-from compare.form import RechercheVille, FormCompare, FormContact
+from compare.models import Liste, Promesse, Ville, Categorie, Contact, Critere
+from compare.form import RechercheVille, FormCompare, FormContact, FormInfo
 from compare.viewObject import vCategorie
 from datetime import datetime
+from django.contrib.staticfiles.templatetags.staticfiles import static
 import csv
 
 
@@ -12,32 +13,34 @@ def liste(request, id):
     ps = Promesse.objects.filter(liste_id=id)
     cats = Categorie.objects.all()
     prio = Promesse.objects.filter(liste_id=id, estUnePriorite=True)
-    candidats = Candidat.objects.filter(Liste=l, EstTeteDeListe=True)
-    if len(candidats)>0:
-        candidat=candidats[0]
     return render(request, 'compare/liste.html', locals())
 
 
-def ville(request, nom):
+def ville(request, url):
     form = FormCompare(request.POST or None)
-    v = get_object_or_404(Ville, nom=nom)
+    formC = FormInfo(request.POST or None)
+    v = get_object_or_404(Ville, url=url)
+    print(v)
     #form.fields['Listes'].queryset = [l.pk for l in Liste.objects.filter(ville=v)]
-    ls = Liste.objects.filter(ville=v)
+    ls = Liste.objects.filter(ville=v).order_by('?')
     for l in ls:
-        candidats = Candidat.objects.filter(Liste=l, EstTeteDeListe=True)
-        if len(candidats)>0:
-            l.candidat = candidats[0]
         l.prio = Promesse.objects.filter(liste=l, estUnePriorite=True)
+    if formC.is_valid():
+        email = formC.cleaned_data['email']
+        villeContact = get_object_or_404(Ville, url=url)
+        c = Contact(email=email, ville=villeContact, comment = "Je veux rester informé")
+        c.save()
+        return redirect('/#aide')
     if form.is_valid():
         listes=request.POST.getlist('Listes',default=None)
-        return compare(request, nom, listes=listes)
+        return compare(request, url, listes=listes)
     return render(request, 'compare/ville.html', locals())
 
 
-def compare(request, nom, **kwargs):
+def compare(request, url, **kwargs):
     vcats = []
     cs = Categorie.objects.all()
-    v = get_object_or_404(Ville, nom=nom)
+    v = get_object_or_404(Ville, url=url)
     ids = kwargs.get('listes', None)
     ls=[]
     if len(ids)>0 :
@@ -52,17 +55,20 @@ def compare(request, nom, **kwargs):
     return render(request, 'compare/compare.html', locals())
 
 
-def accueil(request):
+def accueil(request, **kwargs):
     formV = RechercheVille(request.POST or None)
     formC = FormContact(request.POST or None)
     cs = Categorie.objects.all()
+    verif = (datetime.strptime("07/02/2020", "%d/%m/%Y") - datetime.now()).days
+    premier = (datetime.strptime("15/03/2020", "%d/%m/%Y") - datetime.now()).days
     for c in cs:
         c.criteres = []
         c.criteres.extend(Critere.objects.filter(categorie=c, estStandard=True))
-    modal = False
+    modal = kwargs.get('modal', False)
     if formV.is_valid():
         nom = formV.cleaned_data['ville']
-        return redirect(ville, nom)
+        v = get_object_or_404(Ville, nom=nom)
+        return redirect(ville, v.url)
     if formC.is_valid():
         email = formC.cleaned_data['email']
         villeContact = formC.cleaned_data['villeContact']
@@ -74,26 +80,10 @@ def accueil(request):
 
 
 def test(request):
-    with open('C:\\Python\\maires-17-06-2014\\maires-17-06-2014.csv', newline='', encoding='utf-8') as f:
-        reader = csv.reader(f, delimiter=';')
-        i = 0
-        for row in reader:
-            if i>1:
-                v=Ville.objects.filter(nom=row[2])
-                if len(v) == 0:
-                    v = Ville(nom=row[2], departement=row[1], population=row[3], nomMaire=row[4], prenomMaire=row[5],
-                              sexMaire=row[6], dateNaissanceMaire=datetime.strptime(row[7], "%d/%m/%Y"), ProfessionMaire=row[9])
-                    v.save()
-                elif v[0].population is None or v[0].population<=int(row[3]):
-                    v[0].departement=row[1]
-                    v[0].population=row[3]
-                    v[0].nomMaire=row[4]
-                    v[0].prenomMaire=row[5]
-                    v[0].sexMaire=row[6]
-                    v[0].dateNaissanceMaire=datetime.strptime(row[7], "%d/%m/%Y")
-                    v[0].ageMaire=datetime.now().year-datetime.strptime(row[7], "%d/%m/%Y").year
-                    v[0].ProfessionMaire=row[9]
-                    v[0].save()
-            i += 1
+    vs = Ville.objects.all()
+    for v in vs:
+        v.url = v.nom.replace(" ","").replace("é","e").replace("ô","o").replace("è","e").replace("î","i")
+        v.save()
     return render(request, 'compare/testold.html', locals())
+
 

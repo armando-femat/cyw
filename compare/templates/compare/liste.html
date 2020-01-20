@@ -7,10 +7,14 @@
             <div class="main_about">
                 <div class="col-md-5">
                     <div class="about_content">
-                        <h5><i class="fa fa-angle-left"></i> <a href="/{{l.ville}}">{{l.ville}}</a></h5>
+                        <h5><i class="fa fa-angle-left"></i> <a href="/{{l.ville.url}}">{{l.ville}}</a></h5>
                         <div class="col-md-8">
                             <h2>
-                                {{l.nom}}
+                                {%if l.nom is not None%}
+                                    {{l.nom}}
+                                {% else %}
+                                    Liste {{l.couleur}}
+                                {% endif %}
                             </h2>
                             <div class="separator_left"></div>
                         </div>
@@ -23,8 +27,11 @@
                         </div>
                         <div class="col-md-12">
                             <div class="text-center"></div>
-                            {%if candidat is not None%}
-                            <h5>Liste portée par {{candidat}}</h5>
+                            {%if l.teteDeListe is not None%}
+                            <h5>Tête de liste : {{l.teteDeListe}}</h5>
+                            {% endif %}
+                            {%if l.couleur is not None%}
+                            <h6><em>Couleur politique : {{l.couleur}}</em></h6>
                             {% endif %}
                             <p>{{l.presentation}}</p>
                             {%if l.site is not None%}

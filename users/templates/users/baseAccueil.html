@@ -10,9 +10,13 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Change your world!</title>
-    <meta name="description" content="">
+    <title>Programmes-Municipales.fr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Programmes-Municipales.fr permet de comparer les programmes des listes candidates aux élections municipales.">
+    <meta name="keywords" content="programmes, municipales, election, 2020">
+    <meta name="language" content="FR">
+    <meta property="og:image" content="{% static '/images/logo.png' %}" />
+
     <!--        <link rel="icon" type="image/png" href="favicon.ico">-->
 
     <!--Google Font link-->
@@ -77,9 +81,8 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="/">
-
-                <img src="{% static '/images/logo.png' %}" class="logo logo-display" style="height: 49px" alt="">
-                <img src="{% static '/images/logo.jpg' %}" class="logo logo-scrolled" style="height: 49px" alt="">
+                <img src="{% static '/images/logotrans.png' %}" class="logo logo-display" style="height: 49px" alt="">
+                <img src="{% static '/images/logo.png' %}" class="logo logo-scrolled" style="height: 49px" alt="">
 
             </a>
         </div>
@@ -91,10 +94,9 @@
                 <li><a href="#hello">Rechercher ma ville</a></li>
                 <li><a href="#info">Les élections municipales</a></li>
                 <li><a href="#nous">Qui sommes-nous ?</a></li>
-                <li><a href="https://www.service-public.fr/particuliers/vosdroits/services-en-ligne-et-formulaires/ISE"
-                       target="_blank">
-                    Vérifier son inscription sur les listes électorales</a></li>
-                <li><a href="#subscribe">Contact</a></li>
+                <li><a href="/#verif">Vérifier son inscription sur les listes électorales</a></li>
+                <li><a href="/#aide">Nous aider</a></li>
+                <li><a href="#subscribe">Nous contacter</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
         <!--</div> -->
@@ -109,13 +111,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Félicitation !</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">C'est dans la boîte !</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
             <div class="modal-body">
-                Vous êtes des nôtres ! On va vous envoyer plein d'emails
+                Votre adresse mail a bien été enregistrée !
+                Et si vous nous avez écrit un message, nous vous répondrons rapidement.
+
+                Pour nous aider à comparer plus de villes, rendez-vous ici.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
@@ -146,8 +151,15 @@
     $("#exampleModalCenter").modal('show');
     });
 {%endif%}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156366014-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-
+  gtag('config', 'UA-156366014-1');
 </script>
 
 <!--    {% if form_error %}
