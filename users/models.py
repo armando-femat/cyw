@@ -10,8 +10,8 @@ class Profile(models.Model):
     # User includes ()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(null=True)
-    is_list = models.BooleanField(default=False)
-    ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True)
+#    is_list = models.BooleanField(default=False)
+
 
     # Updating your user with other things that are not really necessary.
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')

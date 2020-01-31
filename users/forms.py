@@ -46,13 +46,6 @@ class CustomUserCreationForm(forms.Form):
         return user
 
 
-class ProfileRegisterForm(forms.Form):
-    is_list = forms.BooleanField(label='Appartients tu a une liste ?', required=False, initial=False,
-                                 widget=forms.CheckboxInput)
-
-    ville = forms.ModelChoiceField(queryset=Ville.objects.all(),
-                                   widget=autocomplete.ModelSelect2(url='ville-autocomplete'))
-    ville.widget.attrs.update({'class': 'form-home'})
 
 """
 class UserRegisterForm(UserCreationForm):
