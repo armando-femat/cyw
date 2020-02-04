@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .forms import UserRegisterForm, ListForm
+from .forms import UserRegisterForm, ListForm, CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from compare.views import liste, accueil
 from compare.models import Liste, Ville, Critere, Categorie, Promesse
+from django.contrib.auth.decorators import login_required
 
+# New registration form created from scratch
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = CustomUserCreationForm(request.POST or None)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -15,8 +17,9 @@ def register(request):
                                       f'Tu peux te connecter maintenant :)')
             return redirect('login')
     else:
-        form = UserRegisterForm()
+        form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
+
 
 @login_required
 def profile(request) :
@@ -56,3 +59,18 @@ def propositions(request, listeId) :
                     p.save()
         return redirect(liste,l.id)
     return render(request,'Users/promesses.html', locals())
+
+""" Old registration form (created with django form)
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Le compte a été crée {username}!  \n'
+                                      f'Tu peux te connecter maintenant :)')
+            return redirect('login')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'users/register.html', {'form': form})
+"""
