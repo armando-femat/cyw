@@ -47,6 +47,7 @@ class Liste(models.Model):
     presentation = models.TextField(null=True, blank=True)
     ville = models.ForeignKey(Ville, on_delete=models.PROTECT)
     couleur = models.CharField(max_length=100, null=True)
+    lienPhoto = models.CharField(max_length=255, null=True, blank=True)
     photo = models.ImageField(null=True, blank=True)
     site = models.CharField(max_length=200, null=True, blank=True)
 
@@ -55,7 +56,13 @@ class Liste(models.Model):
         ordering = ['nom']
 
     def __str__(self):
-        return self.ville.nom
+        if self.nom is not None:
+            result = self.nom
+        elif self.couleur is not None:
+            result = self.couleur
+        else:
+            result = self.ville.nom
+        return result
 
 
 class Promesse(models.Model):
@@ -79,7 +86,18 @@ class Contact(models.Model):
     date = models.DateTimeField(default=datetime.now, blank=True)
     #ville = models.ForeignKey(Ville, on_delete=models.PROTECT, null=True, blank=True)
     ville = models.CharField(max_length=200 ,null=True, blank=True)
+    liste = models.ForeignKey(Liste, on_delete=models.PROTECT, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
+
+    SOURCE_CHOICES = [
+        ('ACC', 'Formulaire contact'),
+        ('VSL', 'Ville sans liste'),
+        ('VAL', 'Ville avec listes'),
+        ('SIN', 'Singalement'),
+        ('LST', 'Liste'),
+    ]
+    source = models.CharField(max_length=3, choices=SOURCE_CHOICES, default='ACC',)
+    resteInforme = models.BooleanField(default=True)
 
     def __str__(self):
         return self.email

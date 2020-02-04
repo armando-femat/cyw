@@ -36,7 +36,7 @@ class VilleAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         # Don't forget to filter out results depending on the visitor !
 
-        qs = Ville.objects.all().order_by('ouverte','population').reverse()
+        qs = Ville.objects.all().order_by('ouverte','-nom').reverse()
 
         if self.q:
             qs = qs.filter(nom__icontains=self.q)

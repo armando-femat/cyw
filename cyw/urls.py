@@ -19,14 +19,15 @@ from compare import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('robots.txt', lambda x: HttpResponse("User-Agent: *\nAllow: /", content_type="text/plain"),
+         name="robots_file"),
     path('', include('users.urls')),
     path('', include('compare.urls')),
 ]
-
 
 urlpatterns += staticfiles_urlpatterns()
 

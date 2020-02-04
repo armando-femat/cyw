@@ -12,7 +12,7 @@
                                                 {%endfor %}...</p>-->
                 </div>
             </div>
-            <div class="main_about">
+            <div class="col-md-12">
                 <div class="about_accordion wow fadeIn">
                     <div id="faq_main_content" class="faq_main_content">
                         <h6><i class="fa fa-star text-primary"></i>Les priorités des listes</h6>
@@ -50,7 +50,7 @@
                         <div>
                             <div class="content">
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table table-bordered">
                                         <thead>
                                         <tr>
                                             <th scope="col">Critère</th>
@@ -70,7 +70,16 @@
                                         <tr>
                                             <th>{{vc.titre}}</th>
                                             {% for vp in vc.promesses%}
-                                            <td>{{vp.promesse.titre}}</td>
+                                            <td>
+                                                {% if vp.promesse.titre|length < 200 %}
+                                                {{vp.promesse.titre}}
+                                                {% else %}
+                                                <a tabindex="0" role="button" style="cursor: zoom-in;" data-container="body"
+                                                   data-toggle="popover"
+                                                   data-placement="auto" data-trigger="focus"
+                                                   data-content="{{vp.promesse.titre}}">{{vp.promesse.titre|truncatechars:200}}</a>
+                                                {% endif %}
+                                            </td>
                                             {% endfor %}
                                         </tr>
                                         {% endfor %}
