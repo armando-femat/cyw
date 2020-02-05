@@ -41,13 +41,27 @@ class CustomUserCreationForm(forms.Form):
             self.cleaned_data['username'],
             self.cleaned_data['email'],
             self.cleaned_data['password1'],
-            self.cleaned_data['ville'],
-            self.cleaned_data['is_list']
+            #self.cleaned_data['ville'],
+            #self.cleaned_data['is_list']
 
         )
         return user
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nom d\'utilisateur', min_length=3, max_length=20)
+    password1 = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
+
+    def clean_username(self):
+        username = self.cleaned_data['username'].lower()
+        r = User.objects.filter(password1=password1)
+        if r.count():
+            pass
+        else:
+            raise ValidationError('Nom d\'utilisateur et/ou mot de passe pas valides !')
+
+
+'''
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -62,7 +76,7 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-
+'''
 
 class ListForm(ModelForm):
     ville = forms.ModelChoiceField(queryset=Ville.objects.all(),

@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .forms import UserRegisterForm, ListForm, CustomUserCreationForm
+from .forms import ListForm, CustomUserCreationForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from compare.views import liste, accueil
 from compare.models import Liste, Ville, Critere, Categorie, Promesse
 from django.contrib.auth.decorators import login_required
 
 # New registration form created from scratch
-def register(request):
+def connect(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST or None)
         if form.is_valid():
@@ -15,10 +15,19 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Le compte a été crée {username}!  \n'
                                       f'Tu peux te connecter maintenant :)')
-            return redirect('login')
+            return redirect('')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'users/register.html', {'form': form})
+
+    if request.method =='POST':
+        form1 = LoginForm(request.POST or None)
+        if form.is_valid():
+            pass
+        return redirect('profile')
+    else:
+        form1 = LoginForm()
+
+    return render(request, 'users/connect.html', {'form': form, 'form1': form1})
 
 
 @login_required
