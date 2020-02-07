@@ -1,0 +1,92 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block page_title %}Créer une liste{% endblock %}
+{% block content %}
+<section>
+    <div class="container roomy-100">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+            <h3>
+                {%if l.nom is not None%}
+                {{l.nom}}
+                {% else %}
+                Liste {{l.couleur}}
+                {% endif %}
+            </h3>
+        </div>
+        <form action="{%url 'editListe' l.id%}" method="post"
+              class="col-md-10 col-md-offset-1 pricing_item m-top-30 p-top-20 p-bottom-20">
+            {% csrf_token %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Tête de liste</th>
+                    <th scope="col">Couleur politique</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td scope="col">
+                        <input style="width:100%" type="text" name="nom" value="{%if l.nom is not None%}{{l.nom}}{%endif%}">
+                    </td>
+                    <td scope="col">
+                        <input style="width:100%" type="text" name="teteDeListe" value="{%if l.teteDeListe is not None%}{{l.teteDeListe}}{%endif%}">
+                    </td>
+                    <td scope="col">
+                        <input style="width:100%" type="text" name="couleur" value="{%if l.couleur is not None%}{{l.couleur}}{%endif%}">
+                    </td>
+                </tr>
+                </tbody>
+                <thead>
+                <tr>
+                    <th scope="col">Site Web</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Présentation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td scope="col"><input style="width:100%" type="text" name="site" value="{%if l.site is not None%}{{l.site}}{%endif%}"></td>
+                    <td scope="col"><input style="width:100%" type="text" name="lienPhoto" value="{%if l.lienPhoto is not None%}{{l.lienPhoto}}{%endif%}"></td>
+                    <td scope="col"><textarea style="width:100%" rows="2" name="presentation">{%if l.presentation is not None%}{{l.presentation}}{%endif%}</textarea></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table">
+                {% for cat in cats%}
+                <thead>
+                <tr>
+                    <th scope="col" colspan="3"><h4>{{cat.titre}}</h4></th>
+                </tr>
+                </thead>
+                <tbody>
+                <thead>
+                <tr>
+                    <th scope="col">Critère</th>
+                    <th scope="col">Promesse</th>
+                    <th scope="col">Est une priorité ?</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in cat.crits%}
+                <tr>
+                    <td>{{c.titre}}</td>
+                    <td><textarea style="width:100%" rows="3"
+                                  name="{{c.id}}">{%if c.pro is not None%}{{c.pro}}{%endif%}</textarea>
+                    </td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" name="prio" value="{{c.id}}"
+                               {%if c.pro is not None and c.pro.estUnePriorite%}checked{%endif%}>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                {% endfor %}
+            </table>
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary" name="save">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

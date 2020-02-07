@@ -188,7 +188,7 @@ a {
 .btn:focus,
 .btn:active {
     outline: inherit;
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 *,
 *:before,
@@ -472,7 +472,7 @@ Button
     padding: 1rem 2rem;
 }
 .btn-primary:hover{
-    background-color: #eee;
+    background-color: transparent;
     border-color: #16a085;
     color:#16a085;
 }
@@ -486,7 +486,7 @@ Button
     padding: 1rem 2rem;
 }
 .btn-info:hover{
-    background-color: #eee;
+    background-color: transparent;
     border-color: #3498db;
     color:#3498db;
 }
@@ -498,7 +498,7 @@ Button
     padding: 1rem 2rem;
 }
 .btn-warning:hover{
-    background-color: #eee;
+    background-color: transparent;
     border-color: #e67e22;
     color:#e67e22;
 }
@@ -1596,7 +1596,7 @@ Pricing Section style
 }
 .pricing_body{
     overflow: hidden;
-    min-height : 250px;
+    min-height: 291px;
 }
 .pricing_body ul{
     width:55%;

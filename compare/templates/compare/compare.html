@@ -18,31 +18,43 @@
                         <h6><i class="fa fa-star text-primary"></i>Les priorités des listes</h6>
                         <div>
                             <div class="content">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        {% for l in ls%}
-                                        <th scope="col"><a href="/liste/{{l.id}}">
-                                            {%if l.nom is not None%}
-                                            {{l.nom}}
-                                            {% else %}
-                                            Liste {{l.couleur}}
-                                            {% endif %}</a></th>
-                                        {% endfor %}
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        {% for l in ls%}
-                                        <td>
-                                            {% for pr in l.prio%}
-                                            <li>{{pr.critere.titre}} : {{pr.titre}}</li>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            {% for l in ls%}
+                                            <th scope="col"><a href="/liste/{{l.id}}">
+                                                {%if l.nom is not None%}
+                                                {{l.nom}}
+                                                {% else %}
+                                                Liste {{l.couleur}}
+                                                {% endif %}</a></th>
                                             {% endfor %}
-                                        </td>
-                                        {% endfor %}
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            {% for l in ls%}
+                                            <td>
+                                                {% for pr in l.prio%}
+                                                <li>{{pr.critere.titre}} :
+                                                    {% if pr.titre|length < 200 %}
+                                                    {{pr.titre}}
+                                                    {% else %}
+                                                    <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                       data-container="body"
+                                                       data-toggle="popover"
+                                                       data-placement="auto" data-trigger="focus"
+                                                       data-content="{{pr.titre}}">{{pr.titre|truncatechars:200}}</a>
+                                                    {% endif %}
+                                                </li>
+                                                {% endfor %}
+                                            </td>
+                                            {% endfor %}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div> <!-- End off accordion item-1 -->
                         {% for vcat in vcats%}
@@ -55,7 +67,24 @@
                                         <tr>
                                             <th scope="col">Critère</th>
                                             {% for l in ls.all%}
-                                            <th scope="col"><a href="/liste/{{l.id}}">
+                                            <th scope="col"><a tabindex="0" role="button" style="cursor: pointer;"
+                                                               data-toggle="popover"
+                                                               data-placement="auto" data-trigger="focus"
+                                                               data-html="true"
+                                                               title="{%if l.nom is not None%}
+                                                                        {{l.nom}}
+                                                                        {% else %}
+                                                                        Liste {{l.couleur}}
+                                                                        {% endif %}"
+                                                               data-content="
+                                                               {%if l.teteDeListe is not None%}
+                                                              <h5>Tête de liste : {{l.teteDeListe}}</h5>
+                                                              {% endif %}
+                                                              <p>
+                                                              {%if l.couleur is not None%}
+                                                              Couleur politique : {{l.couleur}}<br/>
+                                                              {% endif %}
+                                                              {{l.presentation}}</p>">
                                                 {%if l.nom is not None%}
                                                 {{l.nom}}
                                                 {% else %}
@@ -74,7 +103,8 @@
                                                 {% if vp.promesse.titre|length < 200 %}
                                                 {{vp.promesse.titre}}
                                                 {% else %}
-                                                <a tabindex="0" role="button" style="cursor: zoom-in;" data-container="body"
+                                                <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                   data-container="body"
                                                    data-toggle="popover"
                                                    data-placement="auto" data-trigger="focus"
                                                    data-content="{{vp.promesse.titre}}">{{vp.promesse.titre|truncatechars:200}}</a>

@@ -42,10 +42,13 @@ def ville(request, url, **kwargs):
     #form.fields['Listes'].queryset = [l.pk for l in Liste.objects.filter(ville=v)]
     ls = Liste.objects.filter(ville=v).order_by('?')
     iframe = kwargs.get('iframe', True)
-    print(iframe)
     modal = False
+    modif=False
+    user = request.user
     for l in ls:
         l.prio = Promesse.objects.filter(liste=l, estUnePriorite=True)
+        if user in l.auteur.all():
+            l.modif = True
     if formS.is_valid() and 'signaler' in request.POST :
         email = formS.cleaned_data['email']
         comment = formS.cleaned_data['comment']

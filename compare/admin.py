@@ -1,12 +1,21 @@
 from django.contrib import admin
 from .models import Liste, Ville, Critere, Promesse, Categorie, Contact
+from django.contrib.auth.models import User
 
+
+def addAdmin(modeladmin, request, queryset):
+    for Liste in queryset:
+        Liste.auteur.add(*User.objects.filter(is_superuser=True))
+        Liste.save()
+
+addAdmin.short_description = 'Ajouter les admins'
 
 class ListeAdmin(admin.ModelAdmin):
     model = Liste
     list_display = ['__str__', 'nom', 'teteDeListe', 'couleur', 'ville']
     search_fields = ['nom', 'couleur', 'teteDeListe', 'ville__nom']
     list_filter = (('ville', admin.RelatedOnlyFieldListFilter),)
+    actions = [addAdmin, ]
     # fields = ('nom', 'teteDeListe', 'ville', 'couleur', 'lienPhoto','photo', 'presentation', 'slogan', 'site', 'auteur') #Réordonner ou Uniquement ces champs affichés dans le formulaire
     empty_value_display = '-------'
     filter_horizontal = ('auteur',)
@@ -30,7 +39,6 @@ class ListeAdmin(admin.ModelAdmin):
         if db_field.name == "ville":
             kwargs["queryset"] = Ville.objects.filter(ouverte=True)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
 
 admin.site.register(Liste, ListeAdmin)
 

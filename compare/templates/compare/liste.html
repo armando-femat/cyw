@@ -10,16 +10,15 @@
                         <h5><i class="fa fa-angle-left"></i> <a href="/{{l.ville.url}}">{{l.ville}}</a></h5>
                         <div class="col-md-8">
                             <h2>
+                                {%if modif%}
+                                <small><a href="/edit/{{l.id}}"><i class="fa fa-pencil"></i></a></small>
+                                {% endif %}
                                 {%if l.nom is not None%}
                                 {{l.nom}}
                                 {% else %}
                                 Liste {{l.couleur}}
                                 {% endif %}
-                                {%if modif%}
-                                <a href="/propositions/{{l.id}}"><i class="fa fa-pencil"></i></a>
-                                {% endif %}
                             </h2>
-
                             <div class="separator_left"></div>
                         </div>
                         <div class="col-md-4">
@@ -258,6 +257,7 @@
 
 
 
+
 </script>
 {%endif%}
 {%if modalSignal%}
@@ -266,6 +266,7 @@
     $('#modalSignal').appendTo("body")
     $("#modalSignal").modal('show');
     });
+
 
 
 
