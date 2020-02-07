@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 from compare.models import Ville
 from dal import autocomplete
 from users.models import Profile
+from django.contrib.auth import authenticate
 
 
 class CustomUserCreationForm(forms.Form):
@@ -29,7 +30,7 @@ class CustomUserCreationForm(forms.Form):
             raise ValidationError('Email existe déjà !')
         return email
 
-    def clean_password(self):
+    def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
         if password1 and password2 and password1 != password2:
@@ -50,15 +51,7 @@ class CustomUserCreationForm(forms.Form):
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Nom d\'utilisateur', min_length=3, max_length=20)
-    password1 = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
-
-    def clean_username(self):
-        username = self.cleaned_data['username'].lower()
-        r = User.objects.filter(password1=password1)
-        if r.count():
-            pass
-        else:
-            raise ValidationError('Nom d\'utilisateur et/ou mot de passe pas valides !')
+    password = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
 
 
 '''

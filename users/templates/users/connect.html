@@ -1,9 +1,17 @@
 {% extends "users/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+
 <section id="nous" class="about roomy-100 bg-white">
     <div class="container">
         <div class="row">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tag }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="main_about">
                 <div class="col-md-6 separator_vertical">
                     <div class="content-section">
@@ -11,12 +19,12 @@
                             {% csrf_token %}
                             <fieldset class="form-group">
                                 <legend class="border-bottom mb-4">Inscrivez-vous maintenant !</legend>
-                                {{ form | crispy }}
+                                {{ formIns | crispy }}
                                 {{form.media}}
 
                             </fieldset>
                             <div class="form-group">
-                                <button class="btn btn-outline-info" type="submit">S'inscrire</button>
+                                <button name="formIns" class="btn btn-outline-info" type="submit">S'inscrire</button>
                             </div>
                         </form>
 
@@ -31,10 +39,10 @@
                                 {% csrf_token %}
                                 <fieldset class="form-group">
                                     <legend class="border-bottom mb-4">Se connecter</legend>
-                                    {{ form1|crispy }}
+                                    {{ formCon |crispy }}
                                 </fieldset>
                                 <div class="form-group">
-                                    <button class="btn btn-outline-info" type="submit">Se connecter</button>
+                                    <button name="formCon" class="btn btn-outline-info" type="submit">Se connecter</button>
                                 </div>
                             </form>
                         </div>
