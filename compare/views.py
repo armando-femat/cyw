@@ -80,19 +80,32 @@ def villeIframe(request, url):
 
 def compare(request, url, **kwargs):
     vcats = []
-    cs = Categorie.objects.all()
+    cats = Categorie.objects.all()
     v = get_object_or_404(Ville, url=url)
     ids = kwargs.get('listes', None)
     ls=[]
     if len(ids)>0 :
-        ls = Liste.objects.filter(id__in = ids)
+        ls = Liste.objects.filter(id__in = ids).order_by('?')
     else:
-        ls = Liste.objects.filter(ville=v)
+        ls = Liste.objects.filter(ville=v).order_by('?')
     for l in ls:
         l.prio=[]
         l.prio.extend(Promesse.objects.filter(liste=l, estUnePriorite=True))
-    for cat in cs:
-        vcats.append(vCategorie(cat, v, ls))
+    for cat in cats:
+        cat.cs = Critere.objects.filter(categorie=cat,Ville=v)
+        for c in cat.cs:
+            c.listes=[]
+            for li in ls:
+                l=Liste.objects.filter(id=li.id)
+                l.ps=Promesse.objects.filter(liste=li,critere=c)
+                c.listes.append(l)
+
+    for cat in cats:
+        print(cat.cs)
+        for c in cat.cs:
+            print(c.listes)
+            for l in c.listes:
+                print(l.ps)
     return render(request, 'compare/compare.html', locals())
 
 

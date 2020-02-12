@@ -72,6 +72,31 @@ body {
 max-width: 600px;
 }
 
+.bull{
+    padding: 15px;
+    margin-bottom: 8px;
+    /*border: 1px solid #16a085;*/
+    border-bottom-left-radius: 1.3em;
+    border-top-left-radius: 1.3em;
+    border-top-right-radius: 1.3em;
+    color: #fff;
+    background: rgba(26, 188, 156, 1);
+    text-align: center;
+}
+
+.bull a {
+    color :#fff;
+    /*text-decoration: underline;*/
+}
+
+.compare td, .compare th{
+    white-space: normal !important;
+    word-wrap: break-word;
+    vertical-align : middle !important;
+    text-align: center;
+}
+
+
 /*------------------------------------------------------------------*/
 /*   IE10 in Windows 8 and Windows Phone 8 Bug fix
 /*-----------------------------------------------------------------*/
@@ -99,6 +124,11 @@ section { overflow: hidden; }*/
 /*
     Spacing & Alignment 
 ------------------------------------------*/
+
+.roomy-200 {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
 
 .roomy-100 {
     padding-top: 100px;

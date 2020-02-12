@@ -49,8 +49,10 @@ def editListe(request, listeId):
         c.crits = []
         c.crits.extend(Critere.objects.filter(Ville=l.ville, categorie=c))
         for crit in c.crits:
-            crit.pro = Promesse.objects.filter(critere=crit, liste=l).first()
-    if 'save' in request.POST:
+            crit.pros = Promesse.objects.filter(critere=crit, liste=l)
+    if 'cancel' in request.POST:
+        return redirect(liste, l.id)
+    if 'save' in request.POST or 'saveandcontinue' in request.POST :
         l.nom = request.POST.get("nom", default=None) if request.POST.get("nom", default=None) != "" else None
         l.teteDeListe = request.POST.get("teteDeListe", default=None) if request.POST.get("teteDeListe",
                                                                                           default=None) != "" else None
@@ -63,19 +65,32 @@ def editListe(request, listeId):
         l.site = request.POST.get("site", default=None) if request.POST.get("site", default=None) != "" else None
         l.save()
         prios = request.POST.getlist('prio', default=None)
-        for cat in cats:
-            for cri in cat.crits:
-                p = Promesse.objects.filter(critere=cri, liste=l).first()
-                if p is not None:
-                    p.titre = request.POST.get(str(cri.id), default=None)
-                else:
-                    p = Promesse(liste=l, titre=request.POST.get(str(cri.id), default=None), critere=cri)
-                if str(p.critere.id) in prios:
+        newPrios = request.POST.getlist('new-prio', default=None)
+        print(newPrios)
+        for p in Promesse.objects.filter(liste=l) : #Modification des promesses existantes
+            edPro = request.POST.get(str(p.id), default=None)
+            if edPro is not None:
+                if edPro == "":
+                    p.delete()
+                else :
+                    p.titre = edPro
+                    if str(p.id) in prios:
+                        p.estUnePriorite = True
+                    else:
+                        p.estUnePriorite = False
+                    p.save()
+        for cri in Critere.objects.filter(Ville=l.ville): #Création de nouvelles promesses
+            edPro = request.POST.get('new-'+str(cri.id), default=None)
+            if edPro is not None and edPro!='':
+                p = Promesse(liste=l, titre=edPro, critere=cri)
+                print(str(cri.id))
+                if str(cri.id) in newPrios:
                     p.estUnePriorite = True
                 else:
                     p.estUnePriorite = False
                 p.save()
-        return redirect(liste, l.id)
+        if 'save' in request.POST :
+            return redirect(liste, l.id)
     return render(request, 'users/editListe.html', locals())
 
 

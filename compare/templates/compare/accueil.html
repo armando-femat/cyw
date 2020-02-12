@@ -66,13 +66,14 @@
 </section> <!--End off Home Sections-->
 
 <!--Portfolio Section-->
-<section id="info" class="portfolio lightbg">
+<section id="info" class="portfolio">
     <div class="container roomy-50">
         <div class="row">
+            <iframe src="https://programmes-municipales.fr/iframe/Villeurbanne" style="width:100%; height:200px;"></iframe>
             <div class="main_portfolio">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="text-center ">
-                        <h3>Quelques infos sur les élections municipales 2020</h3>
+                        <h2>Quelques infos sur les élections municipales 2020</h2>
                         <div class="separator_auto"></div>
                         <p></p>
                     </div>
@@ -214,7 +215,7 @@
 </section><!-- End off Portfolio section-->
 
 <!--About Sections-->
-<section id="nous" class="about roomy-100 bg-white">
+<section id="nous" class="about roomy-100 bg-grey">
     <div class="container">
         <div class="row">
             <div class="main_about">
@@ -337,6 +338,7 @@
     </div>
 </div>
 
+<!--
 <section id="VerifierMonInscription" class="bg-mega roomy-80">
     <div class="container">
         <div class="row">
@@ -373,6 +375,7 @@
         </div>
     </div>
 </section>
+-->
 
 <section id="aide" class="about roomy-40 bg-white">
     <div class="container">
@@ -454,10 +457,10 @@
 </section>
 
 <!--Subscribe Us Section-->
-<section id="subscribe" class="contact bg-mega fix"><!-- class subscribe avec photo -->
+<section id="subscribe" class="contact bg-mega fix roomy-200"><!-- class subscribe avec photo -->
     <div class="container">
         <div class="row">
-            <div class="main_contact roomy-100 text-white">
+            <div class="main_contact text-white">
                 <div class="col-md-5">
                     <div class="rage_widget">
                         <div class="widget_head">
@@ -488,7 +491,7 @@
                         <h5 class="text-white"><b>Nous sommes à l'écoute !</b></h5>
                     </div>
                 </div>
-                <div class="col-md-7 m-top-60">
+                <div class="col-md-7">
                     <form class="" action="{% url 'accueil' %}" method="post">
                         {% csrf_token %}
                         <div class="row">
@@ -547,6 +550,8 @@
     $('#exampleModalCenter').appendTo("body")
     $("#exampleModalCenter").modal('show');
     });
+
+
 
 
 

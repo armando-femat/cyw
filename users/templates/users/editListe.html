@@ -5,13 +5,13 @@
 <section>
     <div class="container roomy-100">
         <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
-            <h3>
+            <h2>
                 {%if l.nom is not None%}
                 {{l.nom}}
                 {% else %}
                 Liste {{l.couleur}}
                 {% endif %}
-            </h3>
+            </h2>
         </div>
         <form action="{%url 'editListe' l.id%}" method="post"
               class="col-md-10 col-md-offset-1 pricing_item m-top-30 p-top-20 p-bottom-20">
@@ -27,13 +27,16 @@
                 <tbody>
                 <tr>
                     <td scope="col">
-                        <input style="width:100%" type="text" name="nom" value="{%if l.nom is not None%}{{l.nom}}{%endif%}">
+                        <input style="width:100%" type="text" name="nom"
+                               value="{%if l.nom is not None%}{{l.nom}}{%endif%}">
                     </td>
                     <td scope="col">
-                        <input style="width:100%" type="text" name="teteDeListe" value="{%if l.teteDeListe is not None%}{{l.teteDeListe}}{%endif%}">
+                        <input style="width:100%" type="text" name="teteDeListe"
+                               value="{%if l.teteDeListe is not None%}{{l.teteDeListe}}{%endif%}">
                     </td>
                     <td scope="col">
-                        <input style="width:100%" type="text" name="couleur" value="{%if l.couleur is not None%}{{l.couleur}}{%endif%}">
+                        <input style="width:100%" type="text" name="couleur"
+                               value="{%if l.couleur is not None%}{{l.couleur}}{%endif%}">
                     </td>
                 </tr>
                 </tbody>
@@ -46,17 +49,27 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td scope="col"><input style="width:100%" type="text" name="site" value="{%if l.site is not None%}{{l.site}}{%endif%}"></td>
-                    <td scope="col"><input style="width:100%" type="text" name="lienPhoto" value="{%if l.lienPhoto is not None%}{{l.lienPhoto}}{%endif%}"></td>
-                    <td scope="col"><textarea style="width:100%" rows="2" name="presentation">{%if l.presentation is not None%}{{l.presentation}}{%endif%}</textarea></td>
+                    <td scope="col"><input style="width:100%" type="text" name="site"
+                                           value="{%if l.site is not None%}{{l.site}}{%endif%}"></td>
+                    <td scope="col"><input style="width:100%" type="text" name="lienPhoto"
+                                           value="{%if l.lienPhoto is not None%}{{l.lienPhoto}}{%endif%}"></td>
+                    <td scope="col"><textarea style="width:100%" rows="2" name="presentation">{%if l.presentation is not None%}{{l.presentation}}{%endif%}</textarea>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary" name="cancel">Annuler</button>
+                <button type="submit" class="btn btn-primary" name="saveandcontinue">Enregistrer et continuer les
+                    modifications
+                </button>
+                <button type="submit" class="btn btn-primary" name="save">Enregistrer</button>
+            </div>
             <table class="table">
                 {% for cat in cats%}
                 <thead>
                 <tr>
-                    <th scope="col" colspan="3"><h4>{{cat.titre}}</h4></th>
+                    <th scope="col" colspan="3" class="text-center"><h4>{{cat.titre}}</h4></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -71,12 +84,25 @@
                 {% for c in cat.crits%}
                 <tr>
                     <td>{{c.titre}}</td>
-                    <td><textarea style="width:100%" rows="3"
-                                  name="{{c.id}}">{%if c.pro is not None%}{{c.pro}}{%endif%}</textarea>
+                    {% for pro in c.pros%}
+                    <td style="width: 70%;">
+                        <textarea style="width:100%" rows="2"
+                                  name="{{pro.id}}">{%if pro is not None%}{{pro}}{%endif%}</textarea>
                     </td>
                     <td>
-                        <input class="form-check-input" type="checkbox" name="prio" value="{{c.id}}"
-                               {%if c.pro is not None and c.pro.estUnePriorite%}checked{%endif%}>
+                        <input class="form-check-input" type="checkbox" name="prio" value="{{pro.id}}"
+                               {%if pro is not None and pro.estUnePriorite%}checked{%endif%}>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    {% endfor %}
+                    <td style="width: 70%;">
+                        <textarea style="width:100%" rows="2"
+                                  name="new-{{c.id}}"></textarea>
+                    </td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" name="new-prio" value="{{c.id}}">
                     </td>
                 </tr>
                 {% endfor %}
@@ -84,6 +110,10 @@
                 {% endfor %}
             </table>
             <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary" name="cancel">Annuler</button>
+                <button type="submit" class="btn btn-primary" name="saveandcontinue">Enregistrer et continuer les
+                    modifications
+                </button>
                 <button type="submit" class="btn btn-primary" name="save">Enregistrer</button>
             </div>
         </form>

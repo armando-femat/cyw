@@ -11,9 +11,9 @@ class vPromesse:
 class vCritere:
     def __init__(self, cri, ls):
         self.titre = cri.titre
-        self.promesses = []
-        for l in ls:
-            ps = Promesse.objects.filter(liste=l)
+        self.listes = ls
+        for l in self.listes:
+            ps = Promesse.objects.filter(liste=l,critere=cri)
             c=False
             for p in ps:
                 if p.critere == cri:

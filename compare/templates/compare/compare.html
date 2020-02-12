@@ -4,7 +4,7 @@
 <section class="about roomy-100">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-sm-12">
+            <div class="col-md-8 col-md-offset-2">
                 <div class="head_title text-center">
                     <h1><a href="/{{v.url}}">{{v.nom}} </a></h1>
                     <div class="separator_auto"></div>
@@ -15,58 +15,14 @@
             <div class="col-md-12">
                 <div class="about_accordion wow fadeIn">
                     <div id="faq_main_content" class="faq_main_content">
-                        <h6><i class="fa fa-star text-primary"></i>Les priorités des listes</h6>
+                        <h6><i class="fa fa-star text-primary"></i>Découvrir les priorités des listes</h6>
                         <div>
                             <div class="content">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered compare">
                                         <thead>
                                         <tr>
                                             {% for l in ls%}
-                                            <th scope="col"><a href="/liste/{{l.id}}">
-                                                {%if l.nom is not None%}
-                                                {{l.nom}}
-                                                {% else %}
-                                                Liste {{l.couleur}}
-                                                {% endif %}</a></th>
-                                            {% endfor %}
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            {% for l in ls%}
-                                            <td>
-                                                {% for pr in l.prio%}
-                                                <li>{{pr.critere.titre}} :
-                                                    {% if pr.titre|length < 200 %}
-                                                    {{pr.titre}}
-                                                    {% else %}
-                                                    <a tabindex="0" role="button" style="cursor: zoom-in;"
-                                                       data-container="body"
-                                                       data-toggle="popover"
-                                                       data-placement="auto" data-trigger="focus"
-                                                       data-content="{{pr.titre}}">{{pr.titre|truncatechars:200}}</a>
-                                                    {% endif %}
-                                                </li>
-                                                {% endfor %}
-                                            </td>
-                                            {% endfor %}
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div> <!-- End off accordion item-1 -->
-                        {% for vcat in vcats%}
-                        <h6><i class="fa fa-angle-right"></i>{{vcat.titre}}</h6>
-                        <div>
-                            <div class="content">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Critère</th>
-                                            {% for l in ls.all%}
                                             <th scope="col"><a tabindex="0" role="button" style="cursor: pointer;"
                                                                data-toggle="popover"
                                                                data-placement="auto" data-trigger="focus"
@@ -95,20 +51,104 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for vc in vcat.criteres%}
                                         <tr>
-                                            <th>{{vc.titre}}</th>
-                                            {% for vp in vc.promesses%}
-                                            <td>
-                                                {% if vp.promesse.titre|length < 200 %}
-                                                {{vp.promesse.titre}}
+                                            {% for l in ls%}
+                                            <td style="white-space: normal !important;word-wrap: break-word;">
+                                                {% for pr in l.prio%}
+                                                <div class="bull alert-info" role="alert" >{{pr.critere.titre}} :
+                                                    {% if pr.titre|length < 200 %}
+                                                    {{pr.titre}}
+                                                    {% else %}
+                                                    <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                       data-container="body"
+                                                       data-toggle="popover"
+                                                       data-placement="auto" data-trigger="focus"
+                                                       data-content="{{pr.titre}}">{{pr.titre|truncatechars:60}}</a>
+                                                    {% endif %}
+                                                </div>
+                                                {% endfor %}
+                                            </td>
+                                            {% endfor %}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> <!-- End off accordion item-1 -->
+                        {% for cat in cats%}
+                        <h6><i class="fa fa-angle-right"></i>{{cat.titre}}</h6>
+                        <div>
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered compare">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            {% for l in ls%}
+                                            <th scope="col"><a tabindex="0" role="button" style="cursor: pointer;"
+                                                               data-toggle="popover"
+                                                               data-placement="auto" data-trigger="focus"
+                                                               data-html="true"
+                                                               title="{%if l.nom is not None%}
+                                                                        {{l.nom}}
+                                                                        {% else %}
+                                                                        Liste {{l.couleur}}
+                                                                        {% endif %}"
+                                                               data-content="
+                                                               {%if l.teteDeListe is not None%}
+                                                              <h5>Tête de liste : {{l.teteDeListe}}</h5>
+                                                              {% endif %}
+                                                              <p>
+                                                              {%if l.couleur is not None%}
+                                                              Couleur politique : {{l.couleur}}<br/>
+                                                              {% endif %}
+                                                              {{l.presentation}}</p>">
+                                                {%if l.nom is not None%}
+                                                {{l.nom}}
                                                 {% else %}
-                                                <a tabindex="0" role="button" style="cursor: zoom-in;"
-                                                   data-container="body"
-                                                   data-toggle="popover"
-                                                   data-placement="auto" data-trigger="focus"
-                                                   data-content="{{vp.promesse.titre}}">{{vp.promesse.titre|truncatechars:200}}</a>
+                                                Liste {{l.couleur}}
                                                 {% endif %}
+                                            </a></th>
+                                            {% endfor %}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for c in cat.cs%}
+                                        <tr>
+                                            <th>{{c.titre}}</th>
+                                            {% for l in c.listes%}
+                                            <td>
+                                                {% for prop in l.ps%}
+                                                {% if prop.titre != "" %}
+                                                <div class="bull alert-info" role="alert" >
+                                                    {% if prop.description == "" or prop.description is None %}
+                                                        {% if prop.titre|length < 60 %}
+                                                        {{prop.titre}}
+                                                        {% else %}
+                                                        <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                           data-container="body"
+                                                           data-toggle="popover"
+                                                           data-placement="auto" data-trigger="focus"
+                                                           data-content="{{prop.titre}}">{{prop.titre|truncatechars:60}}</a>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if prop.titre|length < 60 %}
+                                                        <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                           data-container="body"
+                                                           data-toggle="popover"
+                                                           data-placement="auto" data-trigger="focus"
+                                                           data-content="{{prop.description}}">{{prop.titre}}</a>
+                                                        {% else %}
+                                                        <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                           data-toggle="popover"
+                                                           data-placement="auto" data-trigger="focus" title={{prop.titre}}
+                                                           data-content="{{prop.description}}">{{prop.titre|truncatechars:60}}</a>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% if prop.estUnePriorite %} <i class="fa fa-star text-white"></i>{%endif%}
+                                                </div>
+                                                {% endif %}
+                                                {% endfor %}
                                             </td>
                                             {% endfor %}
                                         </tr>

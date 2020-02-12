@@ -71,15 +71,17 @@
                                             <td>{{p.critere.categorie.titre}}</td>
                                             <td>{{p.critere.titre}}</td>
                                             <td>
-                                                {% if p.titre|length < 145 %}
-                                                {{p.titre}}
-                                                {% else %}
-                                                <a tabindex="0" role="button" style="cursor: zoom-in;"
-                                                   data-container="body"
-                                                   data-toggle="popover"
-                                                   data-placement="auto" data-trigger="focus"
-                                                   data-content="{{p.titre}}">{{p.titre|truncatechars:145}}</a>
-                                                {% endif %}
+                                                <div class="bull alert-info" role="alert">
+                                                    {% if p.titre|length < 145 %}
+                                                    {{p.titre}}
+                                                    {% else %}
+                                                    <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                       data-container="body"
+                                                       data-toggle="popover"
+                                                       data-placement="auto" data-trigger="focus"
+                                                       data-content="{{p.titre}}">{{p.titre|truncatechars:145}}</a>
+                                                    {% endif %}
+                                                </div>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -103,27 +105,26 @@
                                         {% for c in l.ville.criteres.all%}
                                         {% if cat.titre == c.categorie.titre%}
                                         <tr>
-                                            <td>{{c.titre}}</td>
-                                            {% for p in ps%}
-                                            {% if p.critere.titre == c.titre%}
+                                            <td style="vertical-align : middle;">{{c.titre}}</td>
                                             <td>
-                                                {% if p.titre|length < 145 %}
-                                                {{p.titre}}
-                                                {% else %}
-                                                <a tabindex="0" role="button" style="cursor: zoom-in;"
-                                                   data-container="body"
-                                                   data-toggle="popover"
-                                                   data-placement="auto" data-trigger="focus"
-                                                   data-content="{{p.titre}}">{{p.titre|truncatechars:145}}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>{% if p.estUnePriorite %}
-                                                <i class="fa fa-star text-primary"></i>
+                                                {% for p in ps%}
+                                                {% if p.critere.titre == c.titre%}
+                                                <div class="bull alert-info" role="alert">
+                                                    {% if p.description == "" or p.description is None %}
+                                                    {{p.titre}}
+                                                    {% else %}
+                                                    <a tabindex="0" role="button" style="cursor: zoom-in;"
+                                                       data-container="body"
+                                                       data-toggle="popover"
+                                                       data-placement="auto" data-trigger="focus"
+                                                       data-content="{{p.description}}">{{p.titre}}</a>
+                                                    {% endif %}
+                                                    {% if p.estUnePriorite %} <i class="fa fa-star"></i>{%endif%}
+                                                </div>
                                                 {%endif%}
+                                                {% endfor %}
                                             </td>
                                         </tr>
-                                        {%endif%}
-                                        {% endfor %}
                                         {%endif%}
                                         {% endfor %}
                                         </tbody>
@@ -258,6 +259,10 @@
 
 
 
+
+
+
+
 </script>
 {%endif%}
 {%if modalSignal%}
@@ -266,6 +271,10 @@
     $('#modalSignal').appendTo("body")
     $("#modalSignal").modal('show');
     });
+
+
+
+
 
 
 
