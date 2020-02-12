@@ -1,25 +1,45 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .forms import UserRegisterForm, ListForm, CustomUserCreationForm
+from .forms import ListForm, CustomUserCreationForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from compare.views import liste, accueil
 from compare.models import Liste, Ville, Critere, Categorie, Promesse
 from django.contrib.auth.decorators import login_required
+from django.contrib import auth
+
 
 
 # New registration form created from scratch
-def register(request):
+def connect(request):
+
+
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+        formIns = CustomUserCreationForm(request.POST or None)
+        formCon = LoginForm(request.POST or None)
+
+        if formIns.is_valid() and 'formIns' in request.POST:
+            formIns.save()
+            username = formIns.cleaned_data.get('username')
             messages.success(request, f'Le compte a été crée {username}!  \n'
                                       f'Tu peux te connecter maintenant :)')
-            return redirect('login')
+            return redirect('connect')
+
+        if formCon.is_valid() and 'formCon' in request.POST:
+            username = formCon.cleaned_data.get('username')
+            password = formCon.cleaned_data.get('password')
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                # correct username and password login the user
+                auth.login(request, user)
+                return redirect('profile')
+            else:
+                messages.error(request, 'Error wrong username/password')
     else:
-        form = CustomUserCreationForm()
-    return render(request, 'users/register.html', {'form': form})
+        formIns = CustomUserCreationForm()
+        formCon = LoginForm()
+
+    return render(request, 'users/connect.html', {'formCon': formCon, 'formIns': formIns})
+
 
 
 @login_required

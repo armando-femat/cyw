@@ -1,0 +1,55 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section id="nous" class="about roomy-100 bg-white">
+    <div class="container">
+        <div class="row">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tag }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="main_about">
+                <div class="col-md-6 separator_vertical">
+                    <div class="content-section">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">Inscrivez-vous maintenant !</legend>
+                                {{ formIns | crispy }}
+                                {{form.media}}
+
+                            </fieldset>
+                            <div class="form-group">
+                                <button name="formIns" class="btn btn-outline-info" type="submit">S'inscrire</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-8 col-md-offset-2 col-sm-12">
+                        <div class="content-section">
+                        </div>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    <legend class="border-bottom mb-4">Se connecter</legend>
+                                    {{ formCon |crispy }}
+                                </fieldset>
+                                <div class="form-group">
+                                    <button name="formCon" class="btn btn-outline-info" type="submit">Se connecter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--End off row-->
+    </div><!--End off container -->
+</section> <!--End off About section -->
+{% endblock content %}
