@@ -3,7 +3,7 @@ autocomplete==0.0.104
 beautifulsoup4==4.8.0
 bootstrap4==0.1.0
 bottle==0.12.17
-Django==2.2.8
+Django==2.2.22
 django-autocomplete-light==3.4.1
 django-bootstrap4==1.0.1
 django-crispy-forms==1.8.1
